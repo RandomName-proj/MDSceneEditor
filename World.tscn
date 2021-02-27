@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Palette.gd" type="Script" id=1]
+[ext_resource path="res://Art.gd" type="Script" id=2]
+[ext_resource path="res://FileDialog.gd" type="Script" id=3]
+[ext_resource path="res://PalFileSelect.gd" type="Script" id=5]
+
+[node name="World" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[node name="Palette" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Palette"]
+z_index = -1
+z_as_relative = false
+
+[node name="Button" type="Button" parent="Palette"]
+margin_left = 523.157
+margin_top = 426.425
+margin_right = 683.157
+margin_bottom = 510.425
+text = "Palette File"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileSelect" type="FileDialog" parent="Palette"]
+margin_right = 447.0
+margin_bottom = 266.0
+popup_exclusive = true
+window_title = "Открыть файл"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.pal,*.bin; Palette files" )
+show_hidden_files = true
+current_dir = "/GDProjects/GenesisProject"
+current_path = "/GDProjects/GenesisProject/"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Art" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Art"]
+scale = Vector2( 5, 5 )
+z_index = -1
+z_as_relative = false
+
+[node name="Button" type="Button" parent="Art"]
+margin_left = 254.494
+margin_top = 426.173
+margin_right = 419.494
+margin_bottom = 508.173
+text = "Art File"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileSelect" type="FileDialog" parent="Art"]
+margin_right = 447.0
+margin_bottom = 266.0
+popup_exclusive = true
+window_title = "Открыть файл"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.unc,*.bin; Art files" )
+show_hidden_files = true
+current_dir = "/GDProjects/GenesisProject"
+current_path = "/GDProjects/GenesisProject/"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="Updated" from="Palette" to="Art" method="_on_Palette_Updated"]
+[connection signal="pressed" from="Palette/Button" to="Palette/FileSelect" method="_on_Button_pressed"]
+[connection signal="file_selected" from="Palette/FileSelect" to="Palette" method="_on_FileSelect_file_selected"]
+[connection signal="pressed" from="Art/Button" to="Art/FileSelect" method="_on_Button_pressed"]
+[connection signal="file_selected" from="Art/FileSelect" to="Art" method="_on_FileSelect_file_selected"]

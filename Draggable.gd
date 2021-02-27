@@ -1,7 +1,13 @@
 tool
 extends Area2D
 
+signal moved(movement)
+
 var isDragged:= false
+var isColliding:= false
+
+var prevMousePosition:= Vector2(0,0)
+
  # GDScript can't reference global enums directly for some reason
 enum ButtonList {
 	BUTTON_LEFT = BUTTON_LEFT,
@@ -25,17 +31,27 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if not Engine.editor_hint:
-		if (isDragged and Input.is_mouse_button_pressed(mouseButton)):
-			global_position = get_global_mouse_position()
-		print(Input.is_mouse_button_pressed(mouseButton))
+		if ((isDragged or isColliding) and Input.is_mouse_button_pressed(mouseButton)):
+			isDragged = true
+			if (get_global_mouse_position()-prevMousePosition != Vector2(0,0)):
+				emit_signal("moved",get_global_mouse_position()-prevMousePosition)
+				
+			position += get_global_mouse_position()-prevMousePosition
+		else:
+			isDragged = false
+		prevMousePosition = get_global_mouse_position()
+		
 	else:
 		$DragBox.scale = DragBoxSize
 
 
 func _on_Draggable_mouse_entered():
-	isDragged = true
+	isColliding = true
 
 
 func _on_Draggable_mouse_exited():
-	if (!Input.is_mouse_button_pressed(mouseButton)):
-		isDragged = false
+	isColliding = false
+
+
+func _on_Draggable_moved(movement):
+	print(movement)

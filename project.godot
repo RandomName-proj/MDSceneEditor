@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Resource",
+"class": "m68kAsmParser",
+"language": "GDScript",
+"path": "res://m68kAsmParser.gd"
+} ]
 _global_script_class_icons={
-
+"m68kAsmParser": ""
 }
 
 [application]

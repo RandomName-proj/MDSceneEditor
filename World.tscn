@@ -29,7 +29,11 @@ func _button_pressed():
 	var file = File.new()
 	file.open(\"test.asm\",File.READ)
 	var text = file.get_as_text()
-	print(asmParser.parse(text))
+	
+	var data = asmParser.parse(text)
+	print(\"Data Start\")
+	for byte in data:
+		print(\"0x%X\" % byte)
 	pass
 
 "
@@ -67,8 +71,8 @@ mode = 0
 access = 2
 filters = PoolStringArray( "*.pal,*.bin; Palette files" )
 show_hidden_files = true
-current_dir = "/GDProjects/GenesisProject"
-current_path = "/GDProjects/GenesisProject/"
+current_dir = "/Games/GodotProjects/GenesisProject"
+current_path = "/Games/GodotProjects/GenesisProject/"
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -102,8 +106,8 @@ mode = 0
 access = 2
 filters = PoolStringArray( "*.unc,*.bin; Art files" )
 show_hidden_files = true
-current_dir = "/GDProjects/GenesisProject"
-current_path = "/GDProjects/GenesisProject/"
+current_dir = "/Games/GodotProjects/GenesisProject"
+current_path = "/Games/GodotProjects/GenesisProject/"
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false

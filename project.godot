@@ -24,6 +24,16 @@ config/name="GenesisProject"
 run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+PaletteHandler="*res://PaletteHandler.gd"
+MDVRAM="*res://MDVRAM.gd"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
 [importer_defaults]
 
 texture={
@@ -51,7 +61,7 @@ texture={
 
 ui_chgpalline={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":80,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":80,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

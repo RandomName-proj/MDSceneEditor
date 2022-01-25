@@ -19,3 +19,7 @@ func _ready():
 func _on_Button_pressed():
 	popup_centered()
 	pass # Replace with function body.
+
+
+func _on_FileSelect_file_selected(path):
+	PaletteHandler.loadPal(path)

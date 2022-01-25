@@ -1,44 +1,125 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Palette.gd" type="Script" id=1]
 [ext_resource path="res://Art.gd" type="Script" id=2]
 [ext_resource path="res://FileDialog.gd" type="Script" id=3]
+[ext_resource path="res://ColorPicker.gd" type="Script" id=4]
 [ext_resource path="res://PalFileSelect.gd" type="Script" id=5]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Button
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_mix;
 
-var asmParser = m68kAsmParser.new()
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
+uniform sampler2D palette;
+uniform int palline;
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	self.connect(\"pressed\", self, \"_button_pressed\")
+void fragment(){
+	COLOR = texture(TEXTURE,UV);
+	float colorInd = COLOR.r*4.0f+float(palline)*16.0f/64.0f;
 	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-func _button_pressed():
-	var file = File.new()
-	file.open(\"test.asm\",File.READ)
-	var text = file.get_as_text()
-	
-	var data = asmParser.parse(text)
-	print(\"Data Start\")
-	for byte in data:
-		print(\"0x%X\" % byte)
-	pass
-
+	COLOR.rgb = texture(palette,vec2(colorInd,0)).rgb;
+}
 "
 
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/palline = null
+
 [node name="World" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -253.0
+margin_top = -102.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/MarginContainer"]
+margin_right = 253.0
+margin_bottom = 102.0
+alignment = 1
+
+[node name="ArtButton" type="Button" parent="UI/Control/MarginContainer/HBoxContainer"]
+margin_right = 124.0
+margin_bottom = 102.0
+size_flags_horizontal = 3
+text = "Art File"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileSelect" type="FileDialog" parent="UI/Control/MarginContainer/HBoxContainer/ArtButton"]
+margin_left = -468.551
+margin_top = -452.335
+margin_right = -21.551
+margin_bottom = -186.335
+popup_exclusive = true
+window_title = "Открыть файл"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.unc,*.bin; Art files" )
+show_hidden_files = true
+current_dir = "/GDProjects/GenesisProject"
+current_path = "/GDProjects/GenesisProject/"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PalButton" type="Button" parent="UI/Control/MarginContainer/HBoxContainer"]
+margin_left = 128.0
+margin_right = 253.0
+margin_bottom = 102.0
+size_flags_horizontal = 3
+text = "Palette File"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileSelect" type="FileDialog" parent="UI/Control/MarginContainer/HBoxContainer/PalButton"]
+margin_left = -662.294
+margin_top = -450.209
+margin_right = -215.294
+margin_bottom = -184.209
+popup_exclusive = true
+window_title = "Открыть файл"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.pal,*.bin; Palette files" )
+show_hidden_files = true
+current_dir = "/GDProjects/GenesisProject"
+current_path = "/GDProjects/GenesisProject/"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorPicker" type="ColorPicker" parent="UI/Control"]
+visible = false
+margin_left = 379.542
+margin_top = 63.9452
+margin_right = 687.542
+margin_bottom = 525.945
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -48,82 +129,25 @@ current = true
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Palette"]
+visible = false
 z_index = -1
 z_as_relative = false
-
-[node name="Button" type="Button" parent="Palette"]
-margin_left = 662.294
-margin_top = 450.209
-margin_right = 822.294
-margin_bottom = 534.209
-text = "Palette File"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FileSelect" type="FileDialog" parent="Palette"]
-margin_right = 447.0
-margin_bottom = 266.0
-popup_exclusive = true
-window_title = "Открыть файл"
-resizable = true
-mode = 0
-access = 2
-filters = PoolStringArray( "*.pal,*.bin; Palette files" )
-show_hidden_files = true
-current_dir = "/Games/GodotProjects/GenesisProject"
-current_path = "/Games/GodotProjects/GenesisProject/"
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Art" type="Node" parent="."]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Art"]
+material = SubResource( 2 )
 scale = Vector2( 5, 5 )
 z_index = -1
 z_as_relative = false
 
-[node name="Button" type="Button" parent="Art"]
-margin_left = 468.551
-margin_top = 452.335
-margin_right = 633.551
-margin_bottom = 534.335
-text = "Art File"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Block" type="Node" parent="."]
 
-[node name="FileSelect" type="FileDialog" parent="Art"]
-margin_right = 447.0
-margin_bottom = 266.0
-popup_exclusive = true
-window_title = "Открыть файл"
-resizable = true
-mode = 0
-access = 2
-filters = PoolStringArray( "*.unc,*.bin; Art files" )
-show_hidden_files = true
-current_dir = "/Games/GodotProjects/GenesisProject"
-current_path = "/Games/GodotProjects/GenesisProject/"
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Sprite" type="Sprite" parent="Block"]
 
-[node name="Button" type="Button" parent="."]
-margin_left = 309.0
-margin_top = 119.0
-margin_right = 674.0
-margin_bottom = 290.0
-script = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="Updated" from="Palette" to="Art" method="_on_Palette_Updated"]
-[connection signal="pressed" from="Palette/Button" to="Palette/FileSelect" method="_on_Button_pressed"]
-[connection signal="file_selected" from="Palette/FileSelect" to="Palette" method="_on_FileSelect_file_selected"]
-[connection signal="pressed" from="Art/Button" to="Art/FileSelect" method="_on_Button_pressed"]
-[connection signal="file_selected" from="Art/FileSelect" to="Art" method="_on_FileSelect_file_selected"]
+[connection signal="pressed" from="UI/Control/MarginContainer/HBoxContainer/ArtButton" to="UI/Control/MarginContainer/HBoxContainer/ArtButton/FileSelect" method="_on_Button_pressed"]
+[connection signal="file_selected" from="UI/Control/MarginContainer/HBoxContainer/ArtButton/FileSelect" to="Art" method="_on_FileSelect_file_selected"]
+[connection signal="pressed" from="UI/Control/MarginContainer/HBoxContainer/PalButton" to="UI/Control/MarginContainer/HBoxContainer/PalButton/FileSelect" method="_on_Button_pressed"]
+[connection signal="file_selected" from="UI/Control/MarginContainer/HBoxContainer/PalButton/FileSelect" to="UI/Control/MarginContainer/HBoxContainer/PalButton/FileSelect" method="_on_FileSelect_file_selected"]
+[connection signal="mouse_exited" from="UI/Control/ColorPicker" to="UI/Control/ColorPicker" method="_on_ColorPicker_mouse_exited"]

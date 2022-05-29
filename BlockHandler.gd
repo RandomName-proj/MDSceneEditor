@@ -1,4 +1,4 @@
-extends FileDialog
+extends Node
 
 
 # Declare member variables here. Examples:
@@ -14,12 +14,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-func _on_Button_pressed():
-	popup_centered()
-	pass # Replace with function body.
-
-
-func _on_FileSelect_file_selected(path):
-	PaletteHandler.loadPal(path)

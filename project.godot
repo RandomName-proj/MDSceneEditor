@@ -28,6 +28,7 @@ config/icon="res://icon.png"
 
 PaletteHandler="*res://PaletteHandler.gd"
 MDVRAM="*res://MDVRAM.gd"
+Global="*res://Global.gd"
 
 [display]
 

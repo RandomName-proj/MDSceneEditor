@@ -1,41 +1,32 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Palette.gd" type="Script" id=1]
 [ext_resource path="res://Art.gd" type="Script" id=2]
-[ext_resource path="res://FileDialog.gd" type="Script" id=3]
+[ext_resource path="res://LoadButton.gd" type="Script" id=3]
 [ext_resource path="res://ColorPicker.gd" type="Script" id=4]
-[ext_resource path="res://PalFileSelect.gd" type="Script" id=5]
+[ext_resource path="res://Block.gd" type="Script" id=5]
+[ext_resource path="res://PalShader.gdshader" type="Shader" id=6]
+[ext_resource path="res://World.gd" type="Script" id=7]
+[ext_resource path="res://Chunks.gd" type="Script" id=8]
 
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-render_mode blend_mix;
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 6 )
+shader_param/pal_line = null
 
-uniform sampler2D palette;
-uniform int palline;
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 6 )
+shader_param/pal_line = 0
 
-
-void fragment(){
-	COLOR = texture(TEXTURE,UV);
-	float colorInd = COLOR.r*4.0f+float(palline)*16.0f/64.0f;
-	
-	COLOR.rgb = texture(palette,vec2(colorInd,0)).rgb;
-}
-"
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-shader_param/palline = null
+[sub_resource type="TileSet" id=6]
 
 [node name="World" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="UI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Control"]
 anchor_left = 1.0
@@ -44,78 +35,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -253.0
 margin_top = -102.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/MarginContainer"]
 margin_right = 253.0
 margin_bottom = 102.0
-alignment = 1
+alignment = 2
 
-[node name="ArtButton" type="Button" parent="UI/Control/MarginContainer/HBoxContainer"]
-margin_right = 124.0
-margin_bottom = 102.0
-size_flags_horizontal = 3
-text = "Art File"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FileSelect" type="FileDialog" parent="UI/Control/MarginContainer/HBoxContainer/ArtButton"]
-margin_left = -468.551
-margin_top = -452.335
-margin_right = -21.551
-margin_bottom = -186.335
-popup_exclusive = true
-window_title = "Открыть файл"
-resizable = true
-mode = 0
-access = 2
-filters = PoolStringArray( "*.unc,*.bin; Art files" )
-show_hidden_files = true
-current_dir = "/GDProjects/GenesisProject"
-current_path = "/GDProjects/GenesisProject/"
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PalButton" type="Button" parent="UI/Control/MarginContainer/HBoxContainer"]
-margin_left = 128.0
+[node name="LoadButton" type="Button" parent="UI/Control/MarginContainer/HBoxContainer"]
+margin_left = 183.0
 margin_right = 253.0
 margin_bottom = 102.0
-size_flags_horizontal = 3
-text = "Palette File"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "Load FIle"
+script = ExtResource( 3 )
 
-[node name="FileSelect" type="FileDialog" parent="UI/Control/MarginContainer/HBoxContainer/PalButton"]
-margin_left = -662.294
-margin_top = -450.209
-margin_right = -215.294
-margin_bottom = -184.209
-popup_exclusive = true
+[node name="FileSelect" type="FileDialog" parent="UI/Control/MarginContainer/HBoxContainer/LoadButton"]
+margin_right = 407.0
+margin_bottom = 306.0
 window_title = "Открыть файл"
-resizable = true
 mode = 0
-access = 2
-filters = PoolStringArray( "*.pal,*.bin; Palette files" )
-show_hidden_files = true
-current_dir = "/GDProjects/GenesisProject"
-current_path = "/GDProjects/GenesisProject/"
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+filters = PoolStringArray( "*.json" )
 
 [node name="ColorPicker" type="ColorPicker" parent="UI/Control"]
 visible = false
-margin_left = 379.542
-margin_top = 63.9452
-margin_right = 687.542
-margin_bottom = 525.945
+margin_left = 427.542
+margin_top = 111.945
+margin_right = 735.542
+margin_bottom = 573.945
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -129,7 +74,7 @@ current = true
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Palette"]
-visible = false
+material = SubResource( 4 )
 z_index = -1
 z_as_relative = false
 
@@ -137,17 +82,24 @@ z_as_relative = false
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Art"]
-material = SubResource( 2 )
-scale = Vector2( 5, 5 )
+visible = false
+material = SubResource( 5 )
+scale = Vector2( 2, 2 )
 z_index = -1
 z_as_relative = false
 
 [node name="Block" type="Node" parent="."]
+script = ExtResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="Block"]
+[node name="TileMap" type="TileMap" parent="Block"]
+scale = Vector2( 2, 2 )
+tile_set = SubResource( 6 )
+cell_size = Vector2( 8, 8 )
+format = 1
 
-[connection signal="pressed" from="UI/Control/MarginContainer/HBoxContainer/ArtButton" to="UI/Control/MarginContainer/HBoxContainer/ArtButton/FileSelect" method="_on_Button_pressed"]
-[connection signal="file_selected" from="UI/Control/MarginContainer/HBoxContainer/ArtButton/FileSelect" to="Art" method="_on_FileSelect_file_selected"]
-[connection signal="pressed" from="UI/Control/MarginContainer/HBoxContainer/PalButton" to="UI/Control/MarginContainer/HBoxContainer/PalButton/FileSelect" method="_on_Button_pressed"]
-[connection signal="file_selected" from="UI/Control/MarginContainer/HBoxContainer/PalButton/FileSelect" to="UI/Control/MarginContainer/HBoxContainer/PalButton/FileSelect" method="_on_FileSelect_file_selected"]
+[node name="Chunk" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[connection signal="pressed" from="UI/Control/MarginContainer/HBoxContainer/LoadButton" to="UI/Control/MarginContainer/HBoxContainer/LoadButton" method="_on_LoadButton_pressed"]
+[connection signal="file_selected" from="UI/Control/MarginContainer/HBoxContainer/LoadButton/FileSelect" to="UI/Control/MarginContainer/HBoxContainer/LoadButton" method="_on_FileSelect_file_selected"]
 [connection signal="mouse_exited" from="UI/Control/ColorPicker" to="UI/Control/ColorPicker" method="_on_ColorPicker_mouse_exited"]

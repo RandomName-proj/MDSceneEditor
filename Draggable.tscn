@@ -15,6 +15,7 @@ DragBoxSize = Vector2( 32, 32 )
 [node name="DragBox" type="CollisionShape2D" parent="."]
 scale = Vector2( 32, 32 )
 shape = SubResource( 1 )
+
 [connection signal="mouse_entered" from="." to="." method="_on_Draggable_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Draggable_mouse_exited"]
-[connection signal="moved" from="." to="." method="_on_Draggable_moved" binds= [ Vector2( 0, 0 ) ]]
+[connection signal="moved" from="." to="." method="_on_Draggable_moved"]

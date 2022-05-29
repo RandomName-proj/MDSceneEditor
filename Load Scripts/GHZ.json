@@ -1,0 +1,6 @@
+{
+    "pal_files": ["Palettes/Green Hill Zone.pal"],
+    "art_files": ["Uncompressed Art/GHZ1.unc","Uncompressed Art/GHZ2.unc"],
+    "block_files": ["Blocks/GHZ.blk"],
+    "chunk_files": ["Chunks/GHZ.chk"]
+}

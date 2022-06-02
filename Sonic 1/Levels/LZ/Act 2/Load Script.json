@@ -1,14 +1,5 @@
 {
-    "loaders": {
-        "blocks": "Sonic 1/Loaders/Blocks.gd",
-        "chunks": "Sonic 1/Loaders/Chunks.gd",
-        "tile_layout": "Sonic 1/Loaders/Tile Layout.gd",
-        "object_layout": "Sonic 1/Loaders/Object Layout.gd"
-    },
-    "pal_files": ["Sonic 1/Generic/Sonic.pal","Sonic 1/Levels/LZ/Palette.pal"],
-    "art_files": ["Sonic 1/Levels/LZ/Tiles.unc"],
-    "block_files": ["Sonic 1/Levels/LZ/Blocks.blk"],
-    "chunk_files": ["Sonic 1/Levels/LZ/Chunks.chk"],
+    "parent_file": "Sonic 1/Levels/LZ/Load Script.json",
     "tile_layout_files": [
         ["Sonic 1/Levels/LZ/Act 2/FG Layout.lay","Sonic 1/Levels/LZ/BG Layout.lay"]
     ],

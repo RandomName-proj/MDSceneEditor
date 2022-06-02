@@ -48,17 +48,17 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -253.0
-margin_top = -102.0
+margin_top = -77.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/MarginContainer"]
 margin_right = 253.0
-margin_bottom = 102.0
+margin_bottom = 77.0
 alignment = 2
 
 [node name="LoadButton" type="Button" parent="UI/Control/MarginContainer/HBoxContainer"]
 margin_left = 183.0
 margin_right = 253.0
-margin_bottom = 102.0
+margin_bottom = 77.0
 text = "Load FIle"
 
 [node name="LevelFile" type="FileDialog" parent="UI/Control/MarginContainer/HBoxContainer/LoadButton"]
@@ -120,6 +120,8 @@ script = ExtResource( 9 )
 
 [node name="ObjectLayoutHandler" type="Node" parent="Level"]
 script = ExtResource( 11 )
+
+[node name="CollisionHandler" type="Node" parent="Level"]
 
 [connection signal="changed_level" from="." to="UI/PaletteViewer" method="_on_World_changed_level"]
 [connection signal="changed_level" from="." to="ArtViewer" method="_on_World_changed_level"]

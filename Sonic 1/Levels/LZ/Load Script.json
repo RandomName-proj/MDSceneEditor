@@ -1,0 +1,7 @@
+{
+    "parent_file": "Sonic 1/Generic/Load Script.json",
+    "pal_files": ["Sonic 1/Levels/LZ/Palette.pal"],
+    "art_files": ["Sonic 1/Levels/LZ/Tiles.unc"],
+    "block_files": ["Sonic 1/Levels/LZ/Blocks.blk"],
+    "chunk_files": ["Sonic 1/Levels/LZ/Chunks.chk"]
+}

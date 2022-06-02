@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Object Layout.obj-e9e17e7bcad4c73f052c246bb774f013.mesh"
+
+[deps]
+
+files=[ "res://.import/Object Layout.obj-e9e17e7bcad4c73f052c246bb774f013.mesh" ]
+
+source_file="res://Sonic 1/Levels/GHZ/Act 2/Object Layout.obj"
+dest_files=[ "res://.import/Object Layout.obj-e9e17e7bcad4c73f052c246bb774f013.mesh", "res://.import/Object Layout.obj-e9e17e7bcad4c73f052c246bb774f013.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

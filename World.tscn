@@ -1,21 +1,27 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://Palette.gd" type="Script" id=1]
-[ext_resource path="res://Art.gd" type="Script" id=2]
-[ext_resource path="res://LoadButton.gd" type="Script" id=3]
-[ext_resource path="res://ColorPicker.gd" type="Script" id=4]
-[ext_resource path="res://Block.gd" type="Script" id=5]
-[ext_resource path="res://PalShader.gdshader" type="Shader" id=6]
+[ext_resource path="res://Level.gd" type="Script" id=1]
+[ext_resource path="res://API/Viewers/ArtViewer.gd" type="Script" id=2]
+[ext_resource path="res://API/Handlers/TileHandler.gd" type="Script" id=3]
+[ext_resource path="res://API/ColorPicker.gd" type="Script" id=4]
+[ext_resource path="res://API/Handlers/BlockHandler.gd" type="Script" id=5]
+[ext_resource path="res://API/PalShader.gdshader" type="Shader" id=6]
 [ext_resource path="res://World.gd" type="Script" id=7]
-[ext_resource path="res://Chunks.gd" type="Script" id=8]
+[ext_resource path="res://API/Handlers/ChunkHandler.gd" type="Script" id=8]
+[ext_resource path="res://API/Handlers/TileLayoutHandler.gd" type="Script" id=9]
+[ext_resource path="res://Camera.gd" type="Script" id=10]
+[ext_resource path="res://API/Handlers/ObjectLayoutHandler.gd" type="Script" id=11]
+[ext_resource path="res://API/Viewers/PaletteViewer.gd" type="Script" id=12]
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 6 )
-shader_param/pal_line = null
 
-[sub_resource type="ShaderMaterial" id=5]
-shader = ExtResource( 6 )
-shader_param/pal_line = 0
+[sub_resource type="GDScript" id=7]
+script/source = "extends FileDialog
+
+func _on_LoadButton_pressed():
+	popup_centered()
+"
 
 [sub_resource type="TileSet" id=6]
 
@@ -23,6 +29,14 @@ shader_param/pal_line = 0
 script = ExtResource( 7 )
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PaletteViewer" type="Node2D" parent="UI"]
+script = ExtResource( 12 )
+
+[node name="Sprite" type="Sprite" parent="UI/PaletteViewer"]
+material = SubResource( 4 )
+z_index = -1
+z_as_relative = false
 
 [node name="Control" type="Control" parent="UI"]
 anchor_right = 1.0
@@ -46,60 +60,69 @@ margin_left = 183.0
 margin_right = 253.0
 margin_bottom = 102.0
 text = "Load FIle"
-script = ExtResource( 3 )
 
-[node name="FileSelect" type="FileDialog" parent="UI/Control/MarginContainer/HBoxContainer/LoadButton"]
+[node name="LevelFile" type="FileDialog" parent="UI/Control/MarginContainer/HBoxContainer/LoadButton"]
 margin_right = 407.0
 margin_bottom = 306.0
 window_title = "Открыть файл"
 mode = 0
 filters = PoolStringArray( "*.json" )
+script = SubResource( 7 )
 
 [node name="ColorPicker" type="ColorPicker" parent="UI/Control"]
 visible = false
-margin_left = 427.542
-margin_top = 111.945
-margin_right = 735.542
-margin_bottom = 573.945
+margin_left = 555.542
+margin_top = 239.945
+margin_right = 863.542
+margin_bottom = 701.945
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
+[node name="Camera" type="Camera2D" parent="."]
 current = true
+script = ExtResource( 10 )
 
-[node name="Palette" type="Node" parent="."]
-script = ExtResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="Palette"]
-material = SubResource( 4 )
-z_index = -1
-z_as_relative = false
-
-[node name="Art" type="Node" parent="."]
+[node name="ArtViewer" type="Node2D" parent="."]
+visible = false
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="Art"]
-visible = false
-material = SubResource( 5 )
-scale = Vector2( 2, 2 )
+[node name="Sprite" type="Sprite" parent="ArtViewer"]
 z_index = -1
 z_as_relative = false
 
-[node name="Block" type="Node" parent="."]
-script = ExtResource( 5 )
+[node name="Level" type="Node" parent="."]
+script = ExtResource( 1 )
 
-[node name="TileMap" type="TileMap" parent="Block"]
-scale = Vector2( 2, 2 )
-tile_set = SubResource( 6 )
+[node name="TileHandler" type="Node" parent="Level"]
+script = ExtResource( 3 )
+
+[node name="BG" type="TileMap" parent="Level/TileHandler"]
 cell_size = Vector2( 8, 8 )
+cell_quadrant_size = 32
 format = 1
 
-[node name="Chunk" type="Node" parent="."]
+[node name="FG" type="TileMap" parent="Level/TileHandler"]
+tile_set = SubResource( 6 )
+cell_size = Vector2( 8, 8 )
+cell_quadrant_size = 32
+format = 1
+
+[node name="BlockHandler" type="Node" parent="Level"]
+script = ExtResource( 5 )
+
+[node name="ChunkHandler" type="Node" parent="Level"]
 script = ExtResource( 8 )
 
-[connection signal="pressed" from="UI/Control/MarginContainer/HBoxContainer/LoadButton" to="UI/Control/MarginContainer/HBoxContainer/LoadButton" method="_on_LoadButton_pressed"]
-[connection signal="file_selected" from="UI/Control/MarginContainer/HBoxContainer/LoadButton/FileSelect" to="UI/Control/MarginContainer/HBoxContainer/LoadButton" method="_on_FileSelect_file_selected"]
+[node name="TileLayoutHandler" type="Node" parent="Level"]
+script = ExtResource( 9 )
+
+[node name="ObjectLayoutHandler" type="Node" parent="Level"]
+script = ExtResource( 11 )
+
+[connection signal="changed_level" from="." to="UI/PaletteViewer" method="_on_World_changed_level"]
+[connection signal="changed_level" from="." to="ArtViewer" method="_on_World_changed_level"]
+[connection signal="pressed" from="UI/Control/MarginContainer/HBoxContainer/LoadButton" to="UI/Control/MarginContainer/HBoxContainer/LoadButton/LevelFile" method="_on_LoadButton_pressed"]
+[connection signal="file_selected" from="UI/Control/MarginContainer/HBoxContainer/LoadButton/LevelFile" to="." method="_on_LevelFile_file_selected"]
 [connection signal="mouse_exited" from="UI/Control/ColorPicker" to="UI/Control/ColorPicker" method="_on_ColorPicker_mouse_exited"]

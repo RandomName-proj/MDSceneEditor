@@ -1,7 +1,24 @@
 {
-    "parent_file": "Sonic 1/Generic/Load Script.json",
-    "pal_files": ["Sonic 1/Levels/GHZ/Palette.pal"],
-    "art_files": ["Sonic 1/Levels/GHZ/Tiles 1.unc","Sonic 1/Levels/GHZ/Tiles 2.unc"],
-    "block_files": ["Sonic 1/Levels/GHZ/Blocks.blk"],
-    "chunk_files": ["Sonic 1/Levels/GHZ/Chunks.chk"]
+    "parents": ["Sonic 1/Generic/Load Script.json"],
+    "palette": [
+        {
+        "files": ["Sonic 1/Levels/GHZ/Palette.pal"],
+        "dst_offset": 16
+        }
+    ],
+    "art": [
+        {
+        "files": ["Sonic 1/Levels/GHZ/Tiles 1.unc","Sonic 1/Levels/GHZ/Tiles 2.unc"]
+        }
+    ],
+    "blocks": [
+        {
+            "files": ["Sonic 1/Levels/GHZ/Blocks.blk"]
+        }
+    ],
+    "chunks": [
+        {
+            "files": ["Sonic 1/Levels/GHZ/Chunks.chk"]
+        }
+    ]
 }

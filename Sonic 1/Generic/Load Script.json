@@ -1,9 +1,13 @@
 {
-    "loaders": {
+    "default_loaders": {
         "blocks": "Sonic 1/Loaders/Blocks.gd",
         "chunks": "Sonic 1/Loaders/Chunks.gd",
         "tile_layout": "Sonic 1/Loaders/Tile Layout.gd",
         "object_layout": "Sonic 1/Loaders/Object Layout.gd"
     },
-    "pal_files": ["Sonic 1/Generic/Sonic.pal"]
+    "palette": [
+        {
+            "files": ["Sonic 1/Generic/Sonic.pal"]
+        }
+    ]
 }

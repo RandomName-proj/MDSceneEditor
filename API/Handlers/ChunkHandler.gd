@@ -3,7 +3,15 @@ extends Node
 var chunk_arr : Array
 var chunk_counter : int = 0
 
-func load_data(data):
+func init_data(init_args : Dictionary):
+	var chunk_data : Array
+	
+	for chunk in range(init_args["chunk_table_size"]):
+		chunk_data.append(DataFormats.Chunk.new(init_args["chunk_size"]))
+	
+	return chunk_data
+
+func load_data(data, load_entry):
 	chunk_arr = data
 
 func _process(_delta):

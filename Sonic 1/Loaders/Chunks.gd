@@ -1,21 +1,26 @@
 extends Script
 
-static func load_file(path):
-	var file := File.new()
-	file.open(path,File.READ)
-	file.endian_swap = true
+const chunk_size := Vector2(16,16)
+const chunk_table_size := 0x52
+
+static func get_init_args():
+	return {"chunk_size": chunk_size, "chunk_table_size": chunk_table_size}
+
+static func load_file(file : File, data, load_entry, offset : int = 0, length : int = 0):
+	var load_end : int
 	
-	var chunk_arr : Array
+	if length == 0:
+		load_end = (offset + 1)  + int(file.get_len()/2/chunk_size.x/chunk_size.y)
+	else:
+		load_end = (offset + 1) + length
 	
-	# in S1 first chunk is empty chunk
-	var first_chunk := DataFormats.Chunk.new(Vector2(16,16))
+	load_end = min(data.size(),load_end)
 	
-	chunk_arr.append(first_chunk)
+	# First chunk in S1 is always blank
+	data[0] = DataFormats.Chunk.new(chunk_size) 
 	
-	while file.get_position() < file.get_len():
-		var chk := DataFormats.Chunk.new(Vector2(16,16))
-		
-		for block in range(0, chk.size.x*chk.size.y):
+	for chunk in range(offset + 1, load_end):
+		for block in range(0, chunk_size.x*chunk_size.y):
 			var block_data := file.get_buffer(2)
 			
 			var block_id := ((block_data[0] & 0b11) << 8) + block_data[1]
@@ -24,12 +29,11 @@ static func load_file(path):
 			var block_solid := block_data[0] & 0b1100000
 			
 			
-			chk.block_ids[block] = block_id
-			chk.block_flips[block] = [block_flip_x, block_flip_y]
-			chk.block_solids[block] = block_solid
+			data[chunk].block_ids[block] = block_id
+			data[chunk].block_flips[block] = [block_flip_x, block_flip_y]
+			data[chunk].block_solids[block] = block_solid
 		
 		
-		chunk_arr.append(chk)
 		
 	
-	return chunk_arr
+	return load_end

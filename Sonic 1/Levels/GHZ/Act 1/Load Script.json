@@ -1,7 +1,19 @@
 {
-    "parent_file": "Sonic 1/Levels/GHZ/Load Script.json",
-    "tile_layout_files": [
-        ["Sonic 1/Levels/GHZ/Act 1/FG Layout.lay","Sonic 1/Levels/GHZ/BG Layout.lay"]
+    "parents": ["Sonic 1/Levels/GHZ/Load Script.json"],
+    "tile_layout": [
+            {
+                "files": ["Sonic 1/Levels/GHZ/Act 1/FG Layout.lay"],
+                "plane": "FG"
+            },
+            {
+                "files": ["Sonic 1/Levels/GHZ/BG Layout.lay"],
+                "plane": "BG"
+            }
     ],
-    "object_layout_files": ["Sonic 1/Levels/GHZ/Act 1/Object Layout.obj"]
+    "object_layout": [
+            {
+                "name": "Objects",
+                "files": ["Sonic 1/Levels/GHZ/Act 1/Object Layout.obj"]
+            }
+    ]
 }

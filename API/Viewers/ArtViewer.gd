@@ -25,4 +25,4 @@ func _process(_delta):
 
 func _on_World_changed_level(selected_level):
 	$Sprite.material = selected_level.pal_material
-	$Sprite.texture = selected_level.vram_handler.texture
+	$Sprite.texture = selected_level.vram.texture

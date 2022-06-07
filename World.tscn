@@ -147,10 +147,10 @@ script = SubResource( 7 )
 
 [node name="ColorPicker" type="ColorPicker" parent="UI/Control"]
 visible = false
-margin_left = 587.542
-margin_top = 271.945
-margin_right = 895.542
-margin_bottom = 733.945
+margin_left = 583.542
+margin_top = 267.945
+margin_right = 891.542
+margin_bottom = 729.945
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -161,6 +161,7 @@ current = true
 script = ExtResource( 10 )
 
 [node name="ArtViewer" type="Node2D" parent="."]
+visible = false
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="ArtViewer"]

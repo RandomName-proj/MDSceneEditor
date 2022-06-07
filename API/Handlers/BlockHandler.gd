@@ -18,7 +18,7 @@ func load_data(data, load_entry):
 	block_arr = data[0]
 	$TileHandler.load_data(data[1], load_entry)
 
-func place_block(x : int, y : int, id : int, plane := "FG", flip_x := false, flip_y := false):
+func place_block(x : int, y : int, id : int, tile_handler : Node, plane := "FG", flip_x := false, flip_y := false):
 	var blk : DataFormats.Block = block_arr[id]
 	for tile in range(0,blk.size.x*blk.size.y):
 		var tile_x : int = x * blk.size.x + abs(wrapi(tile,0,blk.size.x) - int(flip_x))

@@ -136,6 +136,8 @@ func load_file(path):
 	load_data(elements["chunks"],chunk_loader,$ChunkHandler)
 	load_data(elements["tile_layout"],tile_layout_loader,$TileLayoutHandler)
 	
+	$TileLayoutHandler.draw_layout($BlockHandler, $BlockHandler, $ChunkHandler)
+	
 	#if data.has("pal_files"):
 	#	var cur_pal_offset : int = 0
 	#	# TODO : implement proper loading of several palettes

@@ -1,7 +1,7 @@
 extends Node
 
 var tile_layout_arr : Array
-var tile_layout_size
+var tile_layout_size : Vector2
 var tile_plane : String
 
 func init_data(init_args: Dictionary):
@@ -21,8 +21,8 @@ func load_data(data, load_entry):
 	tile_plane = load_entry["plane"]
 
 func draw_layout(tile_handler : Node, block_handler: Node, chunk_handler : Node):
-	for row in range(0, tile_layout_size.x):
-		for col in range(0, tile_layout_size.y):
+	for row in range(0, tile_layout_size.y):
+		for col in range(0, tile_layout_size.x):
 			chunk_handler.place_chunk(col, row, tile_layout_arr[row * tile_layout_size.x + col], 
-				block_handler, tile_handler, tile_plane)
+				block_handler, tile_plane)
 	

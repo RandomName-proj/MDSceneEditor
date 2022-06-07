@@ -14,9 +14,10 @@ static func load_file(file : File, data, load_entry, offset : int = 0, length : 
 	
 	load_end = min(data.size(),load_end)
 	
+	data["size"] = tile_layout_size
 	
 	for chunk in range(offset, load_end):
-		data[chunk] = file.get_8() & 127
+		data["layout"][chunk] = file.get_8() & 127
 	
 	#for row in range(0, tile_layout_size.y):
 	#	var lay_row := [] 

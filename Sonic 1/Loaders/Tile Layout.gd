@@ -1,9 +1,21 @@
-extends Script
+extends Node
 
-static func load_file(path):
-	return [_load_plane(path[0]), _load_plane(path[1])]
+var level : Node
+var fg_handler := TileLayoutHandler.new()
+var bg_handler := TileLayoutHandler.new()
 
-static func _load_plane(path):
+func _init(level : Node):
+	self.level = level
+	level.get_node("TilePlanes/FG").add_child(fg_handler)
+	fg_handler.owner = level
+	level.get_node("TilePlanes/BG").add_child(bg_handler)
+	bg_handler.owner = level
+
+func load_file(path):
+	fg_handler.load_data(_load_plane(path[0]))
+	bg_handler.load_data(_load_plane(path[1]))
+
+func _load_plane(path):
 	var file := File.new()
 	file.open(path,File.READ)
 	file.endian_swap = true

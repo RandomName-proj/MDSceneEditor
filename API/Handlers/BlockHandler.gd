@@ -1,21 +1,23 @@
 extends Node
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+class_name BlockHandler
 
 var block_arr : Array
+var tile_handler := TileHandler.new()
 
+func _init(block_arr_size, default_block_size):
+	for block in range(0, block_arr_size):
+		block_arr.append(DataFormats.Block.new(default_block_size))
+	
+	
+	add_child(tile_handler)
 
 func load_data(data):
-	block_arr.clear()
+	for block in range(0, data[0].size()):
+		block_arr[block] = data[0][block]
 	
-	block_arr.append_array(data)
-	
-	for block in range(data.size(), 2048):
-		block_arr.append(DataFormats.Block.new(block_arr[0].size))
+	tile_handler.load_data(data[1])
 
-func place_block(x : int, y : int, id : int, tile_handler : Node, plane := "FG", flip_x := false, flip_y := false):
+func place_block(x : int, y : int, id : int, plane, flip_x := false, flip_y := false):
 	var blk : DataFormats.Block = block_arr[id]
 	for tile in range(0,blk.size.x*blk.size.y):
 		var tile_x : int = x * blk.size.x + abs(wrapi(tile,0,blk.size.x) - int(flip_x))

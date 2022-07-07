@@ -80,38 +80,40 @@ func load_file(path):
 		
 	
 	if data.has("loaders"):
-		var block_loader : Script = load(data["loaders"][0].blocks)
-		var chunk_loader : Script = load(data["loaders"][0].chunks)
-		var tile_layout_loader : Script = load(data["loaders"][0].tile_layout)
-		var object_layout_loader : Script = load(data["loaders"][0].object_layout)
+		
+		var loaders : Dictionary
+		var level_data : Dictionary
+		
+		
+		for loader_type in data["loaders"][0]:
+			var loader_node = load(data["loaders"][0][loader_type])
+			loaders[loader_type] = loader_node.new(self)
+		
 		
 		if data.has("block_files"):
 			# TODO : implement proper loading of several block files
 			for block_file in data["block_files"]:
-				var block_data = block_loader.load_file(block_file)
-				$BlockHandler.load_data(block_data[0])
-				$TileHandler.load_data(block_data[1])
+				level_data["blocks"] = loaders["blocks"].load_file(block_file)
 		
 		if data.has("chunk_files"):
 			# TODO : implement proper loading of several chunk files
 			for chunk_file in data["chunk_files"]:
-				var chunk_data = chunk_loader.load_file(chunk_file)
-				$ChunkHandler.load_data(chunk_data)
+				level_data["chunks"] = loaders["chunks"].load_file(chunk_file)
 		
 		if data.has("tile_layout_files"):
 			# TODO : implement proper loading of several tile layout files
 			for tile_layout_files in data["tile_layout_files"]:
-				var tile_layout_data = tile_layout_loader.load_file(tile_layout_files)
-				$TileLayoutHandler.load_data(tile_layout_data)
+				level_data["tile_layout"] = loaders["tile_layout"].load_file(tile_layout_files)
 		
-		if data.has("object_layout_files"):
-			# TODO : implement proper loading of several object layout files
-			for object_layout_file in data["object_layout_files"]:
-				var object_layout_data = object_layout_loader.load_file(object_layout_file)
-				$ObjectLayoutHandler.load_data(object_layout_data)
+		$TilePlanes.draw()
+		
+		#if data.has("object_layout_files"):
+		#	# TODO : implement proper loading of several object layout files
+		#	for object_layout_file in data["object_layout_files"]:
+		#		level_data["object_layout"] = loaders["object_layout"].load_file(object_layout_file)
 		
 		
-		$TileLayoutHandler.draw_layout($TileHandler, $BlockHandler, $ChunkHandler)
+		#$TilePlanes.load_planes(level_data)
 		
 	
 

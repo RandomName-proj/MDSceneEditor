@@ -10,18 +10,54 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "BlockHandler",
+"language": "GDScript",
+"path": "res://API/Handlers/BlockHandler.gd"
+}, {
+"base": "Node",
+"class": "ChunkHandler",
+"language": "GDScript",
+"path": "res://API/Handlers/ChunkHandler.gd"
+}, {
+"base": "Node",
 "class": "MDVRAM",
 "language": "GDScript",
 "path": "res://API/MDVRAM.gd"
 }, {
 "base": "Node",
+"class": "ObjectLayoutHandler",
+"language": "GDScript",
+"path": "res://API/Handlers/ObjectLayoutHandler.gd"
+}, {
+"base": "Node",
 "class": "Palette",
 "language": "GDScript",
 "path": "res://API/Palette.gd"
+}, {
+"base": "Node",
+"class": "TileHandler",
+"language": "GDScript",
+"path": "res://API/Handlers/TileHandler.gd"
+}, {
+"base": "Node",
+"class": "TileLayoutHandler",
+"language": "GDScript",
+"path": "res://API/Handlers/TileLayoutHandler.gd"
+}, {
+"base": "Node",
+"class": "TilePlane",
+"language": "GDScript",
+"path": "res://FGBG.gd"
 } ]
 _global_script_class_icons={
+"BlockHandler": "",
+"ChunkHandler": "",
 "MDVRAM": "",
-"Palette": ""
+"ObjectLayoutHandler": "",
+"Palette": "",
+"TileHandler": "",
+"TileLayoutHandler": "",
+"TilePlane": ""
 }
 
 [application]

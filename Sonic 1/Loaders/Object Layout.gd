@@ -1,6 +1,6 @@
-extends Script
+extends Node
 
-static func load_file(path):
+func load_file(path):
 	var file := File.new()
 	file.open(path,File.READ)
 	file.endian_swap = true

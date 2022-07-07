@@ -1,6 +1,14 @@
-extends Script
+extends Node
 
-static func load_file(path):
+var level : Node
+var block_handler := BlockHandler.new(0x800, Vector2(2,2))
+
+func _init(level : Node):
+	self.level = level
+	level.get_node("TilePlanes").add_child(block_handler)
+	block_handler.owner = level
+
+func load_file(path):
 	var file := File.new()
 	file.open(path,File.READ)
 	file.endian_swap = true
@@ -27,4 +35,4 @@ static func load_file(path):
 		block_arr.append(blk)
 		
 	
-	return [block_arr,tile_arr]
+	block_handler.load_data([block_arr,tile_arr])

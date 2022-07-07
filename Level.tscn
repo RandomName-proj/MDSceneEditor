@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://FGBG.gd" type="Script" id=5]
+[ext_resource path="res://Level.gd" type="Script" id=8]
+[ext_resource path="res://TilePlanes.gd" type="Script" id=10]
+
+[node name="Level" type="Node"]
+script = ExtResource( 8 )
+
+[node name="TilePlanes" type="Node" parent="."]
+script = ExtResource( 10 )
+
+[node name="FG" type="Node" parent="TilePlanes"]
+script = ExtResource( 5 )
+
+[node name="TileMap" type="TileMap" parent="TilePlanes/FG"]
+cell_size = Vector2( 8, 8 )
+format = 1
+
+[node name="BG" type="Node" parent="TilePlanes"]
+script = ExtResource( 5 )
+
+[node name="TileMap" type="TileMap" parent="TilePlanes/BG"]
+cell_size = Vector2( 8, 8 )
+format = 1

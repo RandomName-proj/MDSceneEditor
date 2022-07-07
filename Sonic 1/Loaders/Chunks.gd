@@ -1,6 +1,14 @@
-extends Script
+extends Node
 
-static func load_file(path):
+var level : Node
+var chunk_handler := ChunkHandler.new(0x53, Vector2(16,16))
+
+func _init(level : Node):
+	self.level = level
+	level.get_node("TilePlanes").add_child(chunk_handler)
+	chunk_handler.owner = level
+
+func load_file(path):
 	var file := File.new()
 	file.open(path,File.READ)
 	file.endian_swap = true
@@ -32,4 +40,4 @@ static func load_file(path):
 		chunk_arr.append(chk)
 		
 	
-	return chunk_arr
+	chunk_handler.load_data(chunk_arr)

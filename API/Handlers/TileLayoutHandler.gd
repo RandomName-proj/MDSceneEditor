@@ -1,18 +1,17 @@
 extends Node
+class_name TileLayoutHandler
 
-var fg_layout : Array
-var bg_layout : Array
+var layout : Array
 
 func load_data(data):
-	fg_layout = data[0]
-	bg_layout = data[1]
+	layout = data
 
-func draw_layout(tile_handler : Node, block_handler: Node, chunk_handler : Node):
-	for row in range(0, fg_layout.size()):
-		for col in range(0, fg_layout[row].size()):
-			chunk_handler.place_chunk(col, row, fg_layout[row][col], block_handler, tile_handler, "FG")
+func draw(plane):
+	for row in range(0, layout.size()):
+		for col in range(0, layout[row].size()):
+			plane.get_handler(ChunkHandler).place_chunk(col, row, layout[row][col], plane)
 	
-	for row in range(0, bg_layout.size()):
-		for col in range(0, bg_layout[row].size()):
-			chunk_handler.place_chunk(col, row, bg_layout[row][col], block_handler, tile_handler, "BG")
+	#for row in range(0, bg_layout.size()):
+	#	for col in range(0, bg_layout[row].size()):
+	#		chunk_handler.place_chunk(col, row, bg_layout[row][col], block_handler, "BG")
 	

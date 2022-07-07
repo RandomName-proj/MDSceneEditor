@@ -1,4 +1,5 @@
 extends Node
+class_name ObjectLayoutHandler
 
 func load_data(data):
 	for child in get_children():

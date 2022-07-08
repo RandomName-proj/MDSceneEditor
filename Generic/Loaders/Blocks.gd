@@ -1,6 +1,15 @@
-extends Script
+extends Node
 
-static func load_file(path):
+var level : Node
+const block_size := Vector2(2,2)
+var block_handler := BlockHandler.new(0x800, block_size)
+
+func _init(level : Node):
+	self.level = level
+	level.get_node("TilePlanes").add_child(block_handler)
+	block_handler.owner = level
+
+func load_file(path):
 	var file := File.new()
 	file.open(path,File.READ)
 	file.endian_swap = true
@@ -9,9 +18,9 @@ static func load_file(path):
 	var tile_arr : Array
 	
 	for block in range(0, int(file.get_len()/8)):
-		var blk = DataFormats.Block.new(Vector2(2,2))
+		var blk = DataFormats.Block.new(block_size)
 		
-		for tile in range(0, blk.size.x*blk.size.y):
+		for tile in range(0, block_size.x*block_size.y):
 			blk.tile_indexes[tile] = tile_arr.size()
 			
 			var tl := DataFormats.Tile.new()
@@ -27,4 +36,4 @@ static func load_file(path):
 		block_arr.append(blk)
 		
 	
-	return [block_arr,tile_arr]
+	block_handler.load_data([block_arr,tile_arr])

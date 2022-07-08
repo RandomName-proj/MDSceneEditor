@@ -1,6 +1,15 @@
-extends Script
+extends Node
 
-static func load_file(path):
+var level : Node
+const chunk_size := Vector2(8,8)
+var chunk_handler := ChunkHandler.new(0x100, chunk_size)
+
+func _init(level : Node):
+	self.level = level
+	level.get_node("TilePlanes").add_child(chunk_handler)
+	chunk_handler.owner = level
+
+func load_file(path):
 	var file := File.new()
 	file.open(path,File.READ)
 	file.endian_swap = true
@@ -8,9 +17,9 @@ static func load_file(path):
 	var chunk_arr : Array
 	
 	while file.get_position() < file.get_len():
-		var chk := DataFormats.Chunk.new(Vector2(8,8))
+		var chk := DataFormats.Chunk.new(chunk_size)
 		
-		for block in range(0, chk.size.x*chk.size.y):
+		for block in range(0, chunk_size.x*chunk_size.y):
 			var block_data := file.get_buffer(2)
 			
 			var block_id := ((block_data[0] & 0b11) << 8) + block_data[1]
@@ -28,4 +37,4 @@ static func load_file(path):
 		chunk_arr.append(chk)
 		
 	
-	return chunk_arr
+	chunk_handler.load_data(chunk_arr)

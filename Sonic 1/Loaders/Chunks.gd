@@ -1,7 +1,8 @@
 extends Node
 
 var level : Node
-var chunk_handler := ChunkHandler.new(0x53, Vector2(16,16))
+const chunk_size := Vector2(16,16)
+var chunk_handler := ChunkHandler.new(0x53, chunk_size)
 
 func _init(level : Node):
 	self.level = level
@@ -16,14 +17,14 @@ func load_file(path):
 	var chunk_arr : Array
 	
 	# in S1 first chunk is empty chunk
-	var first_chunk := DataFormats.Chunk.new(Vector2(16,16))
+	var first_chunk := DataFormats.Chunk.new(chunk_size)
 	
 	chunk_arr.append(first_chunk)
 	
 	while file.get_position() < file.get_len():
-		var chk := DataFormats.Chunk.new(Vector2(16,16))
+		var chk := DataFormats.Chunk.new(chunk_size)
 		
-		for block in range(0, chk.size.x*chk.size.y):
+		for block in range(0, chunk_size.x*chunk_size.y):
 			var block_data := file.get_buffer(2)
 			
 			var block_id := ((block_data[0] & 0b11) << 8) + block_data[1]

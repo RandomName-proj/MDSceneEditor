@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 # References to child nodes
 
@@ -8,7 +8,7 @@ onready var pal_material : ShaderMaterial
 onready var pal_shader = preload("res://API/PalShader.gdshader")
 onready var pal_material_tilemap : ShaderMaterial
 onready var pal_shader_tilemap : Shader = preload("res://API/PalShaderTilemap.gdshader")
-
+var chunk_id := 0
 
 func _ready():
 	pal_material = ShaderMaterial.new()
@@ -34,6 +34,19 @@ func load_parent_file(path, data):
 	
 	load_data(json_dict, data)
 	
+
+func _process(delta):
+	if Input.is_action_pressed("ui_mouse_left"):
+		if $TilePlanes/FG.get_handler(ChunkHandler) != null:
+			var chunk_pos : Vector2 = get_global_mouse_position() / $TilePlanes/FG.get_chunk_size()
+			chunk_pos = Vector2(int(chunk_pos.x),int(chunk_pos.y))
+			$TilePlanes/FG.set_chunk(chunk_pos.x, chunk_pos.y, chunk_id)
+	
+	if Input.is_action_pressed("ui_mouse_right"):
+		if $TilePlanes/FG.get_handler(TileLayoutHandler) != null:
+			var chunk_pos : Vector2 = get_global_mouse_position() / $TilePlanes/FG.get_chunk_size()
+			chunk_pos = Vector2(int(chunk_pos.x),int(chunk_pos.y))
+			chunk_id = $TilePlanes/FG.get_chunk(chunk_pos.x, chunk_pos.y)
 
 func load_data(json_dict, data):
 	for key in json_dict:
@@ -105,6 +118,7 @@ func load_file(path):
 			for tile_layout_files in data["tile_layout_files"]:
 				level_data["tile_layout"] = loaders["tile_layout"].load_file(tile_layout_files)
 		
+		$TilePlanes.link_planes()
 		$TilePlanes.draw()
 		
 		#if data.has("object_layout_files"):

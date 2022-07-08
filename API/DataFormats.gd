@@ -9,11 +9,9 @@ class Tile:
 	
 
 class Block:
-	var size : Vector2
 	var tile_indexes : Array
 	
 	func _init(size):
-		self.size = size
 		for tile in range(0,size.x*size.y):
 			tile_indexes.append(0)
 	
@@ -22,10 +20,8 @@ class Chunk:
 	var block_ids : Array
 	var block_flips : Array
 	var block_solids : Array
-	var size : Vector2
 	
 	func _init(size):
-		self.size = size
 		for _i in range(0,size.x*size.y):
 			block_ids.append(0)
 			block_flips.append([0,0])

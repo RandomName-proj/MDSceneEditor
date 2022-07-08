@@ -13,13 +13,5 @@ script = ExtResource( 10 )
 [node name="BG" type="Node" parent="TilePlanes"]
 script = ExtResource( 5 )
 
-[node name="TileMap" type="TileMap" parent="TilePlanes/BG"]
-cell_size = Vector2( 8, 8 )
-format = 1
-
 [node name="FG" type="Node" parent="TilePlanes"]
 script = ExtResource( 5 )
-
-[node name="TileMap" type="TileMap" parent="TilePlanes/FG"]
-cell_size = Vector2( 8, 8 )
-format = 1

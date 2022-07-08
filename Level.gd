@@ -36,17 +36,18 @@ func load_parent_file(path, data):
 	
 
 func _process(delta):
-	if Input.is_action_pressed("ui_mouse_left"):
-		if $TilePlanes/FG.get_handler(ChunkHandler) != null:
-			var chunk_pos : Vector2 = get_global_mouse_position() / $TilePlanes/FG.get_chunk_size()
-			chunk_pos = Vector2(int(chunk_pos.x),int(chunk_pos.y))
-			$TilePlanes/FG.set_chunk(chunk_pos.x, chunk_pos.y, chunk_id)
-	
-	if Input.is_action_pressed("ui_mouse_right"):
-		if $TilePlanes/FG.get_handler(TileLayoutHandler) != null:
-			var chunk_pos : Vector2 = get_global_mouse_position() / $TilePlanes/FG.get_chunk_size()
-			chunk_pos = Vector2(int(chunk_pos.x),int(chunk_pos.y))
-			chunk_id = $TilePlanes/FG.get_chunk(chunk_pos.x, chunk_pos.y)
+	#if Input.is_action_pressed("ui_mouse_left"):
+	#	if $TilePlanes/FG.get_handler(ChunkHandler) != null:
+	#		var chunk_pos : Vector2 = get_global_mouse_position() / $TilePlanes/FG.get_chunk_size()
+	#		chunk_pos = Vector2(int(chunk_pos.x),int(chunk_pos.y))
+	#		$TilePlanes/FG.set_chunk(chunk_pos.x, chunk_pos.y, chunk_id)
+	#
+	#if Input.is_action_pressed("ui_mouse_right"):
+	#	if $TilePlanes/FG.get_handler(TileLayoutHandler) != null:
+	#		var chunk_pos : Vector2 = get_global_mouse_position() / $TilePlanes/FG.get_chunk_size()
+	#		chunk_pos = Vector2(int(chunk_pos.x),int(chunk_pos.y))
+	#		chunk_id = $TilePlanes/FG.get_chunk(chunk_pos.x, chunk_pos.y)
+	pass
 
 func load_data(json_dict, data):
 	for key in json_dict:

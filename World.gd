@@ -6,6 +6,7 @@ extends Node2D
 # var b = "text"
 
 signal changed_level
+signal draw_ui
 
 func _on_LevelFile_file_selected(path):
 	$Level.load_file(path)

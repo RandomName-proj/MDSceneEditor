@@ -2,7 +2,6 @@
 
 [ext_resource path="res://Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://API/Viewers/ArtViewer.gd" type="Script" id=2]
-[ext_resource path="res://API/ColorPicker.gd" type="Script" id=4]
 [ext_resource path="res://API/PalShader.gdshader" type="Shader" id=6]
 [ext_resource path="res://World.gd" type="Script" id=7]
 [ext_resource path="res://Camera.gd" type="Script" id=10]
@@ -10,6 +9,37 @@
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 6 )
+
+[sub_resource type="GDScript" id=8]
+script/source = "extends VBoxContainer
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_World_changed_level(selected_level):
+	
+	for child in get_children():
+		child.queue_free()
+		remove_child(child)
+	
+	for chunk_id in range(selected_level.get_node(\"TilePlanes/FG\").get_chunk_count()):
+		var ui_chunk := UIChunk.new(selected_level.get_node(\"TilePlanes/FG\").get_chunk_size())
+		add_child(ui_chunk)
+		selected_level.get_node(\"TilePlanes/FG\").link_tilemap(ui_chunk.tilemap)
+		selected_level.get_node(\"TilePlanes/FG\").set_chunk(0,0,chunk_id,ui_chunk.tilemap)
+"
 
 [sub_resource type="GDScript" id=7]
 script/source = "extends FileDialog
@@ -31,11 +61,25 @@ material = SubResource( 4 )
 z_index = -1
 z_as_relative = false
 
-[node name="Control" type="Control" parent="UI"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="LeftWing" type="MarginContainer" parent="UI"]
+margin_top = 315.0
+margin_right = 256.0
+margin_bottom = 599.0
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/Control"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/LeftWing"]
+margin_right = 256.0
+margin_bottom = 284.0
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="Chunks" type="VBoxContainer" parent="UI/LeftWing/ScrollContainer"]
+margin_right = 256.0
+margin_bottom = 284.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = SubResource( 8 )
+
+[node name="RightWing" type="MarginContainer" parent="UI"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -43,7 +87,7 @@ anchor_bottom = 1.0
 margin_left = -253.0
 margin_top = -600.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/RightWing"]
 margin_left = 184.0
 margin_right = 253.0
 margin_bottom = 600.0
@@ -52,51 +96,20 @@ size_flags_horizontal = 8
 size_flags_vertical = 9
 alignment = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/Control/MarginContainer/VBoxContainer"]
-margin_right = 69.0
-margin_bottom = 532.0
-size_flags_vertical = 3
-scroll_horizontal_enabled = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/MarginContainer/VBoxContainer/ScrollContainer"]
-margin_right = 69.0
-margin_bottom = 532.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Control" type="Control" parent="UI/Control/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_right = 69.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 32, 32 )
-
-[node name="TileMap" type="TileMap" parent="UI/Control/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Control"]
-format = 1
-
-[node name="LoadButton" type="Button" parent="UI/Control/MarginContainer/VBoxContainer"]
+[node name="LoadButton" type="Button" parent="UI/RightWing/VBoxContainer"]
 margin_top = 536.0
 margin_right = 69.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 64, 64 )
 text = "Load File"
 
-[node name="LevelFile" type="FileDialog" parent="UI/Control/MarginContainer/VBoxContainer/LoadButton"]
+[node name="LevelFile" type="FileDialog" parent="UI/RightWing/VBoxContainer/LoadButton"]
 margin_right = 407.0
 margin_bottom = 306.0
 window_title = "Открыть файл"
 mode = 0
 filters = PoolStringArray( "*.json" )
 script = SubResource( 7 )
-
-[node name="ColorPicker" type="ColorPicker" parent="UI/Control"]
-visible = false
-margin_left = 603.542
-margin_top = 287.945
-margin_right = 911.542
-margin_bottom = 749.945
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
@@ -113,7 +126,7 @@ z_as_relative = false
 [node name="Level" parent="." instance=ExtResource( 1 )]
 
 [connection signal="changed_level" from="." to="UI/PaletteViewer" method="_on_World_changed_level"]
+[connection signal="changed_level" from="." to="UI/LeftWing/ScrollContainer/Chunks" method="_on_World_changed_level"]
 [connection signal="changed_level" from="." to="ArtViewer" method="_on_World_changed_level"]
-[connection signal="pressed" from="UI/Control/MarginContainer/VBoxContainer/LoadButton" to="UI/Control/MarginContainer/VBoxContainer/LoadButton/LevelFile" method="_on_LoadButton_pressed"]
-[connection signal="file_selected" from="UI/Control/MarginContainer/VBoxContainer/LoadButton/LevelFile" to="." method="_on_LevelFile_file_selected"]
-[connection signal="mouse_exited" from="UI/Control/ColorPicker" to="UI/Control/ColorPicker" method="_on_ColorPicker_mouse_exited"]
+[connection signal="pressed" from="UI/RightWing/VBoxContainer/LoadButton" to="UI/RightWing/VBoxContainer/LoadButton/LevelFile" method="_on_LoadButton_pressed"]
+[connection signal="file_selected" from="UI/RightWing/VBoxContainer/LoadButton/LevelFile" to="." method="_on_LevelFile_file_selected"]

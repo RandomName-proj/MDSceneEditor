@@ -5,9 +5,17 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
+var level_scene := preload("res://Level.tscn")
+var level : Node
+
 signal changed_level
 signal draw_ui
 
 func _on_LevelFile_file_selected(path):
-	$Level.load_file(path)
-	emit_signal("changed_level",$Level)
+	if level != null:
+		remove_child(level)
+		level.queue_free()
+	level = level_scene.instance()
+	add_child(level)
+	level.load_file(path)
+	emit_signal("changed_level",level)

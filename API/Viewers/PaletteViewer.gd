@@ -1,4 +1,4 @@
-extends Node2D
+extends TextureRect
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -21,13 +21,13 @@ func _ready():
 	img.unlock()
 	tex.create_from_image(img,0)
 	
-	$Sprite.texture = tex
-	$Sprite.modulate = Color.black
-	$Sprite.scale = pal_entry_size
-	$Sprite.position = Vector2(pal_entry_size.x*4/2,pal_entry_size.y*16/2)
+	texture = tex
+	modulate = Color.black
+	rect_scale = pal_entry_size
+	#position = Vector2(pal_entry_size.x*4/2,pal_entry_size.y*16/2)
 
 
 
 
 func _on_World_changed_level(selected_level):
-	$Sprite.material = selected_level.pal_material
+	material = selected_level.pal_material

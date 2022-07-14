@@ -81,10 +81,10 @@ config/icon="res://icon.png"
 [autoload]
 
 DataFormats="*res://API/DataFormats.gd"
+Global="*res://API/Global.gd"
 
 [display]
 
-window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
 [editor_plugins]

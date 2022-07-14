@@ -1,12 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://GridContainer.gd" type="Script" id=1]
 [ext_resource path="res://API/Viewers/ArtViewer.gd" type="Script" id=2]
+[ext_resource path="res://CheckButton.gd" type="Script" id=3]
 [ext_resource path="res://World.gd" type="Script" id=7]
 [ext_resource path="res://Camera.gd" type="Script" id=10]
 
 [sub_resource type="GDScript" id=8]
-script/source = "extends VBoxContainer
+script/source = " extends VBoxContainer
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -84,7 +85,7 @@ anchor_bottom = 1.0
 margin_left = -260.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/RightWing"]
-margin_left = 191.0
+margin_left = 77.0
 margin_right = 260.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 64, 64 )
@@ -92,9 +93,18 @@ size_flags_horizontal = 8
 size_flags_vertical = 9
 alignment = 2
 
+[node name="CheckBox" type="CheckButton" parent="UI/RightWing/VBoxContainer"]
+margin_top = 492.0
+margin_right = 183.0
+margin_bottom = 532.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "accurate palette"
+script = ExtResource( 3 )
+
 [node name="LoadButton" type="Button" parent="UI/RightWing/VBoxContainer"]
 margin_top = 536.0
-margin_right = 69.0
+margin_right = 183.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 64, 64 )
 text = "Load File"
@@ -119,8 +129,9 @@ script = ExtResource( 2 )
 z_index = -1
 z_as_relative = false
 
+[connection signal="changed_level" from="." to="UI/LeftWing/VBoxContainer/PaletteViewer" method="_on_World_changed_level"]
 [connection signal="changed_level" from="." to="UI/LeftWing/VBoxContainer/ScrollContainer/Chunks" method="_on_World_changed_level"]
 [connection signal="changed_level" from="." to="ArtViewer" method="_on_World_changed_level"]
-[connection signal="changed_level" from="." to="UI/LeftWing/VBoxContainer/PaletteViewer" method="_on_World_changed_level"]
+[connection signal="toggled" from="UI/RightWing/VBoxContainer/CheckBox" to="UI/RightWing/VBoxContainer/CheckBox" method="_on_CheckBox_toggled"]
 [connection signal="pressed" from="UI/RightWing/VBoxContainer/LoadButton" to="UI/RightWing/VBoxContainer/LoadButton/LevelFile" method="_on_LoadButton_pressed"]
 [connection signal="file_selected" from="UI/RightWing/VBoxContainer/LoadButton/LevelFile" to="." method="_on_LevelFile_file_selected"]

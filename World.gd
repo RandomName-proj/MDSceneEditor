@@ -9,7 +9,6 @@ var level_scene := preload("res://Level.tscn")
 var level : Node
 
 signal changed_level
-signal draw_ui
 
 func _on_LevelFile_file_selected(path):
 	if level != null:

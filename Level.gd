@@ -11,6 +11,8 @@ onready var pal_shader_tilemap : Shader = preload("res://API/PalShaderTilemap.gd
 var chunk_id := 0
 
 func _ready():
+	add_child(vram)
+	add_child(palette)
 	pal_material = ShaderMaterial.new()
 	pal_material.shader = pal_shader
 	pal_material.set_shader_param("palette",palette.texture)

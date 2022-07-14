@@ -1,0 +1,254 @@
+[gd_scene format=2]
+
+[node name="UITest" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_bottom = 1.0
+margin_right = 165.0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+margin_right = 313.0
+margin_bottom = 600.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 306.0
+margin_bottom = 593.0
+
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+margin_right = 299.0
+margin_bottom = 20.0
+
+[node name="OpenProject" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/Buttons"]
+margin_right = 47.0
+margin_bottom = 20.0
+text = "Open"
+
+[node name="LevelSettings" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/Buttons"]
+margin_left = 51.0
+margin_right = 97.0
+margin_bottom = 20.0
+text = "Level"
+
+[node name="LayerEditor" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/Buttons"]
+margin_left = 101.0
+margin_right = 147.0
+margin_bottom = 20.0
+text = "Layer"
+
+[node name="TilePlaneEditor" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/Buttons"]
+margin_left = 151.0
+margin_right = 186.0
+margin_bottom = 20.0
+text = "Tile"
+
+[node name="Help" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/Buttons"]
+margin_left = 190.0
+margin_right = 232.0
+margin_bottom = 20.0
+text = "Help"
+
+[node name="Settings" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/Buttons"]
+margin_left = 236.0
+margin_right = 299.0
+margin_bottom = 20.0
+text = "Settings"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 299.0
+margin_bottom = 28.0
+
+[node name="Planes" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+margin_top = 32.0
+margin_right = 299.0
+margin_bottom = 216.0
+
+[node name="FG" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/Planes"]
+margin_right = 299.0
+margin_bottom = 43.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/FG"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 292.0
+margin_bottom = 36.0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/FG/HBoxContainer"]
+margin_right = 121.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/FG/HBoxContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 114.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "TP"
+fit_content_height = true
+scroll_active = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/FG/HBoxContainer"]
+margin_left = 125.0
+margin_top = 7.0
+margin_right = 247.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Foreground"
+fit_content_height = true
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/FG/HBoxContainer"]
+margin_left = 251.0
+margin_right = 285.0
+margin_bottom = 29.0
+text = "Eye"
+
+[node name="BG" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/Planes"]
+margin_top = 47.0
+margin_right = 299.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/BG"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 292.0
+margin_bottom = 36.0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/BG/HBoxContainer"]
+margin_right = 121.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/BG/HBoxContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 114.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "TP"
+fit_content_height = true
+scroll_active = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/BG/HBoxContainer"]
+margin_left = 125.0
+margin_top = 7.0
+margin_right = 247.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Background"
+fit_content_height = true
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/BG/HBoxContainer"]
+margin_left = 251.0
+margin_right = 285.0
+margin_bottom = 29.0
+text = "Eye"
+
+[node name="Objects" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/Planes"]
+margin_top = 94.0
+margin_right = 299.0
+margin_bottom = 137.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/Objects"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 292.0
+margin_bottom = 36.0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/Objects/HBoxContainer"]
+margin_right = 121.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/Objects/HBoxContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 114.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "OP"
+fit_content_height = true
+scroll_active = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/Objects/HBoxContainer"]
+margin_left = 125.0
+margin_top = 7.0
+margin_right = 247.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Objects"
+fit_content_height = true
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/Objects/HBoxContainer"]
+margin_left = 251.0
+margin_right = 285.0
+margin_bottom = 29.0
+text = "Eye"
+
+[node name="Rings" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/Planes"]
+margin_top = 141.0
+margin_right = 299.0
+margin_bottom = 184.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/Rings"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 292.0
+margin_bottom = 36.0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/Rings/HBoxContainer"]
+margin_right = 121.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/Rings/HBoxContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 114.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "TP"
+fit_content_height = true
+scroll_active = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/Rings/HBoxContainer"]
+margin_left = 125.0
+margin_top = 7.0
+margin_right = 247.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Rings"
+fit_content_height = true
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/Planes/Rings/HBoxContainer"]
+margin_left = 251.0
+margin_right = 285.0
+margin_bottom = 29.0
+text = "Eye"
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/PanelContainer/VBoxContainer"]
+margin_top = 220.0
+margin_right = 299.0
+margin_bottom = 224.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer"]
+margin_top = 228.0
+margin_right = 299.0
+margin_bottom = 586.0
+size_flags_vertical = 3
+text = "There will be chunk list or object list depending on selected layer"
+fit_content_height = true

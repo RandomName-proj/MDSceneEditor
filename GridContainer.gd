@@ -24,5 +24,4 @@ func _process(delta):
 
 func _on_World_changed_level(selected_level):
 	for child in get_children():
-		print(child.get_script())
 		child.color = selected_level.palette.get_palette_entry(child.pal_ind)

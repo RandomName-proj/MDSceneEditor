@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends MenuButton
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+var item : TreeItem
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	get_popup().connect(\"id_pressed\",self,\"on_id_pressed\")
+
+func draw(item : TreeItem, rect : Rect2):
+	# set rect data
+	self.rect_size = rect.size
+	self.rect_position = rect.position
+	self.item = item # set item the button is related to
+
+func on_id_pressed(id : int):
+	if id == 1:
+		$FileDialog.popup_centered() # if \"Load\" button was pressed, popup FileDialog
+
+func _process(delta):
+	if item != null:
+		self.visible = not self.item.get_parent().collapsed # set visibility based on if section item is collapsed
+"
+
+[node name="MenuButton" type="MenuButton"]
+focus_mode = 2
+size_flags_stretch_ratio = 0.0
+text = "[empty]"
+items = [ "Edit", null, 0, false, false, 0, 0, null, "", false, "", null, 0, false, true, -1, 0, null, "", true, "Load", null, 0, false, false, 1, 0, null, "", false ]
+script = SubResource( 1 )
+
+[node name="FileDialog" type="FileDialog" parent="."]
+margin_right = 400.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 400, 300 )
+window_title = "Open a File"
+mode = 0

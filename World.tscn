@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://GridContainer.gd" type="Script" id=1]
-[ext_resource path="res://API/Viewers/ArtViewer.gd" type="Script" id=2]
 [ext_resource path="res://CheckButton.gd" type="Script" id=3]
+[ext_resource path="res://UITest.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World.gd" type="Script" id=7]
 [ext_resource path="res://Camera.gd" type="Script" id=10]
 
@@ -48,6 +48,7 @@ func _on_LoadButton_pressed():
 script = ExtResource( 7 )
 
 [node name="UI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="LeftWing" type="MarginContainer" parent="UI"]
 anchor_bottom = 1.0
@@ -110,28 +111,22 @@ rect_min_size = Vector2( 64, 64 )
 text = "Load File"
 
 [node name="LevelFile" type="FileDialog" parent="UI/RightWing/VBoxContainer/LoadButton"]
-margin_right = 407.0
-margin_bottom = 306.0
-window_title = "Открыть файл"
+margin_right = 400.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 400, 300 )
+window_title = "Open a File"
 mode = 0
 filters = PoolStringArray( "*.json" )
 script = SubResource( 7 )
+
+[node name="UITest" parent="." instance=ExtResource( 4 )]
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
 script = ExtResource( 10 )
 
-[node name="ArtViewer" type="Node2D" parent="."]
-visible = false
-script = ExtResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="ArtViewer"]
-z_index = -1
-z_as_relative = false
-
 [connection signal="changed_level" from="." to="UI/LeftWing/VBoxContainer/PaletteViewer" method="_on_World_changed_level"]
 [connection signal="changed_level" from="." to="UI/LeftWing/VBoxContainer/ScrollContainer/Chunks" method="_on_World_changed_level"]
-[connection signal="changed_level" from="." to="ArtViewer" method="_on_World_changed_level"]
 [connection signal="toggled" from="UI/RightWing/VBoxContainer/CheckBox" to="UI/RightWing/VBoxContainer/CheckBox" method="_on_CheckBox_toggled"]
 [connection signal="pressed" from="UI/RightWing/VBoxContainer/LoadButton" to="UI/RightWing/VBoxContainer/LoadButton/LevelFile" method="_on_LoadButton_pressed"]
 [connection signal="file_selected" from="UI/RightWing/VBoxContainer/LoadButton/LevelFile" to="." method="_on_LevelFile_file_selected"]

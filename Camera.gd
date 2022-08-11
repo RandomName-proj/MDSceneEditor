@@ -7,6 +7,7 @@ extends Camera2D
 
 export (float) var zoom_factor = 0.1
 var shift_pressed = false
+var dir_pressed := {"left": false, "right": false, "up": false, "down": false}
 var direction := Vector2(0,0)
 
 # Called when the node enters the scene tree for the first time.
@@ -20,13 +21,16 @@ func _unhandled_input(event):
 			shift_pressed = event.pressed
 		
 		if event.is_action("ui_right"):
-			direction.x += 1 if(event.pressed) else -1
+			dir_pressed["right"] = event.pressed
 		if event.is_action("ui_left"):
-			direction.x += -1 if(event.pressed) else 1
+			dir_pressed["left"] = event.pressed
 		if event.is_action("ui_up"):
-			direction.y += -1 if(event.pressed) else 1
+			dir_pressed["up"] = event.pressed
 		if event.is_action("ui_down"):
-			direction.y += 1 if(event.pressed) else -1
+			dir_pressed["down"] = event.pressed
+		
+		direction.x = int(dir_pressed["right"]) - int(dir_pressed["left"])
+		direction.y = int(dir_pressed["down"]) - int(dir_pressed["up"])
 		
 	if event is InputEventMouseButton and not event.pressed:
 		if event.is_action("ui_mouse_wheel_up"):

@@ -39,22 +39,24 @@ anchor_bottom = 1.0
 margin_right = 165.0
 
 [node name="PanelContainer" type="PanelContainer" parent="Left"]
-margin_right = 432.0
+margin_right = 273.0
 margin_bottom = 600.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Left/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 425.0
+margin_right = 266.0
 margin_bottom = 593.0
 
 [node name="Buttons" type="HBoxContainer" parent="Left/PanelContainer/VBoxContainer"]
-margin_right = 418.0
+margin_right = 259.0
 margin_bottom = 20.0
 
 [node name="OpenProject" type="Button" parent="Left/PanelContainer/VBoxContainer/Buttons"]
 margin_right = 35.0
 margin_bottom = 20.0
+focus_mode = 1
+enabled_focus_mode = 1
 text = "File"
 script = SubResource( 1 )
 
@@ -70,215 +72,232 @@ filters = PoolStringArray( "*.json" )
 margin_left = 39.0
 margin_right = 85.0
 margin_bottom = 20.0
+focus_mode = 1
+enabled_focus_mode = 1
 text = "Level"
 
 [node name="ProjectSettings" type="Button" parent="Left/PanelContainer/VBoxContainer/Buttons"]
 margin_left = 89.0
 margin_right = 146.0
 margin_bottom = 20.0
+focus_mode = 1
+enabled_focus_mode = 1
 text = "Project"
 
 [node name="Help" type="Button" parent="Left/PanelContainer/VBoxContainer/Buttons"]
 margin_left = 150.0
 margin_right = 192.0
 margin_bottom = 20.0
+focus_mode = 1
+enabled_focus_mode = 1
 text = "Help"
 
 [node name="Settings" type="Button" parent="Left/PanelContainer/VBoxContainer/Buttons"]
 margin_left = 196.0
 margin_right = 259.0
 margin_bottom = 20.0
+focus_mode = 1
+enabled_focus_mode = 1
 text = "Settings"
 
 [node name="LayoutEditing" type="VBoxContainer" parent="Left/PanelContainer/VBoxContainer"]
 margin_top = 24.0
-margin_right = 418.0
+margin_right = 259.0
 margin_bottom = 586.0
 size_flags_vertical = 3
 
 [node name="HSeparator" type="HSeparator" parent="Left/PanelContainer/VBoxContainer/LayoutEditing"]
-margin_right = 418.0
+margin_right = 259.0
 margin_bottom = 4.0
 
 [node name="Layers" type="VBoxContainer" parent="Left/PanelContainer/VBoxContainer/LayoutEditing"]
 margin_top = 8.0
-margin_right = 418.0
+margin_right = 259.0
 margin_bottom = 188.0
 
 [node name="FG" type="PanelContainer" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers"]
-margin_right = 418.0
+margin_right = 259.0
 margin_bottom = 42.0
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/FG"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 411.0
+margin_right = 252.0
 margin_bottom = 35.0
 
 [node name="PanelContainer" type="PanelContainer" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/FG/HBoxContainer"]
-margin_right = 181.0
+margin_right = 101.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/FG/HBoxContainer/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 174.0
+margin_right = 94.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "TL"
 
 [node name="Label" type="Label" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/FG/HBoxContainer"]
-margin_left = 185.0
+margin_left = 105.0
 margin_top = 7.0
-margin_right = 366.0
+margin_right = 207.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "Foreground"
 
 [node name="Button" type="Button" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/FG/HBoxContainer"]
-margin_left = 370.0
-margin_right = 404.0
+margin_left = 211.0
+margin_right = 245.0
 margin_bottom = 28.0
+focus_mode = 1
+enabled_focus_mode = 1
 text = "Eye"
 
 [node name="BG" type="PanelContainer" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers"]
 margin_top = 46.0
-margin_right = 418.0
+margin_right = 259.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/BG"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 411.0
+margin_right = 252.0
 margin_bottom = 35.0
 
 [node name="PanelContainer" type="PanelContainer" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/BG/HBoxContainer"]
-margin_right = 181.0
+margin_right = 101.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/BG/HBoxContainer/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 174.0
+margin_right = 94.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "TL"
 
 [node name="Label" type="Label" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/BG/HBoxContainer"]
-margin_left = 185.0
+margin_left = 105.0
 margin_top = 7.0
-margin_right = 366.0
+margin_right = 207.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "Background"
 
 [node name="Button" type="Button" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/BG/HBoxContainer"]
-margin_left = 370.0
-margin_right = 404.0
+margin_left = 211.0
+margin_right = 245.0
 margin_bottom = 28.0
+focus_mode = 1
+enabled_focus_mode = 1
 text = "Eye"
 
 [node name="Objects" type="PanelContainer" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers"]
 margin_top = 92.0
-margin_right = 418.0
+margin_right = 259.0
 margin_bottom = 134.0
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/Objects"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 411.0
+margin_right = 252.0
 margin_bottom = 35.0
 
 [node name="PanelContainer" type="PanelContainer" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/Objects/HBoxContainer"]
-margin_right = 181.0
+margin_right = 101.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/Objects/HBoxContainer/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 174.0
+margin_right = 94.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "OL"
 
 [node name="Label" type="Label" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/Objects/HBoxContainer"]
-margin_left = 185.0
+margin_left = 105.0
 margin_top = 7.0
-margin_right = 366.0
+margin_right = 207.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "Objects"
 
 [node name="Button" type="Button" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/Objects/HBoxContainer"]
-margin_left = 370.0
-margin_right = 404.0
+margin_left = 211.0
+margin_right = 245.0
 margin_bottom = 28.0
+focus_mode = 1
+enabled_focus_mode = 1
 text = "Eye"
 
 [node name="Rings" type="PanelContainer" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers"]
 margin_top = 138.0
-margin_right = 418.0
+margin_right = 259.0
 margin_bottom = 180.0
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/Rings"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 411.0
+margin_right = 252.0
 margin_bottom = 35.0
 
 [node name="PanelContainer" type="PanelContainer" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/Rings/HBoxContainer"]
-margin_right = 181.0
+margin_right = 101.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/Rings/HBoxContainer/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 174.0
+margin_right = 94.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "OL"
 
 [node name="Label" type="Label" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/Rings/HBoxContainer"]
-margin_left = 185.0
+margin_left = 105.0
 margin_top = 7.0
-margin_right = 366.0
+margin_right = 207.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "Rings"
 
 [node name="Button" type="Button" parent="Left/PanelContainer/VBoxContainer/LayoutEditing/Layers/Rings/HBoxContainer"]
-margin_left = 370.0
-margin_right = 404.0
+margin_left = 211.0
+margin_right = 245.0
 margin_bottom = 28.0
+focus_mode = 1
+enabled_focus_mode = 1
 text = "Eye"
 
 [node name="HSeparator2" type="HSeparator" parent="Left/PanelContainer/VBoxContainer/LayoutEditing"]
 margin_top = 192.0
-margin_right = 418.0
+margin_right = 259.0
 margin_bottom = 196.0
 
 [node name="Label" type="Label" parent="Left/PanelContainer/VBoxContainer/LayoutEditing"]
 margin_top = 200.0
-margin_right = 418.0
+margin_right = 259.0
 margin_bottom = 562.0
+rect_min_size = Vector2( 256, 256 )
 size_flags_vertical = 3
-text = "There will be chunk list or object list depending on selected layer"
+text = "chunk/object list"
 
 [node name="Right" type="MarginContainer" parent="."]
 anchor_left = 1.0

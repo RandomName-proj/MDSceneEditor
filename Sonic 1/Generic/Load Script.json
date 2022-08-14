@@ -2,7 +2,9 @@
     "loaders": {
         "blocks": "Generic/Loaders/Blocks.gd",
         "chunks": "Sonic 1/Loaders/Chunks.gd",
-        "tile_layout": "Sonic 1/Loaders/Tile Layout.gd"
+        "tile_layout": "Sonic 1/Loaders/Tile Layout.gd",
+        "palette": "Generic/Loaders/Palette.gd",
+        "art": "Generic/Loaders/VRAM.gd"
     },
     "pal_files": ["Sonic 1/Generic/Sonic.pal"]
 }

@@ -25,19 +25,14 @@ _global_script_classes=[ {
 "path": "res://MDTilemap.gd"
 }, {
 "base": "Node",
-"class": "MDVRAM",
-"language": "GDScript",
-"path": "res://API/MDVRAM.gd"
-}, {
-"base": "Node",
 "class": "ObjectLayoutHandler",
 "language": "GDScript",
 "path": "res://API/Handlers/ObjectLayoutHandler.gd"
 }, {
 "base": "Node",
-"class": "Palette",
+"class": "PaletteHandler",
 "language": "GDScript",
-"path": "res://API/Palette.gd"
+"path": "res://API/PaletteHandler.gd"
 }, {
 "base": "Node",
 "class": "TileHandler",
@@ -58,18 +53,23 @@ _global_script_classes=[ {
 "class": "UIChunk",
 "language": "GDScript",
 "path": "res://UIChunk.gd"
+}, {
+"base": "Node",
+"class": "VRAMHandler",
+"language": "GDScript",
+"path": "res://API/VRAMHandler.gd"
 } ]
 _global_script_class_icons={
 "BlockHandler": "",
 "ChunkHandler": "",
 "MDTilemap": "",
-"MDVRAM": "",
 "ObjectLayoutHandler": "",
-"Palette": "",
+"PaletteHandler": "",
 "TileHandler": "",
 "TileLayoutHandler": "",
 "TilePlane": "",
-"UIChunk": ""
+"UIChunk": "",
+"VRAMHandler": ""
 }
 
 [application]

@@ -2,8 +2,8 @@ extends Node2D
 
 # References to child nodes
 
-var vram := MDVRAM.new()
-var palette := Palette.new()
+var vram := VRAMHandler.new()
+var palette := PaletteHandler.new()
 onready var pal_material : ShaderMaterial 
 onready var pal_shader = preload("res://API/PalShader.gdshader")
 onready var pal_material_tilemap : ShaderMaterial
@@ -81,19 +81,19 @@ func load_file(path):
 	vram.clear()
 	
 	
-	if data.has("pal_files"):
-		var cur_pal_offset : int = 0
-		# TODO : implement proper loading of several palettes
-		for pal_file in data["pal_files"]:
-			cur_pal_offset = palette.load_file(pal_file, cur_pal_offset)
-			
+	#if data.has("pal_files"):
+	#	var cur_pal_offset : int = 0
+	#	# TODO : implement proper loading of several palettes
+	#	for pal_file in data["pal_files"]:
+	#		cur_pal_offset = palette.load_file(pal_file, cur_pal_offset)
+	#		
 	
-	if data.has("art_files"):
-		var cur_vram : int = 0 # current vram offset of loaded art
-		
-		for art_file in data["art_files"]:
-			cur_vram = vram.load_file(art_file,cur_vram)
-		
+	#if data.has("art_files"):
+	#	var cur_vram : int = 0 # current vram offset of loaded art
+	#	
+	#	for art_file in data["art_files"]:
+	#		cur_vram = vram.load_file(art_file,cur_vram)
+	#	
 	
 	if data.has("loaders"):
 		
@@ -105,6 +105,15 @@ func load_file(path):
 			var loader_node = load(data["loaders"][0][loader_type])
 			loaders[loader_type] = loader_node.new(self)
 		
+		if data.has("art_files"):
+			# TODO : implement proper loading of several art files
+			for art_file in data["art_files"]:
+				level_data["art"] = loaders["art"].load_file(art_file)
+		
+		if data.has("pal_files"):
+			# TODO : implement proper loading of several palette files
+			for pal_file in data["pal_files"]:
+				level_data["palette"] = loaders["palette"].load_file(pal_file)
 		
 		if data.has("block_files"):
 			# TODO : implement proper loading of several block files

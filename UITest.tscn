@@ -38,6 +38,10 @@ script = ExtResource( 3 )
 anchor_bottom = 1.0
 margin_right = 165.0
 
+[node name="Panel" type="Panel" parent="Left"]
+margin_right = 273.0
+margin_bottom = 600.0
+
 [node name="PanelContainer" type="PanelContainer" parent="Left"]
 margin_right = 273.0
 margin_bottom = 600.0
@@ -307,6 +311,10 @@ margin_left = -15.0
 grow_horizontal = 0
 rect_min_size = Vector2( 200, 0 )
 
+[node name="Panel" type="Panel" parent="Right"]
+margin_right = 200.0
+margin_bottom = 600.0
+
 [node name="PanelContainer" type="PanelContainer" parent="Right"]
 margin_right = 200.0
 margin_bottom = 600.0
@@ -322,10 +330,12 @@ script = ExtResource( 1 )
 [node name="ChunkEditor" parent="Right/PanelContainer/PropertyTree" instance=ExtResource( 2 )]
 margin_right = 61.0
 margin_bottom = 20.0
+items = [ "Edit", null, 0, false, false, 0, 0, null, "", false, "", null, 0, false, true, -1, 0, null, "", true, "Load", null, 0, false, false, 1, 0, null, "", false ]
 
 [node name="PaletteEditor" parent="Right/PanelContainer/PropertyTree" instance=ExtResource( 2 )]
 margin_right = 61.0
 margin_bottom = 20.0
+items = [ "Edit", null, 0, false, false, 0, 0, null, "", false, "", null, 0, false, true, -1, 0, null, "", true, "Load", null, 0, false, false, 1, 0, null, "", false ]
 
 [connection signal="pressed" from="Left/PanelContainer/VBoxContainer/Buttons/OpenProject" to="Left/PanelContainer/VBoxContainer/Buttons/OpenProject" method="_on_OpenProject_pressed"]
 [connection signal="file_selected" from="Left/PanelContainer/VBoxContainer/Buttons/OpenProject/FileDialog" to="Left/PanelContainer/VBoxContainer/Buttons/OpenProject" method="_on_FileDialog_file_selected"]

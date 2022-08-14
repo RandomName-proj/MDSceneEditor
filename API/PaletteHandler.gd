@@ -1,20 +1,10 @@
 extends Node
-class_name Palette
+class_name PaletteHandler
 
 var texture := ImageTexture.new()
 const accurate_color_array : Array = [0, 52, 87, 116, 144, 172, 206, 255]
 const linear_color_array : Array = [0, 34, 68, 102, 136, 170, 204, 238]
 var color_array : Array = [] setget set_color_arr
-
-func md_color_to_rgb8(md_color: int) -> Color:
-	var red = (md_color>>1)&0b111
-	var green = (md_color>>(4+1))&0b111
-	var blue = (md_color>>(8+1))&0b111
-	red = color_array[red]
-	green = color_array[green]
-	blue = color_array[blue]
-	
-	return Color8(red,green,blue)
 
 func set_color_arr(new_color):
 	if color_array == null:
@@ -59,18 +49,22 @@ func set_palette_entry(color : Color, pal_ind : int):
 	img.unlock()
 	texture.set_data(img)
 
-func load_file(path, offset):
-	
-	var file = File.new()
-	file.open(path,File.READ_WRITE)
-	file.endian_swap = true
-	
-	var pal_end := min(64, file.get_len()/2 + offset) # color on which loading of this palette file ends
-	
-	#	Convert palette to RGB8
-	for i in range(min(64,file.get_len()/2)):
-		set_palette_entry(md_color_to_rgb8(file.get_16()), i + offset)
-	
-	
-	file.close()
-	return pal_end
+func load_data(data):
+	for color_ind in range(0, data.size()):
+		set_palette_entry(data[color_ind],color_ind)
+
+#func load_file(path, offset):
+#	
+#	var file = File.new()
+#	file.open(path,File.READ_WRITE)
+#	file.endian_swap = true
+#	
+#	var pal_end := min(64, file.get_len()/2 + offset) # color on which loading of this palette file ends
+#	
+#	#	Convert palette to RGB8
+#	for i in range(min(64,file.get_len()/2)):
+#		set_palette_entry(md_color_to_rgb8(file.get_16()), i + offset)
+#	
+#	
+#	file.close()
+#	return pal_end

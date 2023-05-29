@@ -1,7 +1,0 @@
-{
-    "parent_file": "Sonic 1/Levels/LZ/Load Script.json",
-    "tile_layout_files": [
-        ["Sonic 1/Levels/LZ/Act 1/FG Layout.lay","Sonic 1/Levels/LZ/BG Layout.lay"]
-    ],
-    "object_layout_files": ["Sonic 1/Levels/LZ/Act 1/Object Layout.obj"]
-}

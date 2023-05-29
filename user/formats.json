@@ -1,0 +1,10 @@
+{
+	"Sonic 1": {
+		"chunks": "res://user/formatters/Sonic/Sonic 1/Chunks.gd",
+		"blocks": "res://user/formatters/Sonic/16x16 Blocks.gd"
+	},
+	"Sonic 2": {
+		"chunks": "res://user/formatters/Sonic/Sonic 2/Chunks.gd",
+		"blocks": "res://user/formatters/Sonic/16x16 Blocks.gd"
+	}
+}

@@ -1,0 +1,2 @@
+extends BaseFormat
+class_name BaseChunkFormat

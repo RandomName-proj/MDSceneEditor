@@ -1,0 +1,5 @@
+all commands accept only one argument
+
+print - usual print
+printerr - print error (red color with bullet point)
+printwarn - print warning (yellow color with bullet point)

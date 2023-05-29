@@ -6,171 +6,21 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "Node",
-"class": "BlockHandler",
-"language": "GDScript",
-"path": "res://API/Handlers/BlockHandler.gd"
-}, {
-"base": "Node",
-"class": "ChunkHandler",
-"language": "GDScript",
-"path": "res://API/Handlers/ChunkHandler.gd"
-}, {
-"base": "TileMap",
-"class": "MDTilemap",
-"language": "GDScript",
-"path": "res://MDTilemap.gd"
-}, {
-"base": "Node",
-"class": "ObjectLayoutHandler",
-"language": "GDScript",
-"path": "res://API/Handlers/ObjectLayoutHandler.gd"
-}, {
-"base": "Node",
-"class": "PaletteHandler",
-"language": "GDScript",
-"path": "res://API/PaletteHandler.gd"
-}, {
-"base": "Node",
-"class": "TileHandler",
-"language": "GDScript",
-"path": "res://API/Handlers/TileHandler.gd"
-}, {
-"base": "Node",
-"class": "TileLayoutHandler",
-"language": "GDScript",
-"path": "res://API/Handlers/TileLayoutHandler.gd"
-}, {
-"base": "Node",
-"class": "TilePlane",
-"language": "GDScript",
-"path": "res://FGBG.gd"
-}, {
-"base": "Control",
-"class": "UIChunk",
-"language": "GDScript",
-"path": "res://UIChunk.gd"
-}, {
-"base": "Node",
-"class": "VRAMHandler",
-"language": "GDScript",
-"path": "res://API/VRAMHandler.gd"
-} ]
-_global_script_class_icons={
-"BlockHandler": "",
-"ChunkHandler": "",
-"MDTilemap": "",
-"ObjectLayoutHandler": "",
-"PaletteHandler": "",
-"TileHandler": "",
-"TileLayoutHandler": "",
-"TilePlane": "",
-"UIChunk": "",
-"VRAMHandler": ""
-}
+config_version=5
 
 [application]
 
 config/name="MDSceneEditor"
-run/main_scene="res://World.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://world.tscn"
+config/features=PackedStringArray("4.0", "Forward Plus")
+config/icon="res://icon.svg"
 
 [autoload]
 
-DataFormats="*res://API/DataFormats.gd"
-Global="*res://API/Global.gd"
-
-[display]
-
-window/stretch/aspect="keep"
-
-[editor_plugins]
-
-enabled=PoolStringArray(  )
-
-[importer_defaults]
-
-texture={
-"compress/bptc_ldr": 0,
-"compress/hdr_mode": 0,
-"compress/lossy_quality": 0.7,
-"compress/mode": 0,
-"compress/normal_map": 0,
-"detect_3d": false,
-"flags/anisotropic": false,
-"flags/filter": false,
-"flags/mipmaps": false,
-"flags/repeat": 0,
-"flags/srgb": 2,
-"process/HDR_as_SRGB": false,
-"process/fix_alpha_border": true,
-"process/invert_color": false,
-"process/premult_alpha": false,
-"size_limit": 0,
-"stream": false,
-"svg/scale": 1.0
-}
-
-[input]
-
-ui_left={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
- ]
-}
-ui_right={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
- ]
-}
-ui_up={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
- ]
-}
-ui_down={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
- ]
-}
-ui_mouse_wheel_up={
-"deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":4,"pressed":false,"doubleclick":false,"script":null)
- ]
-}
-ui_mouse_wheel_down={
-"deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
- ]
-}
-ui_chgpalline={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":80,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
-}
-ui_shift={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
-}
-ui_mouse_left={
-"deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
- ]
-}
-ui_mouse_right={
-"deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
- ]
-}
+Global="*res://global.gd"
+CompressorLists="*res://api/compressor_lists.gd"
+FormatterLists="*res://api/formatter_lists.gd"
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+renderer/rendering_method="gl_compatibility"

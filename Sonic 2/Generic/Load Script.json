@@ -1,8 +1,0 @@
-{
-    "loaders": {
-        "blocks": "Generic/Loaders/Blocks.gd",
-        "chunks": "Sonic 2/Loaders/Chunks.gd",
-        "tile_layout": "Sonic 2/Loaders/Tile Layout.gd"
-    },
-    "pal_files": ["Sonic 2/Generic/Sonic&Tails.pal"]
-}

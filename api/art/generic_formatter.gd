@@ -1,0 +1,2 @@
+extends GenericFormatter
+class_name GenericArtFormatter

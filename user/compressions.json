@@ -1,0 +1,6 @@
+{
+	"Uncompressed": "res://user/compressors/uncompressed.gd",
+	"Kosinski": "res://user/compressors/kosinski.gd",
+	"Nemesis": "res://user/compressors/nemesis.gd",
+	"Enigma": "res://user/compressors/enigma.gd"
+}

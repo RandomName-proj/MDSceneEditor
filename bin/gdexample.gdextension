@@ -1,0 +1,8 @@
+[configuration]
+
+entry_symbol = "example_library_init"
+
+[libraries]
+
+linux.x86_64 = "res://bin/libgodot_mdcomp.so"
+windows.x86_64="res://bin/godot_mdcomp.dll"

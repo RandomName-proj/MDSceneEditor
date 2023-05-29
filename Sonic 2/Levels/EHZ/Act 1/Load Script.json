@@ -1,9 +1,0 @@
-{
-    "parent_file": "Sonic 2/Generic/Load Script.json",
-    "pal_files": ["Sonic 2/Levels/EHZ/Palette.pal"],
-    "art_files": ["Sonic 2/Levels/EHZ/Tiles.unc"],
-    "block_files": ["Sonic 2/Levels/EHZ/Blocks.blk"],
-    "chunk_files": ["Sonic 2/Levels/EHZ/Chunks.chk"],
-    "tile_layout_files": ["Sonic 2/Levels/EHZ/Act 1/Tile Layout.lay"],
-    "object_layout_files": ["Sonic 2/Levels/EHZ/Act 1/Object Layout.obj"]
-}

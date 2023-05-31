@@ -1,26 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://6kbjpm4uk0ud"]
+[gd_scene load_steps=7 format=3 uid="uid://6kbjpm4uk0ud"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_okwa8"]
 [ext_resource type="Texture2D" uid="uid://bn0kkumb6rgn1" path="res://icon.svg" id="1_owk6k"]
 [ext_resource type="Script" path="res://hardware_viewport.gd" id="2_u5pl5"]
-[ext_resource type="Shader" path="res://palette_shader.gdshader" id="3_1nx0s"]
 [ext_resource type="Script" path="res://VRAM.gd" id="4_1g780"]
 [ext_resource type="Script" path="res://api/resource_pool.gd" id="4_mnbnt"]
 [ext_resource type="Script" path="res://PaletteViewer.gd" id="6_rw7an"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3uife"]
-shader = ExtResource("3_1nx0s")
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_okwa8")
 
 [node name="HardwareContainer" type="SubViewportContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
+offset_right = 1024.0
+offset_bottom = 1024.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="HardwareViewport" type="SubViewport" parent="HardwareContainer"]
 handle_input_locally = false
@@ -28,24 +22,60 @@ render_target_update_mode = 4
 script = ExtResource("2_u5pl5")
 
 [node name="VRAM" type="Sprite2D" parent="HardwareContainer/HardwareViewport"]
-material = SubResource("ShaderMaterial_3uife")
+self_modulate = Color(1, 0.5, 1, 1)
+texture_filter = 1
+texture_repeat = 1
 position = Vector2(200, 100)
-scale = Vector2(10, 10)
+scale = Vector2(4, 4)
 texture = ExtResource("1_owk6k")
 region_enabled = true
-region_rect = Rect2(0, 0, 32, 8)
+region_rect = Rect2(128, 0, 128, 8)
 script = ExtResource("4_1g780")
 
 [node name="Camera2D" type="Camera2D" parent="HardwareContainer/HardwareViewport"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HardwareContainer/HardwareViewport"]
 
-[node name="Palette" type="Sprite2D" parent="HardwareContainer/HardwareViewport"]
+[node name="PaletteView" type="Sprite2D" parent="HardwareContainer/HardwareViewport"]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(100, 150)
+position = Vector2(150, 150)
 texture = ExtResource("1_owk6k")
 script = ExtResource("6_rw7an")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="HardwareContainer/HardwareViewport"]
+rect = Rect2(0, 0, 1024, 1024)
+
+[node name="Paletter" type="ColorRect" parent="HardwareContainer/HardwareViewport/BackBufferCopy"]
+texture_filter = 1
+texture_repeat = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.191
+offset_left = -100.0
+offset_top = -100.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackBufferCopy2" type="BackBufferCopy" parent="HardwareContainer/HardwareViewport"]
+rect = Rect2(0, 0, 1024, 1024)
+
+[node name="Wasser" type="ColorRect" parent="HardwareContainer/HardwareViewport/BackBufferCopy2"]
+texture_filter = 1
+texture_repeat = 1
+anchors_preset = -1
+anchor_top = 0.191
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
 
 [node name="Resources" type="Node" parent="."]
 script = ExtResource("4_mnbnt")

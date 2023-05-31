@@ -16,7 +16,8 @@ func format(data: PackedByteArray) -> BaseFormat:
 	
 	for ind in range(0, data.size(), 2):
 		var entry = (data[ind] << 8) + data[ind+1]
-		palette.entries.append(BasePaletteEntry.new(md_color_to_rgb8(entry, palette.color_array)))
+		palette.colors.append(md_color_to_rgb8(entry,palette.color_array))
+		#palette.entries.append(BasePaletteEntry.new(md_color_to_rgb8(entry, palette.color_array)))
 	
 	
 	return palette

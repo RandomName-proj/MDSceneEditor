@@ -26,7 +26,7 @@ func load_vram(data: BaseArtFormat, start_vram: int):
 		
 		
 		if pix_color.a != 0:
-			image.set_pixel(col, row, Color(pix_color.a,0,0,1)) # pre-multiply by 4 to optimize shader
+			image.set_pixel(col, row, Color(pix_color.r,1,0,1)) # pre-multiply by 4 to optimize shader
 		else:
 			image.set_pixel(col, row, Color.TRANSPARENT)
 	

@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://nftsdnq4o0s7"]
+
+[ext_resource type="Shader" path="res://palette_shader.gdshader" id="1_7nid1"]
+
+[resource]
+shader = ExtResource("1_7nid1")
+shader_parameter/palette = null

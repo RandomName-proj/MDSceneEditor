@@ -1,11 +1,12 @@
 shader_type canvas_item;
-render_mode blend_mix;
 
-uniform sampler2D palette;
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
+uniform vec3[64] palette;
 
-void fragment(){
-	vec4 tile_metadata = COLOR;
-	COLOR = texture(TEXTURE,UV);
-	float color_index = COLOR.r+tile_metadata.r;
-	COLOR.rgb = texture(palette,vec2(color_index,0)).rgb;
+void fragment() {
+	vec4 color_data = textureLod(screen_texture, SCREEN_UV,0);
+	if (color_data.b > 0.0f) {
+		discard;
+	}
+	COLOR.rgb = palette[int(color_data.r*256.0f+(1.0f-color_data.g)*64.0f)];
 }

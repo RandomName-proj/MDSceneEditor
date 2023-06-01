@@ -8,7 +8,7 @@ func _ready():
 	var vram : MDResource = res_pool.get_resource("vram")
 	vram.load_format("res://user/formatters/Art.gd")
 	vram.load_compression("res://user/compressors/nemesis.gd")
-	vram.load_data("res://LZ.bin")
+	vram.load_data("res://test data/art/LZ.bin")
 	$HardwareContainer/HardwareViewport/VRAM.load_vram(vram.data, 0)
 	
 	res_pool.add_resource("palette")
@@ -20,10 +20,11 @@ func _ready():
 	$HardwareContainer/HardwareViewport/BackBufferCopy/Paletter.material = load("res://palette_shader_material.tres")
 	$HardwareContainer/HardwareViewport/BackBufferCopy/Paletter.material.set_shader_parameter("palette",palette.data.colors)
 	
+	res_pool.add_resource("blocks")
 	var blocks : MDResource = res_pool.get_resource("blocks")
 	blocks.load_format("res://user/formatters/Sonic/16x16 Blocks.gd")
 	blocks.load_compression("res://user/compressors/enigma.gd")
-	blocks.load_data("res://test data/blokcs/LZ.bin")
+	blocks.load_data("res://test data/blocks/LZ.bin")
 	$HardwareContainer/HardwareViewport/FGLayout.load_blocks(blocks.data)
 	
 	

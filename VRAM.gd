@@ -9,7 +9,7 @@ func _init():
 func clear():
 	image = Image.create(64*1024*2/8,8,false,Image.FORMAT_RGBAF)
 
-func load_vram(data: BaseArtFormat, start_vram: int):
+func load_vram(data: BaseFormat, start_vram: int):
 	
 	var start_pix : int = start_vram & 63
 	var start_tile := int(start_vram / 64)

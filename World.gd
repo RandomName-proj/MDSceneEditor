@@ -15,26 +15,16 @@ func _ready():
 	var palette : MDResource = res_pool.get_resource("palette")
 	palette.load_format("res://user/formatters/Palette.gd")
 	palette.load_compression("res://user/compressors/uncompressed.gd")
-	palette.load_data("res://palettes/preload.pal")
+	palette.load_data("res://test data/palettes/Sonic+LZ.pal")
 	
-	#$HardwareContainer/HardwareViewport/BackBufferCopy/Paletter.material.set_shader_parameter("palette",palette.data.colors)
+	$HardwareContainer/HardwareViewport/BackBufferCopy/Paletter.material = load("res://palette_shader_material.tres")
+	$HardwareContainer/HardwareViewport/BackBufferCopy/Paletter.material.set_shader_parameter("palette",palette.data.colors)
 	
-	res_pool.add_resource("lz_palette")
-	var lz_palette : MDResource = res_pool.get_resource("lz_palette")
-	lz_palette.load_format("res://user/formatters/Palette.gd")
-	lz_palette.load_compression("res://user/compressors/uncompressed.gd")
-	lz_palette.load_data("res://palettes/Sonic+LZ.pal")
-	$HardwareContainer/HardwareViewport/BackBufferCopy/Paletter.material = load("res://palette_shader_material.tres").duplicate()
-	print($HardwareContainer/HardwareViewport/BackBufferCopy/Paletter.material)
-	$HardwareContainer/HardwareViewport/BackBufferCopy/Paletter.material.set_shader_parameter("palette",lz_palette.data.colors)
-	
-	res_pool.add_resource("underwater_palette")
-	var underwater_palette : MDResource = res_pool.get_resource("underwater_palette")
-	underwater_palette.load_format("res://user/formatters/Palette.gd")
-	underwater_palette.load_compression("res://user/compressors/uncompressed.gd")
-	underwater_palette.load_data("res://palettes/Sonic+LZ(Underwater).pal")
-	$HardwareContainer/HardwareViewport/BackBufferCopy2/Wasser.material = load("res://palette_shader_material.tres").duplicate()
-	$HardwareContainer/HardwareViewport/BackBufferCopy2/Wasser.material.set_shader_parameter("palette",underwater_palette.data.colors)
+	var blocks : MDResource = res_pool.get_resource("blocks")
+	blocks.load_format("res://user/formatters/Sonic/16x16 Blocks.gd")
+	blocks.load_compression("res://user/compressors/enigma.gd")
+	blocks.load_data("res://test data/blokcs/LZ.bin")
+	$HardwareContainer/HardwareViewport/FGLayout.load_blocks(blocks.data)
 	
 	
 

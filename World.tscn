@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://hardware_viewport.gd" id="2_u5pl5"]
 [ext_resource type="Script" path="res://VRAM.gd" id="4_1g780"]
 [ext_resource type="Script" path="res://api/resource_pool.gd" id="4_mnbnt"]
+[ext_resource type="Script" path="res://hardware/Blocks.gd" id="5_8glan"]
 [ext_resource type="Script" path="res://BackBufferCopy.gd" id="6_ckqns"]
 [ext_resource type="Script" path="res://PaletteViewer.gd" id="6_rw7an"]
-[ext_resource type="Script" path="res://FG Layout.gd" id="7_po75k"]
 
 [sub_resource type="TileSet" id="TileSet_w3qkp"]
 tile_size = Vector2i(8, 8)
@@ -36,21 +36,21 @@ script = ExtResource("4_1g780")
 
 [node name="Camera2D" type="Camera2D" parent="HardwareContainer/HardwareViewport"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="HardwareContainer/HardwareViewport"]
-
 [node name="PaletteView" type="Sprite2D" parent="HardwareContainer/HardwareViewport"]
+visible = false
 texture_filter = 1
 position = Vector2(150, 150)
 script = ExtResource("6_rw7an")
 
-[node name="FGLayout" type="TileMap" parent="HardwareContainer/HardwareViewport"]
+[node name="Blocks" type="TileMap" parent="HardwareContainer/HardwareViewport"]
 texture_filter = 1
 scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_w3qkp")
 format = 2
-script = ExtResource("7_po75k")
+script = ExtResource("5_8glan")
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="HardwareContainer/HardwareViewport"]
+texture_filter = 1
 copy_mode = 2
 rect = Rect2(0, 0, 0, 0)
 script = ExtResource("6_ckqns")
@@ -67,3 +67,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Resources" type="Node" parent="."]
 script = ExtResource("4_mnbnt")
+
+[node name="Hardware" type="Node" parent="."]
+
+[node name="VRAM" type="Node" parent="Hardware"]
+
+[node name="Palette" type="Node" parent="Hardware"]

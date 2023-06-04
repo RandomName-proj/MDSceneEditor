@@ -1,9 +1,11 @@
 extends Node2D
 
-var res_pool : MDResourcePool
+@onready var res_pool : MDResourcePool = $Resources
+@onready var vram := $Hardware/VRAM
+@onready var palette := $Hardware/Palette
 
 func _ready():
-	res_pool = $Resources # FFS this is the only way to enable syntax highlighting for preloaded nodes that use custom class
+	
 	res_pool.add_resource("vram")
 	var vram : MDResource = res_pool.get_resource("vram")
 	vram.load_format("res://user/formatters/Art.gd")
@@ -25,7 +27,7 @@ func _ready():
 	blocks.load_format("res://user/formatters/Sonic/16x16 Blocks.gd")
 	blocks.load_compression("res://user/compressors/enigma.gd")
 	blocks.load_data("res://test data/blocks/LZ.bin")
-	$HardwareContainer/HardwareViewport/FGLayout.load_blocks(blocks.data)
+	$HardwareContainer/HardwareViewport/Blocks.load_blocks(blocks.data)
 	
 	
 

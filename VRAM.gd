@@ -25,10 +25,10 @@ func load_vram(data: BaseFormat, start_vram: int):
 		var pix_color : Color = data.entries[pix+tile*64].color
 		
 		
-		if pix_color.a != 0:
+		if pix_color.r != 0:
 			image.set_pixel(col, row, Color(pix_color.r,1,0,1)) # pre-multiply by 4 to optimize shader
 		else:
-			image.set_pixel(col, row, Color.TRANSPARENT)
+			image.set_pixel(col, row, Color(0, 0, 0, 0))
 	
 	image.save_png("res://test.png")
 	

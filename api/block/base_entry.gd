@@ -11,7 +11,7 @@ var tiles : Array[Tile]
 class Tile:
 	var flags : int = 0 # 1st is priority, 2nd is palette, 3rd is x flip, 4th is y flip
 	var palette : int = 0
-	enum {prio_bit, x_bit, y_bit}
+	enum {x_bit = 0, y_bit, prio_bit = 0}
 	
 	
-	var vram_offset : int = 0
+	var tile_offset : int = 0 # vram offset in tiles

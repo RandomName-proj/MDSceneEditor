@@ -11,14 +11,16 @@ func deformat(data: BaseFormat) -> PackedByteArray:
 func _do_format(data: PackedByteArray, block_size: Vector2) -> BaseFormat:
 	var blocks := BaseBlockFormat.new()
 	
+	blocks.block_size = block_size
+	
 	var blk_ind := 0
 	while blk_ind < data.size():
 		var new_block := BaseBlockEntry.new(block_size)
 		for tile_ind in range(0, block_size.x*block_size.y):
 			var new_tile := BaseBlockEntry.Tile.new()
 			var block_data : int = (data[blk_ind+tile_ind*2]<<8) + data[blk_ind+tile_ind*2+1]
-			new_tile.vram_offset = (block_data & 0b11111111111) << 5
-			new_tile.flags = (block_data >> 7+8-2 & 0b100) + (block_data >> 4+8 & 0b11)
+			new_tile.tile_offset = (block_data & 0b11111111111)
+			new_tile.flags = (block_data >> 7+8-2 & 0b100) + (block_data >> 3+8 & 0b11)
 			new_tile.palette = block_data >> 6+8 & 0b11
 			
 			new_block.tiles[tile_ind] = new_tile
@@ -38,7 +40,7 @@ func _do_deformat(data: BaseFormat, block_size: Vector2) -> PackedByteArray:
 			var raw_tile : int = 0
 			# block index
 			
-			raw_tile |= (tile.vram_offset >> 5)
+			raw_tile |= tile.tile_offset
 			
 			# flags
 			

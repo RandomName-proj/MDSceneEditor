@@ -6,8 +6,8 @@ func format(data: PackedByteArray) -> BaseFormat:
 	for byte in data:
 		var color1 = byte >> 4
 		var color2 = byte & 0xF
-		art.entries.append(BaseArtEntry.new(Color8(color2,0,0)))
 		art.entries.append(BaseArtEntry.new(Color8(color1,0,0)))
+		art.entries.append(BaseArtEntry.new(Color8(color2,0,0)))
 	
 	return art
 

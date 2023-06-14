@@ -9,7 +9,7 @@ void fragment() {
 		COLOR.a = 0.0f;
 	}
 	else {
-		COLOR.rgb = palette[int(color_data.r*256.0f+(1.0f-color_data.g)*64.0f)];
+		COLOR.rgb = palette[int(round(color_data.r*256.0f+(1.0f-color_data.g)*64.0f))];
 	}
 	
 }

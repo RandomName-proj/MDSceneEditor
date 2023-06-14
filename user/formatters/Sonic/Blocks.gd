@@ -21,7 +21,7 @@ func _do_format(data: PackedByteArray, block_size: Vector2) -> BaseFormat:
 			var block_data : int = (data[blk_ind+tile_ind*2]<<8) + data[blk_ind+tile_ind*2+1]
 			new_tile.tile_offset = (block_data & 0b11111111111)
 			new_tile.flags = (block_data >> 7+8-2 & 0b100) + (block_data >> 3+8 & 0b11)
-			new_tile.palette = block_data >> 6+8 & 0b11
+			new_tile.palette = block_data >> 5+8 & 0b11
 			
 			new_block.tiles[tile_ind] = new_tile
 		

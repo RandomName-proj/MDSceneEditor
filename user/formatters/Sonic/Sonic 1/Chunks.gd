@@ -4,6 +4,9 @@ const chunk_size := Vector2(16,16)
 
 func format(data: PackedByteArray) -> BaseFormat:
 	var chunks := BaseChunkFormat.new()
+	
+	chunks.chunk_size = chunk_size
+	
 	var first_chunk := BaseChunkEntry.new(chunk_size,1)
 	chunks.entries.append(first_chunk)
 	

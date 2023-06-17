@@ -14,7 +14,7 @@ class Block:
 	var index : int = 0 # index in block array
 	
 	var flags : int = 0
-	enum {x_bit, y_bit}
+	enum {x_bit = 0, y_bit}
 	
 	
 	# each byte is a separate collision layer

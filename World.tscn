@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://6kbjpm4uk0ud"]
+[gd_scene load_steps=10 format=3 uid="uid://6kbjpm4uk0ud"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_okwa8"]
 [ext_resource type="Script" path="res://vram.gd" id="2_p2mgo"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://back_buffer_copy.gd" id="5_ognmm"]
 [ext_resource type="PackedScene" uid="uid://cu10rrrnamsco" path="res://hardware/chunks/chunks.tscn" id="6_i7bjs"]
 [ext_resource type="Script" path="res://engine.gd" id="7_nr50n"]
+[ext_resource type="PackedScene" uid="uid://brhowqn8wxhyk" path="res://hardware/tile_layout/tile_layout.tscn" id="7_sufmo"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_okwa8")
@@ -47,8 +48,12 @@ position = Vector2(150, 150)
 script = ExtResource("3_jhenn")
 
 [node name="Blocks" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("5_2wmht")]
+visible = false
 
 [node name="Chunks" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("6_i7bjs")]
+visible = false
+
+[node name="TileLayout" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("7_sufmo")]
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
 texture_filter = 1

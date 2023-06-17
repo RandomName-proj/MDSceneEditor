@@ -1,4 +1,4 @@
 extends BaseFormat
 class_name BaseTileLayoutFormat
 
-var layout_size : Vector2
+var layout_size : Vector2i

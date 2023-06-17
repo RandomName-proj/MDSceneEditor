@@ -3,6 +3,7 @@ extends Node
 @onready var paletter_node := $"../CanvasLayer/HardwareContainer/HardwareViewport/BackBufferCopy/Paletter"
 @onready var blocks_node := $"../CanvasLayer/HardwareContainer/HardwareViewport/Blocks"
 @onready var chunks_node := $"../CanvasLayer/HardwareContainer/HardwareViewport/Chunks"
+@onready var tile_layout_node := $"../CanvasLayer/HardwareContainer/HardwareViewport/TileLayout"
 
 func do_the_thing():
 	
@@ -41,6 +42,17 @@ func do_the_thing():
 	
 	chunks_node.load_texture(blk_texture)
 	chunks_node.load_chunks(chunks.data,Vector2(16,16))
+	
+	var chk_texture : Texture2D = chunks_node.get_chunk_texture()
+	
+	owner.res_pool.add_resource("tile_layout")
+	var tile_layout : MDResource = owner.res_pool.get_resource("tile_layout")
+	tile_layout.load_format("res://user/formatters/Sonic/Sonic 1/Tile Layout.gd")
+	tile_layout.load_compression("res://user/compressors/uncompressed.gd")
+	tile_layout.load_data("res://test data/tile layout/lz1.bin")
+	
+	tile_layout_node.load_texture(chk_texture)
+	tile_layout_node.load_tile_layout(tile_layout.data,Vector2(256,256))
 	
 	#var img : Image = chunks_node.get_chunk_texture().get_image()
 	#img.save_png("res://chunk_test.png")

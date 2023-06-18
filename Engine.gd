@@ -23,6 +23,7 @@ func do_the_thing():
 	paletter_node.material = load("res://palette_shader_material.tres")
 	paletter_node.material.set_shader_parameter("palette",palette.data.colors)
 	
+	
 	owner.res_pool.add_resource("blocks")
 	var blocks : MDResource = owner.res_pool.get_resource("blocks")
 	blocks.load_format("res://user/formatters/Sonic/16x16 Blocks.gd")
@@ -33,6 +34,7 @@ func do_the_thing():
 	blocks_node.load_blocks(blocks.data, Vector2i(8,8))
 	
 	var blk_texture : Texture2D = blocks_node.get_block_texture()
+	
 	
 	owner.res_pool.add_resource("chunks")
 	var chunks : MDResource = owner.res_pool.get_resource("chunks")
@@ -53,6 +55,7 @@ func do_the_thing():
 	
 	tile_layout_node.load_texture(chk_texture)
 	tile_layout_node.load_tile_layout(tile_layout.data,Vector2(256,256))
+	
 	
 	#var img : Image = chunks_node.get_chunk_texture().get_image()
 	#img.save_png("res://chunk_test.png")

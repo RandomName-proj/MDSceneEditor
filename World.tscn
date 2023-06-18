@@ -48,10 +48,8 @@ position = Vector2(150, 150)
 script = ExtResource("3_jhenn")
 
 [node name="Blocks" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("5_2wmht")]
-visible = false
 
 [node name="Chunks" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("6_i7bjs")]
-visible = false
 
 [node name="TileLayout" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("7_sufmo")]
 

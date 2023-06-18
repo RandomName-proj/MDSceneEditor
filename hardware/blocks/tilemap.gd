@@ -52,6 +52,6 @@ func load_blocks(data: BaseBlockFormat, tile_size : Vector2i):
 	
 	is_update_needed = true
 	force_update()
-	#await RenderingServer.frame_post_draw
-	#is_update_needed = false
+	await RenderingServer.frame_post_draw
+	is_update_needed = false
 	

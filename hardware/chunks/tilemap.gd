@@ -1,6 +1,6 @@
 extends TileMap
 
-var data : BaseFormat # the chunk data
+#var data : BaseFormat # the chunk data
 var texture : Texture2D # the block texture
 var is_update_needed := false # if set to true, metadata of all tiles is updated 
 
@@ -18,7 +18,7 @@ func load_chunks(data: BaseChunkFormat, block_size : Vector2i):
 	tile_set = TileSet.new()
 	tile_set.tile_size = block_size
 	
-	self.data = data
+	#self.data = data
 	var source := TileSetAtlasSource.new()
 	source.use_texture_padding = false # tileset doesn't load the texture if it's set to true
 	source.texture = self.texture # use the block texture
@@ -45,5 +45,5 @@ func load_chunks(data: BaseChunkFormat, block_size : Vector2i):
 	
 	is_update_needed = true
 	force_update()
-	#await RenderingServer.frame_pre_draw
-	#is_update_needed = false
+	await RenderingServer.frame_pre_draw
+	is_update_needed = false

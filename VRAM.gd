@@ -30,7 +30,6 @@ func load_vram(data: BaseFormat, start_vram: int):
 		else:
 			image.set_pixel(col, row, Color(0, 0, 0, 0))
 	
-	image.save_png("res://test.png")
 	
 	print("Image loaded")
 	

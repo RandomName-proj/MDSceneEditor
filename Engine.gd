@@ -3,7 +3,6 @@ extends Node
 @onready var paletter_node := $"../CanvasLayer/HardwareContainer/HardwareViewport/BackBufferCopy/Paletter"
 @onready var blocks_node := $"../CanvasLayer/HardwareContainer/HardwareViewport/Blocks"
 @onready var chunks_node := $"../CanvasLayer/HardwareContainer/HardwareViewport/Chunks"
-@onready var chunks2_node := $"../CanvasLayer/HardwareContainer/HardwareViewport/Chunks2"
 @onready var tile_layout_node := $"../CanvasLayer/HardwareContainer/HardwareViewport/TileLayout"
 
 func do_the_thing():
@@ -45,9 +44,6 @@ func do_the_thing():
 	
 	chunks_node.load_texture(blk_texture)
 	chunks_node.load_chunks(chunks.data,Vector2(16,16))
-	
-	chunks2_node.load_texture(blk_texture)
-	chunks2_node.load_chunks(chunks.data,Vector2(16,16))
 	
 	var chk_texture : Texture2D = chunks_node.get_chunk_texture()
 	

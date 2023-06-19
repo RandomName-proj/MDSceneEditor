@@ -4,6 +4,7 @@ extends Node
 @onready var blocks_node := $"../CanvasLayer/HardwareContainer/HardwareViewport/Blocks"
 @onready var chunks_node := $"../CanvasLayer/HardwareContainer/HardwareViewport/Chunks"
 @onready var tile_layout_node := $"../CanvasLayer/HardwareContainer/HardwareViewport/TileLayout"
+@onready var tile_layout2_node := $"../CanvasLayer/HardwareContainer/HardwareViewport/TileLayout2"
 
 func do_the_thing():
 	
@@ -56,6 +57,12 @@ func do_the_thing():
 	tile_layout_node.load_texture(chk_texture)
 	tile_layout_node.load_tile_layout(tile_layout.data,Vector2(256,256))
 	
+	owner.res_pool.add_resource("tile_layout_bg")
+	var tile_layout_bg : MDResource = owner.res_pool.get_resource("tile_layout_bg")
+	tile_layout_bg.load_format("res://user/formatters/Sonic/Sonic 1/Tile Layout.gd")
+	tile_layout_bg.load_compression("res://user/compressors/uncompressed.gd")
+	tile_layout_bg.load_data("res://test data/tile layout/lzbg.bin")
 	
-	#var img : Image = chunks_node.get_chunk_texture().get_image()
-	#img.save_png("res://chunk_test.png")
+	tile_layout2_node.load_texture(chk_texture)
+	tile_layout2_node.load_tile_layout(tile_layout_bg.data,Vector2(256,256))
+	

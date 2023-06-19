@@ -51,6 +51,8 @@ script = ExtResource("3_jhenn")
 
 [node name="Chunks" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("6_i7bjs")]
 
+[node name="TileLayout2" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("7_sufmo")]
+
 [node name="TileLayout" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("7_sufmo")]
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="CanvasLayer/HardwareContainer/HardwareViewport"]

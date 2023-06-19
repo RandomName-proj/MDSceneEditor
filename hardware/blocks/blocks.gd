@@ -8,7 +8,9 @@ func load_texture(texture : Texture2D):
 func load_blocks(data: BaseBlockFormat, tile_size : Vector2i):
 	tilemap.load_blocks(data, tile_size)
 	# calculate how much pixels will take all the blocks placed linearly from left to right
-	var scr_size : Vector2 = tile_size*data.block_size*data.entries.size() # note : block size is in tiles so it is multiplied by tile size
+	var scr_size : Vector2 = tile_size*data.block_size # note : block size is in tiles so it is multiplied by tile size
+	
+	scr_size *= data.entries.size()
 	
 	# and use that as a viewport size
 	$SubViewport.size = scr_size

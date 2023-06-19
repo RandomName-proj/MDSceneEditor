@@ -8,6 +8,7 @@ func load_texture(texture : Texture2D):
 
 func load_tile_layout(data: BaseTileLayoutFormat, chunk_size : Vector2i):
 	tilemap.load_tile_layout(data, chunk_size)
+	pass
 
 # returns chunk size in pixels
 func get_tile_layout_size(): 

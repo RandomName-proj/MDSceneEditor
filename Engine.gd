@@ -35,6 +35,9 @@ func do_the_thing():
 	
 	var blk_texture : Texture2D = blocks_node.get_block_texture()
 	
+	$"../CanvasLayer/HardwareContainer/HardwareViewport/TextureRect".texture = blk_texture
+	
+	return
 	
 	owner.res_pool.add_resource("chunks")
 	var chunks : MDResource = owner.res_pool.get_resource("chunks")
@@ -44,6 +47,7 @@ func do_the_thing():
 	
 	chunks_node.load_texture(blk_texture)
 	chunks_node.load_chunks(chunks.data,Vector2(16,16))
+	
 	
 	var chk_texture : Texture2D = chunks_node.get_chunk_texture()
 	

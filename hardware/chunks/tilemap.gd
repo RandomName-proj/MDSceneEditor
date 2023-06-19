@@ -18,7 +18,6 @@ func load_chunks(data: BaseChunkFormat, block_size : Vector2i):
 	tile_set = TileSet.new()
 	tile_set.tile_size = block_size
 	
-	#self.data = data
 	var source := TileSetAtlasSource.new()
 	source.use_texture_padding = false # tileset doesn't load the texture if it's set to true
 	source.texture = self.texture # use the block texture
@@ -30,7 +29,7 @@ func load_chunks(data: BaseChunkFormat, block_size : Vector2i):
 		# make alternative id for the flipped tiles
 		for j in range(1,4): 
 			source.create_alternative_tile(Vector2(i,0),j)
-	
+
 	tile_set.add_source(source,0)
 	
 	# place chunks linearly from left to right
@@ -41,7 +40,6 @@ func load_chunks(data: BaseChunkFormat, block_size : Vector2i):
 				var blk : BaseChunkEntry.Block = data.entries[chunk_ind].blocks[x+y*data.chunk_size.x]
 				set_cell(0, Vector2(x+chunk_ind*data.chunk_size.x,y),0,Vector2(blk.index,0),blk.flags&0b11)
 	
-	set_cell(0,Vector2(1,1),0,Vector2(1,1),0)
 	
 	is_update_needed = true
 	force_update()

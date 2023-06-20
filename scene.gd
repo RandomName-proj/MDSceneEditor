@@ -1,8 +1,9 @@
 extends Node2D
 
 @onready var res_pool : MDResourcePool = $Resources
-@onready var vram := $CanvasLayer/HardwareContainer/HardwareViewport/VRAM
+@onready var vram := $Hardware/VRAM
 @onready var palette := $Hardware/Palette
+@onready var scene_camera := $CanvasLayer/HardwareContainer/HardwareViewport/Camera2D
 
 func _ready():
 	$Engine.do_the_thing()
@@ -19,7 +20,7 @@ func _process(delta):
 	if Input.is_action_pressed("ui_left"):
 		dir.x -= 1
 	
-	var zoom = $CanvasLayer/HardwareContainer/HardwareViewport/Camera2D.zoom
+	var zoom = scene_camera.zoom
 	
 	if Input.is_action_just_released("zoom_in"):
 		zoom += 0.1 * Vector2.ONE
@@ -27,6 +28,6 @@ func _process(delta):
 		zoom -= 0.1 * Vector2.ONE
 	
 	
-	$CanvasLayer/HardwareContainer/HardwareViewport/Camera2D.zoom = Vector2(max(zoom.x,0.1),max(zoom.y,0.1))
+	scene_camera.zoom = Vector2(max(zoom.x,0.1),max(zoom.y,0.1))
 	
-	$CanvasLayer/HardwareContainer/HardwareViewport/Camera2D.position += dir*30
+	scene_camera.position += dir*30

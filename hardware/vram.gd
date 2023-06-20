@@ -1,6 +1,7 @@
-extends Sprite2D
+extends Node
 
 var image : Image = Image.new()
+var texture : ImageTexture
 
 func _init():
 	clear()

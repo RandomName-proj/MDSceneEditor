@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://6kbjpm4uk0ud"]
+
+[ext_resource type="Script" path="res://scene.gd" id="1_on2og"]
+[ext_resource type="Script" path="res://palette_viewer.gd" id="2_fd1k4"]
+[ext_resource type="PackedScene" uid="uid://x4ipaxhonlw0" path="res://layers/blocks/blocks.tscn" id="3_q075g"]
+[ext_resource type="PackedScene" uid="uid://cu10rrrnamsco" path="res://layers/chunks/chunks.tscn" id="4_gkip7"]
+[ext_resource type="PackedScene" uid="uid://brhowqn8wxhyk" path="res://layers/tile_layout/tile_layout.tscn" id="5_twxgl"]
+[ext_resource type="Script" path="res://back_buffer_copy.gd" id="6_44h1i"]
+[ext_resource type="Script" path="res://engine.gd" id="7_o2jm1"]
+[ext_resource type="Script" path="res://api/resource_pool.gd" id="8_470xv"]
+[ext_resource type="Script" path="res://hardware/vram.gd" id="9_3hdhi"]
+
+[node name="Scene" type="Node2D"]
+script = ExtResource("1_on2og")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HardwareContainer" type="SubViewportContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 10
+size_flags_vertical = 10
+stretch = true
+
+[node name="HardwareViewport" type="SubViewport" parent="CanvasLayer/HardwareContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
+
+[node name="PaletteView" type="Sprite2D" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
+texture_filter = 1
+position = Vector2(150, 150)
+script = ExtResource("2_fd1k4")
+
+[node name="Blocks" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("3_q075g")]
+
+[node name="Chunks" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("4_gkip7")]
+
+[node name="TileLayout2" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("5_twxgl")]
+
+[node name="TileLayout" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("5_twxgl")]
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
+texture_filter = 1
+copy_mode = 2
+rect = Rect2(0, 0, 0, 0)
+script = ExtResource("6_44h1i")
+
+[node name="Paletter" type="ColorRect" parent="CanvasLayer/HardwareContainer/HardwareViewport/BackBufferCopy"]
+texture_filter = 1
+texture_repeat = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Engine" type="Node" parent="."]
+script = ExtResource("7_o2jm1")
+
+[node name="Resources" type="Node" parent="."]
+script = ExtResource("8_470xv")
+
+[node name="Hardware" type="Node" parent="."]
+
+[node name="VRAM" type="Node" parent="Hardware"]
+script = ExtResource("9_3hdhi")
+
+[node name="Palette" type="Node" parent="Hardware"]

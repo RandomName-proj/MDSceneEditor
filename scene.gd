@@ -5,8 +5,16 @@ extends Node2D
 @onready var palette := $Hardware/Palette
 @onready var scene_camera := $CanvasLayer/HardwareContainer/HardwareViewport/Camera2D
 
+var scene_name : String
+
 func _ready():
-	$Engine.do_the_thing()
+	scene_camera.position += get_viewport_rect().size/2
+
+func load_scene(path : String):
+	
+	#SceneLoader.load_scene(path, res_pool)
+	
+	$Engine.load_scene()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

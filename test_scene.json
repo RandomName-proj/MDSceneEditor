@@ -1,0 +1,33 @@
+{
+    "resources": [
+        {
+            "name": "vram",
+            "formatter": "res://user/formatters/art.gd",
+            "compressor": "res://user/compressors/uncompressed.gd",
+            "data": "res://test data/art/LZ.bin"
+        },
+        {
+            "name": "palette",
+            "formatter": "res://user/formatters/palette.gd",
+            "compressor": "res://user/compressors/uncompressed.gd",
+            "data": "res://test data/palettes/Sonic+LZ.pal"
+        },
+        {
+            "name": "blocks",
+            "formatter": "res://user/formatters/sonic/16x16_blocks.gd",
+            "compressor": "res://user/compressors/enigma.gd",
+            "data": "res://test data/blocks/LZ.bin"
+        },
+        {
+            "name": "chunks",
+            "formatter": "res://user/formatters/sonic/sonic 1/chunks.gd",
+            "compressor": "res://user/compressors/kosinski.gd",
+            "data": "res://test data/chunks/LZ.bin"
+        },
+        {
+            "name": "fg tile layout",
+            "formatter": "res://user/formatters/sonic/sonic 1/tile_layout.gd",
+            "compressor": "res://user/compressors/uncompressed.gd"
+        }
+    ]
+}

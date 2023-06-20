@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://2ron1ylmavue"]
+
+[sub_resource type="GDScript" id="GDScript_qhwng"]
+script/source = "extends Button
+
+@onready var scene_res : PackedScene = preload(\"res://scene.tscn\")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_pressed():
+	$FileDialog.popup_centered()
+
+
+func _on_file_dialog_file_selected(path : String):
+	var scene_inst := scene_res.instantiate()
+	scene_inst.scene_name = path.get_file() # remember scene file name
+	scene_inst.name = path.get_file() # simply for convenience
+	owner.add_child(scene_inst)
+	
+	scene_inst.load_scene(path)
+"
+
+[node name="MainScreen" type="Node2D"]
+
+[node name="TitleScreen" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="TitleScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.5
+offset_top = -65.5
+offset_right = 125.5
+offset_bottom = 65.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Load Scene"
+script = SubResource("GDScript_qhwng")
+
+[node name="FileDialog" type="FileDialog" parent="TitleScreen/Button"]
+title = "Open a File"
+size = Vector2i(500, 350)
+ok_button_text = "Open"
+file_mode = 0
+
+[node name="Buttons" type="CanvasLayer" parent="."]
+
+[connection signal="pressed" from="TitleScreen/Button" to="TitleScreen/Button" method="_on_pressed"]
+[connection signal="file_selected" from="TitleScreen/Button/FileDialog" to="TitleScreen/Button" method="_on_file_dialog_file_selected"]

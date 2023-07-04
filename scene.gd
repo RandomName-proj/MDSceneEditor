@@ -12,7 +12,7 @@ func _ready():
 
 func load_scene(path : String):
 	
-	#SceneLoader.load_scene(path, res_pool)
+	SceneLoader.load_scene(path, res_pool)
 	
 	$Engine.load_scene()
 

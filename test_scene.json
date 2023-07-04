@@ -1,11 +1,6 @@
 {
+    "rom": "placeholder",
     "resources": [
-        {
-            "name": "vram",
-            "formatter": "res://user/formatters/art.gd",
-            "compressor": "res://user/compressors/uncompressed.gd",
-            "data": "res://test data/art/LZ.bin"
-        },
         {
             "name": "palette",
             "formatter": "res://user/formatters/palette.gd",
@@ -13,21 +8,38 @@
             "data": "res://test data/palettes/Sonic+LZ.pal"
         },
         {
+            "name": "vram",
+            "formatter": "res://user/formatters/art.gd",
+            "compressor": "res://user/compressors/nemesis.gd",
+            "data": "res://test data/art/LZ.bin"
+        },
+        {
             "name": "blocks",
             "formatter": "res://user/formatters/sonic/16x16_blocks.gd",
             "compressor": "res://user/compressors/enigma.gd",
-            "data": "res://test data/blocks/LZ.bin"
+            "data": "res://test data/blocks/LZ.bin",
+            "required": {
+                "art": "vram"
+            }
         },
         {
             "name": "chunks",
             "formatter": "res://user/formatters/sonic/sonic 1/chunks.gd",
             "compressor": "res://user/compressors/kosinski.gd",
-            "data": "res://test data/chunks/LZ.bin"
+            "data": "res://test data/chunks/LZ.bin",
+            "required": {
+                "art": "blocks"
+            }
         },
         {
             "name": "fg tile layout",
             "formatter": "res://user/formatters/sonic/sonic 1/tile_layout.gd",
-            "compressor": "res://user/compressors/uncompressed.gd"
+            "compressor": "res://user/compressors/uncompressed.gd",
+            "data": "res://test data/tile layout/lz1.bin",
+            "required": {
+                "tile_set": "chunks",
+                "plane": "FG"
+            }
         }
     ]
 }

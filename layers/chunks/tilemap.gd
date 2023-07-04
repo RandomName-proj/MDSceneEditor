@@ -4,6 +4,9 @@ extends TileMap
 var texture : Texture2D # the block texture
 var is_update_needed := false # if set to true, metadata of all tiles is updated 
 
+func load_texture(texture : Texture2D):
+	self.texture = texture
+
 func _use_tile_data_runtime_update(layer : int, coords : Vector2i):
 	return is_update_needed
 

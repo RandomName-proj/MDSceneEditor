@@ -9,12 +9,12 @@ func delete_all_resources():
 		kid.queue_free()
 	
 
-func add_resource(res_name: String):
-	if find_resource(res_name) != null:
-		Global.console.printerr("Resource "+"'"+res_name+"'"+" already exists")
+func add_resource(res: MDResource):
+	if find_resource(res.name) != null:
+		Global.console.printerr("Resource "+"'"+res.name+"'"+" already exists")
+	elif res.name == null: 
+		Global.console.printerr("Resource doesn't have a name")
 	else:
-		var res := MDResource.new()
-		res.name = res_name
 		add_child(res)
 
 func get_resource(res_name : String) -> MDResource:

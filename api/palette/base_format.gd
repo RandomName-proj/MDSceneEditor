@@ -8,9 +8,8 @@ var color_array := linear_color_array
 
 var colors := PackedColorArray()
 
-#const palette_length := 64
-
-#var texture := ImageTexture.create_from_image(Image.create(palette_length,1,false,Image.FORMAT_RGBAF))
+func get_format():
+	return BasePaletteFormat.new()
 
 func _init():
-	entries.append(BasePaletteEntry.new()) # idfk how but it doesn't work without this
+	entries.append(BasePaletteEntry.new()) # idfk why but it doesn't work without this

@@ -4,4 +4,4 @@
 
 [resource]
 shader = ExtResource("1_7nid1")
-shader_parameter/palette = null
+shader_parameter/palette = PackedVector3Array()

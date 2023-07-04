@@ -1,4 +1,2 @@
 extends GenericFormatter
 class_name GenericPaletteFormatter
-
-

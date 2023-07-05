@@ -4,32 +4,52 @@ class_name MDResource
 var data : BaseFormat
 var format : GenericFormatter
 var compression : GenericCompressor
-var filepath : String
+var filepath
 
-func load_data(filepath: String):
-	data = BaseFormat.new()
+func load_data(filepath):
 	
-	var new_data := FileHelper.get_data_file(filepath)
+	var filepath_arr : Array
 	
-	if new_data.is_empty():
-		Global.console.printerr("[MDResource:'{name}']: Failed to get data".format({"name":self.name}))
-		return
+	if filepath is String:
+		filepath_arr.append([filepath,0,0,0])
+	elif filepath is Array:
+		for entry in filepath:
+			if entry is String:
+				filepath_arr.append([entry,0,0,0])
+			elif entry is Array:
+				pass
+	else:
+		Global.console.printerr("[MDResource:'{name}']: Filepath {filepath} has incorrect type".format({"filepath":filepath,"type":filepath.get_class()}))
 	
-	new_data = compression.decompress(new_data) # takes a bit of time
 	
-	if new_data.is_empty():
-		Global.console.printerr("[MDResource:'{name}']: Decompression failed".format({"name":self.name}))
-		return
-	
-	var formatted_data := format.format(new_data) # formatting takes most of the time to process
-	
-	if formatted_data.entries.is_empty():
-		Global.console.printerr("[MDResource:'{name}']: Formatting failed".format({"name":self.name}))
-		return
-	
-	data = formatted_data # takes no time
-	
-	get_parent().emit_signal("resource_changed",self)
+	for path in filepath_arr:
+		
+		
+		var new_data := FileHelper.get_data_file(path[0], path[1], path[2], path[3])
+		
+		if new_data.is_empty():
+			Global.console.printerr("[MDResource:'{name}']: Failed to get data".format({"name":self.name}))
+			return
+		
+		new_data = compression.decompress(new_data) # takes a bit of time
+		
+		if new_data.is_empty():
+			Global.console.printerr("[MDResource:'{name}']: Decompression failed".format({"name":self.name}))
+			return
+		
+		var formatted_data := format.format(new_data) # formatting takes most of the time to process
+		
+		if formatted_data.entries.is_empty():
+			Global.console.printerr("[MDResource:'{name}']: Formatting failed".format({"name":self.name}))
+			return
+		
+		if data == null:
+			data = formatted_data
+		else:
+			data.merge(formatted_data)
+		
+		
+		get_parent().emit_signal("resource_changed",self)
 	
 
 func load_format(filepath: String):
@@ -61,6 +81,6 @@ func get_raw_data() -> PackedByteArray:
 	
 	return raw_data
 
-func load_filepath(path: String):
+func load_filepath(path):
 	filepath = path
 

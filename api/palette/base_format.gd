@@ -6,10 +6,8 @@ const linear_color_array : PackedByteArray = [0, 34, 68, 102, 136, 170, 204, 238
 
 var color_array := linear_color_array
 
-var colors := PackedColorArray()
-
 func get_format():
-	return BasePaletteFormat.new()
+	return "BasePaletteFormat"
 
-func _init():
-	entries.append(BasePaletteEntry.new()) # idfk why but it doesn't work without this
+func merge(merge_data: BasePaletteFormat):
+	self.entries.append_array(merge_data.entries)

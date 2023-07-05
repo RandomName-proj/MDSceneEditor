@@ -3,20 +3,20 @@
     "resources": [
         {
             "name": "palette",
-            "formatter": "res://user/formatters/palette.gd",
-            "compressor": "res://user/compressors/uncompressed.gd",
-            "data": "res://test data/palettes/Sonic+LZ.pal"
+            "formatter": "General.Palette",
+            "compressor": "Uncompressed",
+            "data": ["res://test data/palettes/sonic 1.pal","res://test data/palettes/lz.pal"]
         },
         {
             "name": "vram",
-            "formatter": "res://user/formatters/art.gd",
-            "compressor": "res://user/compressors/nemesis.gd",
+            "formatter": "General.Art",
+            "compressor": "Nemesis",
             "data": "res://test data/art/LZ.bin"
         },
         {
             "name": "blocks",
-            "formatter": "res://user/formatters/sonic/16x16_blocks.gd",
-            "compressor": "res://user/compressors/enigma.gd",
+            "formatter": "Sonic 1.Blocks",
+            "compressor": "Enigma",
             "data": "res://test data/blocks/LZ.bin",
             "required": {
                 "art": "vram"
@@ -24,8 +24,8 @@
         },
         {
             "name": "chunks",
-            "formatter": "res://user/formatters/sonic/sonic 1/chunks.gd",
-            "compressor": "res://user/compressors/kosinski.gd",
+            "formatter": "Sonic 1.Chunks",
+            "compressor": "Kosinski",
             "data": "res://test data/chunks/LZ.bin",
             "required": {
                 "art": "blocks"
@@ -33,8 +33,8 @@
         },
         {
             "name": "fg tile layout",
-            "formatter": "res://user/formatters/sonic/sonic 1/tile_layout.gd",
-            "compressor": "res://user/compressors/uncompressed.gd",
+            "formatter": "Sonic 1.Tile Layout",
+            "compressor": "Uncompressed",
             "data": "res://test data/tile layout/lz1.bin",
             "required": {
                 "tile_set": "chunks",
@@ -43,8 +43,8 @@
         },
         {
             "name": "bg tile layout",
-            "formatter": "res://user/formatters/sonic/sonic 1/tile_layout.gd",
-            "compressor": "res://user/compressors/uncompressed.gd",
+            "formatter": "Sonic 1.Tile Layout",
+            "compressor": "Uncompressed",
             "data": "res://test data/tile layout/lzbg.bin",
             "required": {
                 "tile_set": "chunks",

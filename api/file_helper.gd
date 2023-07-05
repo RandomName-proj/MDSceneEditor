@@ -12,10 +12,19 @@ static func _check_file(file: FileAccess, filepath : String):
 static func format_filepath(filepath : String):
 	return filepath
 
-static func get_data_file(filepath: String) -> PackedByteArray:
+static func get_data_file(filepath: String, start: int, end: int, step: int) -> PackedByteArray:
 	filepath = format_filepath(filepath)
 	if _check_file(FileAccess.open(filepath,FileAccess.READ), filepath):
-		return FileAccess.get_file_as_bytes(filepath)
+		var data := FileAccess.get_file_as_bytes(filepath)
+		if step != 0:
+			var offsetted_data := PackedByteArray()
+			if end == 0:
+				end = data.size()
+			for i in range(start, end, step):
+				offsetted_data.append(data[i])
+			return offsetted_data
+		else: # if step equals to 0 just load the file
+			return data
 	else:
 		return PackedByteArray()
 

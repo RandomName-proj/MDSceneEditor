@@ -3,6 +3,8 @@ extends Node2D
 @onready var res_pool : MDResourcePool = $Resources
 @onready var vram := $Hardware/VRAM
 @onready var palette := $Hardware/Palette
+@onready var fg := $CanvasLayer/HardwareContainer/HardwareViewport/FG
+@onready var bg := $CanvasLayer/HardwareContainer/HardwareViewport/BG
 @onready var scene_camera := $CanvasLayer/HardwareContainer/HardwareViewport/Camera2D
 
 var scene_name : String
@@ -15,6 +17,15 @@ func load_scene(path : String):
 	SceneLoader.load_scene(path, res_pool)
 	
 	$Engine.load_scene()
+
+func get_plane(plane : String):
+	if plane.to_upper() == "FG":
+		return fg
+	elif plane.to_upper() == "BG":
+		return bg
+	else:
+		Global.console.printerr("Error: unknown plane {plane}".format({"plane":plane}))
+		return null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

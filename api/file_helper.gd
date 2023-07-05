@@ -12,9 +12,6 @@ static func _check_file(file: FileAccess, filepath : String):
 static func format_filepath(filepath : String):
 	return filepath
 
-static func open_file(filepath : String):
-	pass
-
 static func get_data_file(filepath: String) -> PackedByteArray:
 	filepath = format_filepath(filepath)
 	if _check_file(FileAccess.open(filepath,FileAccess.READ), filepath):
@@ -23,6 +20,9 @@ static func get_data_file(filepath: String) -> PackedByteArray:
 		return PackedByteArray()
 
 static func get_format_file(filepath: String) -> GenericFormatter:
+	if not(filepath.contains("/") or filepath.contains("\\")):
+		filepath = get_format_template(filepath)
+	
 	filepath = format_filepath(filepath)
 	if _check_file(FileAccess.open(filepath,FileAccess.READ), filepath):
 		var formatter := GenericFormatter.new()
@@ -31,8 +31,14 @@ static func get_format_file(filepath: String) -> GenericFormatter:
 	else:
 		return
 
+static func get_format_template(filepath: String) -> String:
+	var game := filepath.get_slice(".", 0)
+	var res_type := filepath.get_slice(".", 1)
+	return FormatterLists.get_formatter(game, res_type)
 
 static func get_compressor_file(filepath: String) -> GenericCompressor:
+	if not(filepath.contains("/") or filepath.contains("\\")):
+		filepath = get_compressor_template(filepath)
 	filepath = format_filepath(filepath)
 	if _check_file(FileAccess.open(filepath,FileAccess.READ), filepath):
 		var compressor := GenericCompressor.new()
@@ -40,3 +46,6 @@ static func get_compressor_file(filepath: String) -> GenericCompressor:
 		return compressor
 	else:
 		return
+
+static func get_compressor_template(filepath: String) -> String:
+	return CompressorLists.get_compressor(filepath)

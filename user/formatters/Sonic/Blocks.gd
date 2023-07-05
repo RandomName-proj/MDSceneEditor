@@ -11,7 +11,7 @@ func deformat(data: BaseFormat) -> PackedByteArray:
 func _do_format(data: PackedByteArray, block_size: Vector2) -> BaseFormat:
 	var blocks := BaseBlockFormat.new()
 	
-	blocks.block_size = block_size
+	blocks.tile_size = block_size
 	
 	var blk_ind := 0
 	while blk_ind < data.size():

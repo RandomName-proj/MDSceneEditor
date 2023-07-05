@@ -2,10 +2,10 @@ extends Node
 class_name SceneLoader
 
 static func load_scene(path : String, res_pool : MDResourcePool):
-	var scene_script : Dictionary = JSON.parse_string(FileAccess.get_file_as_string(path))
+	var scene_script = JSON.parse_string(FileAccess.get_file_as_string(path))
 	
 	if scene_script == null:
-		Global.console.printerr("failed to open scene script file")
+		Global.console.printerr("Failed to open scene script file")
 		return
 	
 	#TODO: implement rom loading

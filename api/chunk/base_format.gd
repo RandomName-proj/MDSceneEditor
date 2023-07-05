@@ -1,7 +1,7 @@
 extends BaseFormat
 class_name BaseChunkFormat
 
-var chunk_size : Vector2i
+var tile_size : Vector2i
 
 func get_format():
 	return BaseChunkFormat.new()

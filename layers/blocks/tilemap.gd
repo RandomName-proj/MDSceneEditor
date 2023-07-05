@@ -20,15 +20,15 @@ func _tile_data_runtime_update(layer, coords, tile_data):
 func _use_tile_data_runtime_update(layer : int, coords : Vector2i):
 	return is_update_needed
 
-func load_blocks(data: BaseBlockFormat, tile_size : Vector2i):
+func load_tile_set(data: BaseBlockFormat, tex_tile_size : Vector2i):
 	tile_set = TileSet.new()
-	tile_set.tile_size = tile_size
+	tile_set.tile_size = tex_tile_size
 	
 	self.data = data
 	var source := TileSetAtlasSource.new()
 	source.use_texture_padding = false # tileset doesn't load the texture if it's set to true
 	source.texture = self.texture # use the vram texture
-	source.texture_region_size = tile_size 
+	source.texture_region_size = tile_set.tile_size 
 	
 	
 	# make a tileset out of texture
@@ -44,10 +44,10 @@ func load_blocks(data: BaseBlockFormat, tile_size : Vector2i):
 	# place blocks linearly from left to right
 	
 	for block_ind in range(data.entries.size()):
-		for y in range(data.block_size.y):
-			for x in range(data.block_size.x):
-				var tile : BaseBlockEntry.Tile = data.entries[block_ind].tiles[x+y*data.block_size.x]
-				set_cell(0, Vector2(x+block_ind*data.block_size.x,y),0,Vector2(tile.tile_offset,0),tile.flags&0b11)
+		for y in range(data.tile_size.y):
+			for x in range(data.tile_size.x):
+				var tile : BaseBlockEntry.Tile = data.entries[block_ind].tiles[x+y*data.tile_size.x]
+				set_cell(0, Vector2(x+block_ind*data.tile_size.x,y),0,Vector2(tile.tile_offset,0),tile.flags&0b11)
 	
 	
 	is_update_needed = true

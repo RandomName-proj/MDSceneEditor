@@ -1,10 +1,15 @@
 {
 	"Sonic 1": {
-		"chunks": "res://user/formatters/Sonic/Sonic 1/Chunks.gd",
-		"blocks": "res://user/formatters/Sonic/16x16 Blocks.gd"
+		"Chunks": "res://user/formatters/sonic/sonic 1/chunks.gd",
+		"Blocks": "res://user/formatters/sonic/16x16_blocks.gd",
+		"Tile Layout": "res://user/formatters/sonic/sonic 1/tile_layout.gd"
 	},
 	"Sonic 2": {
-		"chunks": "res://user/formatters/Sonic/Sonic 2/Chunks.gd",
-		"blocks": "res://user/formatters/Sonic/16x16 Blocks.gd"
+		"Chunks": "res://user/formatters/sonic/sonic 2/chunks.gd",
+		"Blocks": "res://user/formatters/Sonic/16x16_blocks.gd"
+	},
+	"General": {
+		"Palette": "res://user/formatters/general/palette.gd",
+		"Art": "res://user/formatters/general/art.gd"
 	}
 }

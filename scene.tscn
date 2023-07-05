@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://6kbjpm4uk0ud"]
+[gd_scene load_steps=12 format=3 uid="uid://6kbjpm4uk0ud"]
 
 [ext_resource type="Script" path="res://scene.gd" id="1_on2og"]
 [ext_resource type="Script" path="res://palette_viewer.gd" id="2_fd1k4"]
-[ext_resource type="PackedScene" uid="uid://brhowqn8wxhyk" path="res://layers/tile_layout/tile_layout.tscn" id="5_twxgl"]
+[ext_resource type="PackedScene" uid="uid://dvystywqve7h8" path="res://planes/plane.tscn" id="3_kr2vw"]
 [ext_resource type="Script" path="res://back_buffer_copy.gd" id="6_44h1i"]
 [ext_resource type="Script" path="res://api/engines/engine.gd" id="7_vheq0"]
 [ext_resource type="Script" path="res://api/resource_pool.gd" id="8_470xv"]
 [ext_resource type="Script" path="res://hardware/vram.gd" id="9_3hdhi"]
+[ext_resource type="Script" path="res://layers/blocks/block_sets.gd" id="9_fvj5h"]
+[ext_resource type="Script" path="res://layers/chunks/chunk_sets.gd" id="10_k6bur"]
 [ext_resource type="Script" path="res://hardware/palette.gd" id="10_qjsrd"]
 
 [sub_resource type="GDScript" id="GDScript_r6ob0"]
@@ -60,7 +62,9 @@ region_enabled = true
 region_rect = Rect2(0, 0, 32, 8)
 script = SubResource("GDScript_r6ob0")
 
-[node name="TileLayout" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("5_twxgl")]
+[node name="BG" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("3_kr2vw")]
+
+[node name="FG" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("3_kr2vw")]
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
 texture_filter = 1
@@ -92,4 +96,8 @@ script = ExtResource("9_3hdhi")
 [node name="Palette" type="Node" parent="Hardware"]
 script = ExtResource("10_qjsrd")
 
-[node name="TileSets" type="Node" parent="."]
+[node name="BlockSets" type="Node" parent="."]
+script = ExtResource("9_fvj5h")
+
+[node name="ChunkSets" type="Node" parent="."]
+script = ExtResource("10_k6bur")

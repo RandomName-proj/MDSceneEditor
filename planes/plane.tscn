@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvystywqve7h8"]
+
+[ext_resource type="Script" path="res://planes/plane.gd" id="1_megm5"]
+
+[node name="Plane" type="Node2D"]
+script = ExtResource("1_megm5")
+
+[node name="TileLayouts" type="Node" parent="."]

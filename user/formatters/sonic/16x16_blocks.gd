@@ -1,4 +1,4 @@
-extends "res://user/formatters/Sonic/Blocks.gd"
+extends "res://user/formatters/sonic/blocks.gd"
 
 const block_size := Vector2(2,2)
 

@@ -3,13 +3,12 @@ class_name StandartEngine
 
 @onready var paletter_node := $"../CanvasLayer/HardwareContainer/HardwareViewport/BackBufferCopy/Paletter"
 @onready var vram_view_node := $"../CanvasLayer/HardwareContainer/HardwareViewport/VRAMView"
-@onready var tile_layout_node := $"../CanvasLayer/HardwareContainer/HardwareViewport/TileLayout"
 
-@onready var tile_sets := $"../TileSets"
+@onready var block_sets := $"../BlockSets"
+@onready var chunk_sets := $"../ChunkSets"
 
 @onready var blocks_scene = preload("res://layers/blocks/blocks.tscn")
 @onready var chunks_scene = preload("res://layers/chunks/chunks.tscn")
-@onready var tile_layout_scene = preload("res://layers/tile_layout/tile_layout.tscn")
 
 
 func load_scene():
@@ -18,17 +17,13 @@ func load_scene():
 	
 	for res in owner.res_pool.get_all_resources():
 		if (res.data.get_format() is BaseBlockFormat):
-			var blocks_node := blocks_scene.instantiate()
-			blocks_node.name = res.name
-			tile_sets.add_child(blocks_node)
+			block_sets.add_tile_set(res.name)
 		
 		elif (res.data.get_format() is BaseChunkFormat):
-			var chunks_node := chunks_scene.instantiate()
-			chunks_node.name = res.name
-			tile_sets.add_child(chunks_node)
+			chunk_sets.add_tile_set(res.name)
 		
 		elif (res.data.get_format() is BaseTileLayoutFormat):
-			pass
+			owner.get_plane(res.data.get_required("plane")).add_tile_layout(res.name)
 	
 	# loading the data
 	for res in owner.res_pool.get_all_resources():
@@ -39,24 +34,25 @@ func load_scene():
 			owner.vram.load_vram(res.data, 0)
 		
 		elif (res.data.get_format() is BaseBlockFormat):
-			var blocks_node := tile_sets.find_child(res.name, false, false) 
+			var blocks_node = block_sets.find_tile_set(res.name) 
 			blocks_node.load_texture(owner.vram.texture)
-			blocks_node.load_blocks(res.data, Vector2i(8,8))
+			blocks_node.load_tile_set(res.data, Vector2i(8,8))
 		
 		elif (res.data.get_format() is BaseChunkFormat):
 			var blocks_res_name : String = res.data.get_required("art")
-			var blocks_node := tile_sets.find_child(blocks_res_name, false, false) 
+			var blocks_node = block_sets.find_tile_set(blocks_res_name) 
 			
-			var chunks_node = tile_sets.find_child(res.name, false, false) 
-			chunks_node.load_texture(blocks_node.get_block_texture())
-			chunks_node.load_chunks(res.data,blocks_node.get_block_size())
+			var chunks_node = chunk_sets.find_tile_set(res.name) 
+			chunks_node.load_texture(blocks_node.get_tile_texture())
+			chunks_node.load_tile_set(res.data,blocks_node.get_tile_size())
 		
 		elif (res.data.get_format() is BaseTileLayoutFormat):
 			var chunks_res_name : String = res.data.get_required("tile_set")
-			var chunks_node := tile_sets.find_child(chunks_res_name, false, false) 
+			var chunks_node = chunk_sets.find_tile_set(chunks_res_name)
 			
-			tile_layout_node.load_texture(chunks_node.get_chunk_texture())
-			tile_layout_node.load_tile_layout(res.data,Vector2(256,256))
+			var tile_layout_node = owner.get_plane(res.data.get_required("plane")).find_tile_layout(res.name)
+			tile_layout_node.load_texture(chunks_node.get_tile_texture())
+			tile_layout_node.load_tile_layout(res.data,chunks_node.get_tile_size())
 		
 	
 	vram_view_node.texture = owner.vram.texture

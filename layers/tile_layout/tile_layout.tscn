@@ -7,5 +7,6 @@
 script = ExtResource("1_7ekcs")
 
 [node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
 format = 2
 script = ExtResource("2_uxd2d")

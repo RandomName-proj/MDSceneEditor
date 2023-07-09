@@ -5,4 +5,4 @@
 [node name="Plane" type="Node2D"]
 script = ExtResource("1_megm5")
 
-[node name="TileLayouts" type="Node" parent="."]
+[node name="TileLayouts" type="Node2D" parent="."]

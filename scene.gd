@@ -14,9 +14,9 @@ func _ready():
 
 func load_scene(path : String):
 	
-	SceneLoader.load_scene(path, res_pool)
+	if (SceneLoader.load_scene(path, res_pool)):
+		$Engine.load_scene()
 	
-	$Engine.load_scene()
 
 func get_plane(plane : String):
 	if plane.to_upper() == "FG":
@@ -24,7 +24,7 @@ func get_plane(plane : String):
 	elif plane.to_upper() == "BG":
 		return bg
 	else:
-		Global.console.printerr("Error: unknown plane {plane}".format({"plane":plane}))
+		Global.console.printerr("Error: unknown plane '{plane}'".format({"plane":plane}))
 		return null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -43,28 +43,28 @@ func load_data(filepath):
 			Global.console.printerr("[MDResource:'{name}']: Formatting failed".format({"name":self.name}))
 			return
 		
-		if data == null:
-			data = formatted_data
-		else:
-			data.merge(formatted_data)
+		data.merge(formatted_data)
 		
 		
-		get_parent().emit_signal("resource_changed",self)
 	
 
-func load_format(filepath: String):
+func load_format(filepath: String) -> bool:
 	format = FileHelper.get_format_file(filepath)
 	if format == null:
 		Global.console.printerr("[MDResource:'{name}']: Failed to load formatter at filepath: {filepath}".format({"name":self.name,"filepath":filepath}))
-	else:
-		get_parent().emit_signal("resource_changed",self)
+		return false
+	
+	data = format.get_base_format()
+	
+	return true
 
-func load_compression(filepath: String):
+func load_compression(filepath: String) -> bool:
 	compression = FileHelper.get_compressor_file(filepath)
 	if compression == null:
 		Global.console.printerr("[MDResource:'{name}']: Failed to load compressor at filepath: {filepath}".format({"name":self.name,"filepath":filepath}))
-	else:
-		get_parent().emit_signal("resource_changed",self)
+		return false
+	
+	return true
 
 func get_raw_data() -> PackedByteArray:
 	var raw_data := format.deformat(data)

@@ -12,10 +12,20 @@ func _process(delta):
 	pass
 
 func print(text):
-	text_node.append_text(text+"\n")
+	if Global.ENABLE_CONSOLE:
+		text_node.append_text(text+"\n")
+	else:
+		print(text)
 
 func printerr(text):
-	text_node.append_text("[color=red]"+"• "+text+"[/color]"+"\n")
+	if Global.ENABLE_CONSOLE:
+		text_node.append_text("[color=red]"+"• "+text+"[/color]"+"\n")
+	else:
+		printerr(text)
 
 func printwarn(text):
-	text_node.append_text("[color=yellow]"+"• "+text+"[/color]"+"\n")
+	if Global.ENABLE_CONSOLE:
+		text_node.append_text("[color=yellow]"+"• "+text+"[/color]"+"\n")
+	else:
+		print("Warning: ", text)
+		push_warning(text)

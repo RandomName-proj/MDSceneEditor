@@ -11,6 +11,7 @@ func _init(chunk_size : Vector2, solid_layers : int):
 var blocks : Array[Block]
 
 class Block:
+	
 	var index : int = 0 # index in block array
 	
 	var flags : int = 0

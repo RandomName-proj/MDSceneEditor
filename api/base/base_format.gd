@@ -11,9 +11,3 @@ func merge(merge_data):
 func get_format():
 	Global.console.printerr("The format is not defined")
 	return "BaseFormat"
-
-func get_required(field : String):
-	if required.has(field):
-		return required[field]
-	else:
-		Global.console.printerr("Field {field} wasn't found".format({"field": field}))

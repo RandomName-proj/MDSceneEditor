@@ -6,7 +6,8 @@
 	},
 	"Sonic 2": {
 		"Chunks": "res://user/formatters/sonic/sonic 2/chunks.gd",
-		"Blocks": "res://user/formatters/Sonic/16x16_blocks.gd"
+		"Blocks": "res://user/formatters/sonic/16x16_blocks.gd",
+		"Tile Layout": "res://user/formatters/sonic/sonic 2/tile_layout.gd"
 	},
 	"General": {
 		"Palette": "res://user/formatters/general/palette.gd",

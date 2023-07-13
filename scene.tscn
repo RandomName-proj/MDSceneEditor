@@ -1,29 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://6kbjpm4uk0ud"]
+[gd_scene load_steps=14 format=3 uid="uid://6kbjpm4uk0ud"]
 
 [ext_resource type="Script" path="res://scene.gd" id="1_on2og"]
 [ext_resource type="Script" path="res://palette_viewer.gd" id="2_fd1k4"]
 [ext_resource type="PackedScene" uid="uid://dvystywqve7h8" path="res://planes/plane.tscn" id="3_kr2vw"]
+[ext_resource type="Script" path="res://vram_viewer.gd" id="3_ycbyb"]
+[ext_resource type="Script" path="res://block_viewer.gd" id="6_34lfx"]
 [ext_resource type="Script" path="res://back_buffer_copy.gd" id="6_44h1i"]
+[ext_resource type="Script" path="res://chunk_viewer.gd" id="6_i53pi"]
 [ext_resource type="Script" path="res://api/engines/engine.gd" id="7_vheq0"]
 [ext_resource type="Script" path="res://api/resource_pool.gd" id="8_470xv"]
 [ext_resource type="Script" path="res://hardware/vram.gd" id="9_3hdhi"]
 [ext_resource type="Script" path="res://layers/blocks/block_sets.gd" id="9_fvj5h"]
 [ext_resource type="Script" path="res://layers/chunks/chunk_sets.gd" id="10_k6bur"]
 [ext_resource type="Script" path="res://hardware/palette.gd" id="10_qjsrd"]
-
-[sub_resource type="GDScript" id="GDScript_r6ob0"]
-script/source = "extends Sprite2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
 
 [node name="Scene" type="Node2D"]
 script = ExtResource("1_on2og")
@@ -47,6 +36,12 @@ render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
 
+[node name="BG" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("3_kr2vw")]
+texture_filter = 2
+
+[node name="FG" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("3_kr2vw")]
+texture_filter = 2
+
 [node name="PaletteView" type="Sprite2D" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
 visible = false
 texture_filter = 1
@@ -60,13 +55,17 @@ position = Vector2(300, 200)
 scale = Vector2(4, 4)
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 8)
-script = SubResource("GDScript_r6ob0")
+script = ExtResource("3_ycbyb")
 
-[node name="BG" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("3_kr2vw")]
-texture_filter = 2
+[node name="BlockView" type="TextureRect" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
+visible = false
+texture_filter = 1
+script = ExtResource("6_34lfx")
 
-[node name="FG" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("3_kr2vw")]
-texture_filter = 2
+[node name="ChunkView" type="TextureRect" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
+visible = false
+texture_filter = 1
+script = ExtResource("6_i53pi")
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
 texture_filter = 1

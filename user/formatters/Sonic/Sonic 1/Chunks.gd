@@ -2,7 +2,7 @@ extends GenericChunkFormatter
 
 const chunk_size := Vector2(16,16)
 
-func format(data: PackedByteArray) -> BaseFormat:
+func format(data: PackedByteArray, required : Dictionary, parameters : Dictionary) -> BaseFormat:
 	var chunks := BaseChunkFormat.new()
 	
 	chunks.tile_size = chunk_size
@@ -30,7 +30,7 @@ func format(data: PackedByteArray) -> BaseFormat:
 	
 	return chunks
 
-func deformat(data: BaseFormat) -> PackedByteArray:
+func deformat(data: BaseFormat, required : Dictionary, parameters : Dictionary) -> PackedByteArray:
 	
 	var raw_data := PackedByteArray()
 	

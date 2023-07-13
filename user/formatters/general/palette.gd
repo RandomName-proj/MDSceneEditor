@@ -10,7 +10,7 @@ func md_color_to_rgb8(md_color: int, color_array : PackedByteArray) -> Color:
 	
 	return Color8(red,green,blue)
 
-func format(data: PackedByteArray) -> BaseFormat:
+func format(data: PackedByteArray, required : Dictionary, parameters : Dictionary) -> BaseFormat:
 	var palette := BasePaletteFormat.new()
 	
 	
@@ -22,7 +22,7 @@ func format(data: PackedByteArray) -> BaseFormat:
 	
 	return palette
 
-func deformat(data: BaseFormat) -> PackedByteArray:
+func deformat(data: BaseFormat, required : Dictionary, parameters : Dictionary) -> PackedByteArray:
 	var raw_data = PackedByteArray()
 	
 	Global.console.printerr("I'll implement it later [GenericPaletteFormatter]")

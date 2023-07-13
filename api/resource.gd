@@ -37,7 +37,9 @@ func load_data(filepath):
 			Global.console.printerr("[MDResource:'{name}']: Decompression failed".format({"name":self.name}))
 			return
 		
-		var formatted_data := format.format(new_data) # formatting takes most of the time to process
+		var formatted_data := format.format(new_data, data.required, data.parameters) # formatting takes most of the time to process
+		formatted_data.required = data.required
+		formatted_data.parameters = data.parameters
 		
 		if formatted_data.entries.is_empty():
 			Global.console.printerr("[MDResource:'{name}']: Formatting failed".format({"name":self.name}))
@@ -67,7 +69,7 @@ func load_compression(filepath: String) -> bool:
 	return true
 
 func get_raw_data() -> PackedByteArray:
-	var raw_data := format.deformat(data)
+	var raw_data := format.deformat(data, data.required, data.parameters)
 	
 	if raw_data.is_empty():
 		Global.console.printerr("[MDResource:'{name}']: Deformatting failed".format({"name":self.name}))

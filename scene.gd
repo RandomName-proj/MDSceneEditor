@@ -6,8 +6,12 @@ extends Node2D
 @onready var fg := $CanvasLayer/HardwareContainer/HardwareViewport/FG
 @onready var bg := $CanvasLayer/HardwareContainer/HardwareViewport/BG
 @onready var scene_camera := $CanvasLayer/HardwareContainer/HardwareViewport/Camera2D
+@onready var block_sets := $BlockSets
+@onready var chunk_sets := $ChunkSets
 
 var scene_name : String
+
+signal loaded_scene
 
 func _ready():
 	scene_camera.position += get_viewport_rect().size/2
@@ -16,6 +20,8 @@ func load_scene(path : String):
 	
 	if (SceneLoader.load_scene(path, res_pool)):
 		$Engine.load_scene()
+	
+	emit_signal("loaded_scene")
 	
 
 func get_plane(plane : String):

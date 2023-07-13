@@ -1,10 +1,10 @@
 extends GenericBlockFormatter
 
-func format(data: PackedByteArray) -> BaseFormat:
+func format(data: PackedByteArray, required : Dictionary, parameters : Dictionary) -> BaseFormat:
 	Global.console.printerr("This formatter isn't meant to be used")
 	return BaseFormat.new()
 
-func deformat(data: BaseFormat) -> PackedByteArray:
+func deformat(data: BaseFormat, required : Dictionary, parameters : Dictionary) -> PackedByteArray:
 	Global.console.printerr("This formatter isn't meant to be used")
 	return PackedByteArray()
 

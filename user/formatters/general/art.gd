@@ -1,6 +1,6 @@
 extends GenericArtFormatter
 
-func format(data: PackedByteArray) -> BaseFormat:
+func format(data: PackedByteArray, required : Dictionary, parameters : Dictionary) -> BaseFormat:
 	var art := BaseArtFormat.new()
 	
 	for byte in data:
@@ -11,7 +11,7 @@ func format(data: PackedByteArray) -> BaseFormat:
 	
 	return art
 
-func deformat(data: BaseFormat) -> PackedByteArray:
+func deformat(data: BaseFormat, required : Dictionary, parameters : Dictionary) -> PackedByteArray:
 	var raw_data = PackedByteArray()
 	
 	for ind in range(0, data.size(),2):

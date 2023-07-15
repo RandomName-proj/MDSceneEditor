@@ -50,6 +50,15 @@
                 "tile_set": "chunks",
                 "plane": "BG"
             }
+        },
+        {
+            "name": "object layout",
+            "formatter": "Sonic 1.Object Layout",
+            "compressor": "Uncompressed",
+            "data": "res://test data/object layout/lz1.bin",
+            "parameters": {
+                "object_layer_script": "res://scenes/object scripts/s1.json"
+            }
         }
     ]
 }

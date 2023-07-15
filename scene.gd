@@ -8,6 +8,8 @@ extends Node2D
 @onready var scene_camera := $CanvasLayer/HardwareContainer/HardwareViewport/Camera2D
 @onready var block_sets := $BlockSets
 @onready var chunk_sets := $ChunkSets
+@onready var object_layer_sets := $CanvasLayer/HardwareContainer/HardwareViewport/ObjectLayerSets
+
 
 var scene_name : String
 

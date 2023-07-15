@@ -19,7 +19,8 @@ func load_scene():
 				owner.chunk_sets.add_tile_set(res.name)
 			"BaseTileLayoutFormat":
 				owner.get_plane(res.data.required["plane"]).add_tile_layout(res.name)
-			
+			"BaseObjectLayoutFormat":
+				owner.object_layer_sets.add_object_layer(res.name)
 	
 	# loading the data
 	for res in owner.res_pool.get_all_resources():
@@ -46,6 +47,9 @@ func load_scene():
 				var tile_layout_node = owner.get_plane(res.data.required["plane"]).find_tile_layout(res.name)
 				tile_layout_node.load_texture(chunks_node.get_tile_texture())
 				tile_layout_node.load_tile_layout(res.data,chunks_node.get_tile_size())
+			"BaseObjectLayoutFormat":
+				var object_layer_node = owner.object_layer_sets.find_object_layer(res.name)
+				object_layer_node.load_object_layout(res.data, owner)
 		
 	
 	paletter_node.material = owner.palette.material

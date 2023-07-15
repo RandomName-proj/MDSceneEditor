@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://6kbjpm4uk0ud"]
+[gd_scene load_steps=15 format=3 uid="uid://6kbjpm4uk0ud"]
 
 [ext_resource type="Script" path="res://scene.gd" id="1_on2og"]
 [ext_resource type="Script" path="res://palette_viewer.gd" id="2_fd1k4"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://back_buffer_copy.gd" id="6_44h1i"]
 [ext_resource type="Script" path="res://chunk_viewer.gd" id="6_i53pi"]
 [ext_resource type="Script" path="res://api/engines/engine.gd" id="7_vheq0"]
+[ext_resource type="Script" path="res://layers/object/object_layers_sets.gd" id="8_4mr0w"]
 [ext_resource type="Script" path="res://api/resource_pool.gd" id="8_470xv"]
 [ext_resource type="Script" path="res://hardware/vram.gd" id="9_3hdhi"]
 [ext_resource type="Script" path="res://layers/blocks/block_sets.gd" id="9_fvj5h"]
@@ -67,7 +68,12 @@ visible = false
 texture_filter = 1
 script = ExtResource("6_i53pi")
 
+[node name="ObjectLayerSets" type="Node2D" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
+script = ExtResource("8_4mr0w")
+
 [node name="BackBufferCopy" type="BackBufferCopy" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
+z_index = 99
+z_as_relative = false
 texture_filter = 1
 copy_mode = 2
 rect = Rect2(0, 0, 0, 0)

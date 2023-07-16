@@ -5,7 +5,7 @@ extends Node2D
 var mdse_scene : Node2D
 var object_layer_script : Dictionary
 
-func load_object_layer_script(script : Dictionary):
+func load_object_layer_script(script : String):
 	pass
 
 func load_object_layout(data: BaseObjectLayoutFormat, mdse_scene : Node2D):
@@ -17,5 +17,6 @@ func load_object_layout(data: BaseObjectLayoutFormat, mdse_scene : Node2D):
 			object_node.id = obj.id
 			object_node.flags = obj.flags
 			object_node.additional = obj.additional
-			object_node.object_script = {}
+			if object_layer_script.has(obj.id):
+				object_node.object_script = object_layer_script[obj.id]
 			object_node.mdse_scene = mdse_scene

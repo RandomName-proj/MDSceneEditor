@@ -1,19 +1,16 @@
 {
-    "resources": [
-        {
-            "name": "palette",
+    "resources": {
+        "palette": {
             "formatter": "General.Palette",
             "compressor": "Uncompressed",
             "data": ["res://test data/palettes/sonic 1.pal","res://test data/palettes/ghz.pal"]
         },
-        {
-            "name": "vram",
+        "vram": {
             "formatter": "General.Art",
             "compressor": "Nemesis",
             "data": ["res://test data/art/GHZ1.bin","res://test data/art/GHZ2.bin"]
         },
-        {
-            "name": "blocks",
+        "blocks": {
             "formatter": "Sonic 1.Blocks",
             "compressor": "Enigma",
             "data": "res://test data/blocks/GHZ.bin",
@@ -21,8 +18,7 @@
                 "art": "vram"
             }
         },
-        {
-            "name": "chunks",
+        "chunks": {
             "formatter": "Sonic 1.Chunks",
             "compressor": "Kosinski",
             "data": "res://test data/chunks/GHZ.bin",
@@ -30,8 +26,7 @@
                 "art": "blocks"
             }
         },
-        {
-            "name": "fg tile layout",
+        "fg tile layout": {
             "formatter": "Sonic 1.Tile Layout",
             "compressor": "Uncompressed",
             "data": "res://test data/tile layout/ghz1.bin",
@@ -40,8 +35,7 @@
                 "plane": "FG"
             }
         },
-        {
-            "name": "bg tile layout",
+        "bg tile layout": {
             "formatter": "Sonic 1.Tile Layout",
             "compressor": "Uncompressed",
             "data": "res://test data/tile layout/ghzbg.bin",
@@ -50,5 +44,5 @@
                 "plane": "BG"
             }
         }
-    ]
+    }
 }

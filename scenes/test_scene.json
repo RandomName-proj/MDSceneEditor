@@ -1,20 +1,17 @@
 {
     "rom": "placeholder",
-    "resources": [
-        {
-            "name": "palette",
+    "resources": {
+        "palette": {
             "formatter": "General.Palette",
             "compressor": "Uncompressed",
             "data": ["res://test data/palettes/sonic 1.pal","res://test data/palettes/lz.pal"]
         },
-        {
-            "name": "vram",
+        "vram": {
             "formatter": "General.Art",
             "compressor": "Nemesis",
             "data": "res://test data/art/LZ.bin"
         },
-        {
-            "name": "blocks",
+        "blocks": {
             "formatter": "Sonic 1.Blocks",
             "compressor": "Enigma",
             "data": "res://test data/blocks/LZ.bin",
@@ -22,8 +19,7 @@
                 "art": "vram"
             }
         },
-        {
-            "name": "chunks",
+        "chunks": {
             "formatter": "Sonic 1.Chunks",
             "compressor": "Kosinski",
             "data": "res://test data/chunks/LZ.bin",
@@ -31,8 +27,7 @@
                 "art": "blocks"
             }
         },
-        {
-            "name": "fg tile layout",
+        "fg tile layout": {
             "formatter": "Sonic 1.Tile Layout",
             "compressor": "Uncompressed",
             "data": "res://test data/tile layout/lz1.bin",
@@ -41,8 +36,7 @@
                 "plane": "FG"
             }
         },
-        {
-            "name": "bg tile layout",
+        "bg tile layout": {
             "formatter": "Sonic 1.Tile Layout",
             "compressor": "Uncompressed",
             "data": "res://test data/tile layout/lzbg.bin",
@@ -51,8 +45,7 @@
                 "plane": "BG"
             }
         },
-        {
-            "name": "object layout",
+        "object layout": {
             "formatter": "Sonic 1.Object Layout",
             "compressor": "Uncompressed",
             "data": "res://test data/object layout/lz1.bin",
@@ -60,5 +53,5 @@
                 "object_layer_script": "res://scenes/object scripts/s1.json"
             }
         }
-    ]
+    }
 }

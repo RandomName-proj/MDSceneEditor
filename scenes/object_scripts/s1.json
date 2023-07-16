@@ -1,6 +1,15 @@
 {
     "objects": {
-        "id": "38",
-        "name": "Monitor"
+        "38": {
+            "name": "Monitor",
+            "mappings": "monitor mappings"
+        }
+    },
+    "resources": {
+        "monitor mappings": {
+            "formatter": "Sonic 1.Mappings",
+            "compressor": "Uncompressed",
+            "data": "res://test data/object mappings/Monitor(S1).bin"
+        }
     }
 }

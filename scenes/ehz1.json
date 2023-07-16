@@ -1,19 +1,16 @@
 {
-    "resources": [
-        {
-            "name": "palette",
+    "resources": {
+        "palette": {
             "formatter": "General.Palette",
             "compressor": "Uncompressed",
             "data": ["res://test data/palettes/SonicAndTails.bin","res://test data/palettes/EHZ.bin"]
         },
-        {
-            "name": "vram",
+        "vram": {
             "formatter": "General.Art",
             "compressor": "Kosinski",
             "data": ["res://test data/art/EHZ_HTZ.bin"]
         },
-        {
-            "name": "blocks",
+        "blocks": {
             "formatter": "Sonic 2.Blocks",
             "compressor": "Kosinski",
             "data": "res://test data/blocks/EHZ.bin",
@@ -21,8 +18,7 @@
                 "art": "vram"
             }
         },
-        {
-            "name": "chunks",
+        "chunks": {
             "formatter": "Sonic 2.Chunks",
             "compressor": "Kosinski",
             "data": "res://test data/chunks/EHZ_HTZ.bin",
@@ -30,8 +26,7 @@
                 "art": "blocks"
             }
         },
-        {
-            "name": "fg tile layout",
+        "fg tile layout": {
             "formatter": "Sonic 2.Tile Layout",
             "compressor": "Kosinski",
             "data": "res://test data/tile layout/EHZ_1.bin",
@@ -40,8 +35,7 @@
                 "plane": "FG"
             }
         },
-        {
-            "name": "bg tile layout",
+        "bg tile layout": {
             "formatter": "Sonic 2.Tile Layout",
             "compressor": "Kosinski",
             "data": "res://test data/tile layout/EHZ_1.bin",
@@ -50,5 +44,5 @@
                 "plane": "BG"
             }
         }
-    ]
+    }
 }

@@ -10,7 +10,7 @@ class Mapping:
 	
 	var x_pos : int
 	var y_pos : int
-	var width : int
-	var height : int
+	var size : int
 	var flags : int
+	var tile_offset : int = 0 # vram offset in tiles
 	var additional : Dictionary

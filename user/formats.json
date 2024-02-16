@@ -4,7 +4,7 @@
 		"Blocks": "res://user/formatters/sonic/16x16_blocks.gd",
 		"Tile Layout": "res://user/formatters/sonic/sonic 1/tile_layout.gd",
 		"Object Layout": "res://user/formatters/sonic/sonic 1/object_layout.gd",
-		"Object Mappings": "res://user/formatters/sonic/sonic 1/object_layout.gd"
+		"Object Mappings": "res://user/formatters/sonic/sonic 1/object_mappings.gd"
 	},
 	"Sonic 2": {
 		"Chunks": "res://user/formatters/sonic/sonic 2/chunks.gd",

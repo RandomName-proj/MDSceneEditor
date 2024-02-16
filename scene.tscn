@@ -37,10 +37,16 @@ render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
 
-[node name="BG" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("3_kr2vw")]
+[node name="BG_High" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("3_kr2vw")]
 texture_filter = 2
 
-[node name="FG" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("3_kr2vw")]
+[node name="BG_Low" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("3_kr2vw")]
+texture_filter = 2
+
+[node name="FG_High" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("3_kr2vw")]
+texture_filter = 2
+
+[node name="FG_Low" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("3_kr2vw")]
 texture_filter = 2
 
 [node name="PaletteView" type="Sprite2D" parent="CanvasLayer/HardwareContainer/HardwareViewport"]

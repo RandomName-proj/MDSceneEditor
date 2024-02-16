@@ -1,0 +1,2 @@
+Add common shortcuts to MDLC/MDSE https://github.com/kirjavascript/Flex2/issues/18
+Rename templates to namespaces

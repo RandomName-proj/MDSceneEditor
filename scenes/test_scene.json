@@ -1,57 +1,57 @@
 {
-    "rom": "placeholder",
-    "resources": {
-        "palette": {
-            "formatter": "General.Palette",
-            "compressor": "Uncompressed",
-            "data": ["res://test data/palettes/sonic 1.pal","res://test data/palettes/lz.pal"]
-        },
-        "vram": {
-            "formatter": "General.Art",
-            "compressor": "Nemesis",
-            "data": "res://test data/art/LZ.bin"
-        },
-        "blocks": {
-            "formatter": "Sonic 1.Blocks",
-            "compressor": "Enigma",
-            "data": "res://test data/blocks/LZ.bin",
-            "required": {
-                "art": "vram"
-            }
-        },
-        "chunks": {
-            "formatter": "Sonic 1.Chunks",
-            "compressor": "Kosinski",
-            "data": "res://test data/chunks/LZ.bin",
-            "required": {
-                "art": "blocks"
-            }
-        },
-        "fg tile layout": {
-            "formatter": "Sonic 1.Tile Layout",
-            "compressor": "Uncompressed",
-            "data": "res://test data/tile layout/lz1.bin",
-            "required": {
-                "tile_set": "chunks",
-                "plane": "FG"
-            }
-        },
-        "bg tile layout": {
-            "formatter": "Sonic 1.Tile Layout",
-            "compressor": "Uncompressed",
-            "data": "res://test data/tile layout/lzbg.bin",
-            "required": {
-                "tile_set": "chunks",
-                "plane": "BG"
-            }
-        },
-        "object layout": {
-            "formatter": "Sonic 1.Object Layout",
-            "compressor": "Uncompressed",
-            "data": "res://test data/object layout/lz1.bin",
-            "parameters": {
-                "object_layer_script": "res://scenes/object scripts/s1.json"
-            }
-        }
-    }
+	"rom": "placeholder",
+	"resources": {
+		"palette": {
+			"formatter": "General.Palette",
+			"compressor": "Uncompressed",
+			"data": ["res://test data/palettes/sonic 1.pal","res://test data/palettes/lz.pal"]
+		},
+		"vram": {
+			"formatter": "General.Art",
+			"compressor": "Nemesis",
+			"data": "res://test data/art/LZ.bin"
+		},
+		"blocks": {
+			"formatter": "Sonic 1.Blocks",
+			"compressor": "Enigma",
+			"data": "res://test data/blocks/LZ.bin",
+			"required": {
+				"art": "vram"
+			}
+		},
+		"chunks": {
+			"formatter": "Sonic 1.Chunks",
+			"compressor": "Kosinski",
+			"data": "res://test data/chunks/LZ.bin",
+			"required": {
+				"art": "blocks"
+			}
+		},
+		"fg tile layout": {
+			"formatter": "Sonic 1.Tile Layout",
+			"compressor": "Uncompressed",
+			"data": "res://test data/tile layout/lz1.bin",
+			"required": {
+				"tile_set": "chunks",
+				"plane": "FG"
+			}
+		},
+		"bg tile layout": {
+			"formatter": "Sonic 1.Tile Layout",
+			"compressor": "Uncompressed",
+			"data": "res://test data/tile layout/lzbg.bin",
+			"required": {
+				"tile_set": "chunks",
+				"plane": "BG"
+			}
+		},
+		"object layout": {
+			"formatter": "Sonic 1.Object Layout",
+			"compressor": "Uncompressed",
+			"data": "res://test data/object layout/lz1.bin",
+			"parameters": {
+				"object_layer_script": "res://scenes/object scripts/s1.json"
+			}
+		}
+	}
 }

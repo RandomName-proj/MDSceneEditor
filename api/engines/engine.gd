@@ -11,7 +11,7 @@ func load_scene():
 	
 	# creating the nodes for data
 	
-	for res in owner.res_pool.get_all_resources():
+	for res : MDResource in owner.res_pool.get_all_resources():
 		match res.data.get_format():
 			"BaseBlockFormat":
 				owner.block_sets.add_tile_set(res.name)
@@ -23,12 +23,18 @@ func load_scene():
 				owner.object_layer_sets.add_object_layer(res.name)
 	
 	# loading the data
-	for res in owner.res_pool.get_all_resources():
+	for res : MDResource in owner.res_pool.get_all_resources():
 		match res.data.get_format():
 			"BasePaletteFormat":
 				owner.palette.load_palette(res.data)
 			"BaseArtFormat":
-				owner.vram.load_vram(res.data, 0)
+				
+				var offset := 0
+				
+				if res.data.parameters["offset"] != null:
+					offset = int(res.data.parameters["offset"])
+				
+				owner.vram.load_vram(res.data, offset)
 			"BaseBlockFormat":
 				var blocks_node = owner.block_sets.find_tile_set(res.name) 
 				blocks_node.load_texture(owner.vram.texture)

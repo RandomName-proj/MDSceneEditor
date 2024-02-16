@@ -9,7 +9,15 @@
 		"vram": {
 			"formatter": "General.Art",
 			"compressor": "Nemesis",
-			"data": "res://test data/art/LZ.bin"
+			"data": "res://test data/art/LZ.nem"
+		},
+		"monitor graphics": {
+			"formatter": "General.Art",
+			"compressor": "Nemesis",
+			"data": "res://test data/art/Monitors.nem",
+			"parameters": {
+				"offset": "53248"
+			}
 		},
 		"blocks": {
 			"formatter": "Sonic 1.Blocks",

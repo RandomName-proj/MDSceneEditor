@@ -37,6 +37,23 @@ render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
 
+[node name="BackBufferCopy" type="BackBufferCopy" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
+z_index = 99
+texture_filter = 1
+copy_mode = 2
+rect = Rect2(0, 0, 0, 0)
+script = ExtResource("6_44h1i")
+
+[node name="Paletter" type="ColorRect" parent="CanvasLayer/HardwareContainer/HardwareViewport/BackBufferCopy"]
+texture_filter = 1
+texture_repeat = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
 [node name="BG_High" parent="CanvasLayer/HardwareContainer/HardwareViewport" instance=ExtResource("3_kr2vw")]
 texture_filter = 2
 
@@ -55,45 +72,47 @@ texture_filter = 1
 position = Vector2(150, 150)
 script = ExtResource("2_fd1k4")
 
-[node name="VRAMView" type="Sprite2D" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
+visible = false
+custom_minimum_size = Vector2(128, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="VRAMView" type="TextureRect" parent="CanvasLayer/HardwareContainer/HardwareViewport/ScrollContainer"]
 visible = false
 texture_filter = 1
-position = Vector2(300, 200)
-scale = Vector2(4, 4)
-region_enabled = true
-region_rect = Rect2(0, 0, 32, 8)
+custom_minimum_size = Vector2(1000, 8)
+layout_direction = 2
+layout_mode = 2
+stretch_mode = 2
 script = ExtResource("3_ycbyb")
 
-[node name="BlockView" type="TextureRect" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
+[node name="ScrollContainer2" type="ScrollContainer" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
+visible = false
+custom_minimum_size = Vector2(64, 16)
+offset_right = 128.0
+offset_bottom = 64.0
+
+[node name="BlockView" type="TextureRect" parent="CanvasLayer/HardwareContainer/HardwareViewport/ScrollContainer2"]
 visible = false
 texture_filter = 1
+layout_mode = 2
 script = ExtResource("6_34lfx")
 
-[node name="ChunkView" type="TextureRect" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
+[node name="ScrollContainer3" type="ScrollContainer" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
+visible = false
+custom_minimum_size = Vector2(512, 256)
+offset_right = 128.0
+offset_bottom = 64.0
+
+[node name="ChunkView" type="TextureRect" parent="CanvasLayer/HardwareContainer/HardwareViewport/ScrollContainer3"]
 visible = false
 texture_filter = 1
+layout_mode = 2
 script = ExtResource("6_i53pi")
 
 [node name="ObjectLayerSets" type="Node2D" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
 script = ExtResource("8_4mr0w")
-
-[node name="BackBufferCopy" type="BackBufferCopy" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
-z_index = 99
-z_as_relative = false
-texture_filter = 1
-copy_mode = 2
-rect = Rect2(0, 0, 0, 0)
-script = ExtResource("6_44h1i")
-
-[node name="Paletter" type="ColorRect" parent="CanvasLayer/HardwareContainer/HardwareViewport/BackBufferCopy"]
-texture_filter = 1
-texture_repeat = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="Engine" type="Node" parent="."]
 script = ExtResource("7_vheq0")

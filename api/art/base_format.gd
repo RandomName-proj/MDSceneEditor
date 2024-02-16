@@ -1,6 +1,9 @@
 extends BaseFormat
 class_name BaseArtFormat
 
+func _init():
+	parameters["offset"] = null
+
 func get_format():
 	return "BaseArtFormat"
 

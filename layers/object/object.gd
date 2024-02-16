@@ -12,4 +12,5 @@ func _set_mdse_scene(sc : Node2D):
 	mdse_scene.connect("loaded_scene",_on_scene_loaded_scene)
 
 func _on_scene_loaded_scene():
-	$Sprite.texture = mdse_scene.vram.texture
+	for ch in get_children():
+		ch.texture = mdse_scene.vram.texture

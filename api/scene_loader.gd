@@ -1,14 +1,27 @@
 extends Node
 class_name SceneLoader
 
-static func load_scene(path : String, res_pool : MDResourcePool) -> bool:
+static func load_scene(path : String, scene : Node2D) -> bool:
 	var scene_script = JSON.parse_string(FileAccess.get_file_as_string(path))
 	
 	if scene_script == null:
 		Global.console.printerr("Failed to open scene script file")
 		return false
 	
-	return load_resources(scene_script["resources"], res_pool)
+	var rom_data := FileAccess.get_file_as_bytes(scene_script["rom"])
+	
+	if rom_data.is_empty():
+		Global.console.printwarn("Failed to open rom file")
+	
+	var label_data := FileAccess.get_file_as_string(scene_script["labels"])
+	
+	if label_data.is_empty():
+		Global.console.printwarn("Failed to open label file")
+	
+	if not rom_data.is_empty() and not label_data.is_empty():
+		scene.asm_handler.load_labels(rom_data,label_data)
+	
+	return load_resources(scene_script["resources"], scene.res_pool)
 
 static func load_resources(script : Dictionary, res_pool : MDResourcePool):
 	var no_load := false

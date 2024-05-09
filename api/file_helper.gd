@@ -9,7 +9,7 @@ static func _check_file(file: FileAccess, filepath : String):
 		return true
 
 # translates project's filepath into godot's filepath
-static func format_filepath(filepath : String):
+static func format_filepath(filepath : String): # TODO: recall why it is even needed lol
 	return filepath
 
 static func get_data_file(filepath: String, start: int, end: int, step: int) -> PackedByteArray:

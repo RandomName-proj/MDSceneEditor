@@ -1,5 +1,6 @@
 {
-	"rom": "placeholder",
+	"rom": "res://test data/s1built.bin",
+	"labels": "res://test data/sonic.lst",
 	"resources": {
 		"palette": {
 			"formatter": "General.Palette",

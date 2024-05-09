@@ -10,6 +10,7 @@ extends Node2D
 @onready var chunk_sets := $ChunkSets
 @onready var object_layer_sets := $CanvasLayer/HardwareContainer/HardwareViewport/ObjectLayerSets
 
+var asm_handler := ASMHandler.new()
 
 var scene_name : String
 
@@ -20,7 +21,7 @@ func _ready():
 
 func load_scene(path : String):
 	
-	if (SceneLoader.load_scene(path, res_pool)):
+	if (SceneLoader.load_scene(path, self)):
 		$Engine.load_scene()
 	
 	res_pool.delete_all_resources() # only for optimisation. if something breaks, you can freely comment it

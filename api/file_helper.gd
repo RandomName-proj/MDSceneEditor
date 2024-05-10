@@ -12,7 +12,16 @@ static func _check_file(file: FileAccess, filepath : String):
 static func format_filepath(filepath : String): # TODO: recall why it is even needed lol
 	return filepath
 
-static func get_data_file(filepath: String, start: int, end: int, step: int) -> PackedByteArray:
+static func get_data_file(filepath: String, start: int, end: int, step: int, mdse_scene : Node2D) -> PackedByteArray:
+	
+	if filepath.ends_with(":"):
+		var asm_path := filepath.erase(filepath.length()-1)
+		
+		if asm_path.is_valid_int():
+			return mdse_scene.asm_handler.get_rom().slice(int(asm_path))
+		else:
+			return mdse_scene.asm_handler.get_label_data(asm_path)
+	
 	filepath = format_filepath(filepath)
 	if _check_file(FileAccess.open(filepath,FileAccess.READ), filepath):
 		var data := FileAccess.get_file_as_bytes(filepath)

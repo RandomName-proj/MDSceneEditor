@@ -25,7 +25,7 @@ func load_data(filepath):
 	for path in filepath_arr:
 		
 		
-		var new_data := FileHelper.get_data_file(path[0], path[1], path[2], path[3])
+		var new_data := FileHelper.get_data_file(path[0], path[1], path[2], path[3], owner)
 		
 		if new_data.is_empty():
 			Global.console.printerr("[MDResource:'{name}']: Failed to get data".format({"name":self.name}))

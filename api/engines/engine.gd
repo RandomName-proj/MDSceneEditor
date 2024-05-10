@@ -21,6 +21,8 @@ func load_scene():
 				owner.get_plane(res.data.required["plane"]).add_tile_layout(res.name)
 			"BaseObjectLayoutFormat":
 				owner.object_layer_sets.add_object_layer(res.name)
+			"BaseEventFormat":
+				owner.events.add_event(res.name)
 	
 	# loading the data
 	for res : MDResource in owner.res_pool.get_all_resources():
@@ -58,6 +60,9 @@ func load_scene():
 				if res.data.parameters["object_layer_script"] != null:
 					object_layer_node.load_object_layer_script(res.data.parameters["object_layer_script"])
 				object_layer_node.load_object_layout(res.data, owner)
+			"BaseEventFormat":
+				var event_node = owner.events.find_event(res.name)
+				event_node.load_event(res.data, res.data.required["script"], owner)
 		
 	
 	paletter_node.material = owner.palette.material

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://6kbjpm4uk0ud"]
+[gd_scene load_steps=16 format=3 uid="uid://6kbjpm4uk0ud"]
 
 [ext_resource type="Script" path="res://scene.gd" id="1_on2og"]
 [ext_resource type="Script" path="res://palette_viewer.gd" id="2_fd1k4"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://layers/blocks/block_sets.gd" id="9_fvj5h"]
 [ext_resource type="Script" path="res://layers/chunks/chunk_sets.gd" id="10_k6bur"]
 [ext_resource type="Script" path="res://hardware/palette.gd" id="10_qjsrd"]
+[ext_resource type="Script" path="res://layers/events/events.gd" id="15_rmhof"]
 
 [node name="Scene" type="Node2D"]
 script = ExtResource("1_on2og")
@@ -131,3 +132,6 @@ script = ExtResource("9_fvj5h")
 
 [node name="ChunkSets" type="Node" parent="."]
 script = ExtResource("10_k6bur")
+
+[node name="Events" type="Node" parent="."]
+script = ExtResource("15_rmhof")

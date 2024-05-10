@@ -7,17 +7,52 @@
 			"compressor": "Uncompressed",
 			"data": ["res://test data/palettes/sonic 1.pal","res://test data/palettes/lz.pal"]
 		},
-		"vram": {
-			"formatter": "General.Art",
-			"compressor": "Nemesis",
-			"data": "res://test data/art/LZ.nem"
-		},
 		"monitor graphics": {
 			"formatter": "General.Art",
 			"compressor": "Nemesis",
 			"data": "res://test data/art/Monitors.nem",
 			"parameters": {
 				"offset": "53248"
+			}
+		},
+		"plc_main": {
+			"formatter": "Sonic.PLC",
+			"compressor": "Uncompressed",
+			"data": "PLC_Main:",
+			"required": {
+				"script": "res://user/event scripts/sonic/plc.gd"
+			}
+		},
+		"plc_main2": {
+			"formatter": "Sonic.PLC",
+			"compressor": "Uncompressed",
+			"data": "PLC_Main2:",
+			"required": {
+				"script": "res://user/event scripts/sonic/plc.gd"
+			}
+		},
+		"plc_explode": {
+			"formatter": "Sonic.PLC",
+			"compressor": "Uncompressed",
+			"data": "PLC_Explode:",
+			"required": {
+				"script": "res://user/event scripts/sonic/plc.gd"
+			}
+		},
+		"plc_lz": {
+			"formatter": "Sonic.PLC",
+			"compressor": "Uncompressed",
+			"data": "PLC_LZ:",
+			"required": {
+				"script": "res://user/event scripts/sonic/plc.gd"
+			}
+		},
+		"plc_lz2": {
+			"formatter": "Sonic.PLC",
+			"compressor": "Uncompressed",
+			"data": "PLC_LZ2:",
+			"required": {
+				"script": "res://user/event scripts/sonic/plc.gd"
 			}
 		},
 		"blocks": {

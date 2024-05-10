@@ -8,18 +8,20 @@ static func load_scene(path : String, scene : Node2D) -> bool:
 		Global.console.printerr("Failed to open scene script file")
 		return false
 	
-	var rom_data := FileAccess.get_file_as_bytes(scene_script["rom"])
-	
-	if rom_data.is_empty():
-		Global.console.printwarn("Failed to open rom file")
-	
-	var label_data := FileAccess.get_file_as_string(scene_script["labels"])
-	
-	if label_data.is_empty():
-		Global.console.printwarn("Failed to open label file")
-	
-	if not rom_data.is_empty() and not label_data.is_empty():
-		scene.asm_handler.load_labels(rom_data,label_data)
+	if scene_script.has("rom") and scene_script.has("labels"):
+		
+		var rom_data := FileAccess.get_file_as_bytes(scene_script["rom"])
+		
+		if rom_data.is_empty():
+			Global.console.printwarn("Failed to open rom file")
+		
+		var label_data := FileAccess.get_file_as_string(scene_script["labels"])
+		
+		if label_data.is_empty():
+			Global.console.printwarn("Failed to open label file")
+		
+		if not rom_data.is_empty() and not label_data.is_empty():
+			scene.asm_handler.load_labels(rom_data,label_data)
 	
 	return load_resources(scene_script["resources"], scene.res_pool)
 
@@ -31,6 +33,8 @@ static func load_resources(script : Dictionary, res_pool : MDResourcePool):
 		var res_script = script[res_name]
 		var res = MDResource.new()
 		res.name = res_name
+		
+		res_pool.add_resource(res)
 		
 		res.load_filepath(res_script["data"])
 		
@@ -49,10 +53,10 @@ static func load_resources(script : Dictionary, res_pool : MDResourcePool):
 			no_load = true
 		
 		if no_load:
+			res_pool.delete_resource(res)
 			continue
 		
 		res.load_data(res_script["data"])
-		res_pool.add_resource(res)
 	
 	return (not no_load)
 

@@ -43,10 +43,12 @@ func load_labels(rom_arr: PackedByteArray, label_text : String):
 		
 	
 	
-	
 
 func get_label_offset(label: String):
 	return label_data[label]
+
+func get_label_data(label: String):
+	return rom_data.slice(label_data[label]) # that's a pretty slow way of getting data from asm but it'll work for now
 
 func get_rom():
 	return rom_data

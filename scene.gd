@@ -9,6 +9,7 @@ extends Node2D
 @onready var block_sets := $BlockSets
 @onready var chunk_sets := $ChunkSets
 @onready var object_layer_sets := $CanvasLayer/HardwareContainer/HardwareViewport/ObjectLayerSets
+@onready var events := $Events
 
 var asm_handler := ASMHandler.new()
 

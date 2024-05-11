@@ -7,14 +7,6 @@
 			"compressor": "Uncompressed",
 			"data": ["res://test data/palettes/sonic 1.pal","res://test data/palettes/lz.pal"]
 		},
-		"monitor graphics": {
-			"formatter": "General.Art",
-			"compressor": "Nemesis",
-			"data": "res://test data/art/Monitors.nem",
-			"parameters": {
-				"offset": "53248"
-			}
-		},
 		"plc_main": {
 			"formatter": "Sonic.PLC",
 			"compressor": "Uncompressed",

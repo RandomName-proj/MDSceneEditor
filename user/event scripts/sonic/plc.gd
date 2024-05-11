@@ -10,7 +10,6 @@ func setup(d: BaseEventFormat, sc : Node2D):
 	for entry in data.entries:
 		
 		
-		prints("%X" % entry.data["gfx"],"%X" % entry.data["vram"])
 		
 		var res := MDResource.new()
 		

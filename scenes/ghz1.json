@@ -1,15 +1,52 @@
 {
+    "rom": "res://test data/s1built.bin",
+	"labels": "res://test data/sonic.lst",
     "resources": {
         "palette": {
             "formatter": "General.Palette",
             "compressor": "Uncompressed",
             "data": ["res://test data/palettes/sonic 1.pal","res://test data/palettes/ghz.pal"]
         },
-        "vram": {
-            "formatter": "General.Art",
-            "compressor": "Nemesis",
-            "data": ["res://test data/art/GHZ1.bin","res://test data/art/GHZ2.bin"]
-        },
+		"plc_main": {
+			"formatter": "Sonic.PLC",
+			"compressor": "Uncompressed",
+			"data": "PLC_Main:",
+			"required": {
+				"script": "res://user/event scripts/sonic/plc.gd"
+			}
+		},
+		"plc_main2": {
+			"formatter": "Sonic.PLC",
+			"compressor": "Uncompressed",
+			"data": "PLC_Main2:",
+			"required": {
+				"script": "res://user/event scripts/sonic/plc.gd"
+			}
+		},
+		"plc_explode": {
+			"formatter": "Sonic.PLC",
+			"compressor": "Uncompressed",
+			"data": "PLC_Explode:",
+			"required": {
+				"script": "res://user/event scripts/sonic/plc.gd"
+			}
+		},
+		"plc_lz": {
+			"formatter": "Sonic.PLC",
+			"compressor": "Uncompressed",
+			"data": "PLC_GHZ:",
+			"required": {
+				"script": "res://user/event scripts/sonic/plc.gd"
+			}
+		},
+		"plc_lz2": {
+			"formatter": "Sonic.PLC",
+			"compressor": "Uncompressed",
+			"data": "PLC_GHZ2:",
+			"required": {
+				"script": "res://user/event scripts/sonic/plc.gd"
+			}
+		},
         "blocks": {
             "formatter": "Sonic 1.Blocks",
             "compressor": "Enigma",

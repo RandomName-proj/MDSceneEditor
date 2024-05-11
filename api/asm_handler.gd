@@ -42,6 +42,7 @@ func load_labels(rom_arr: PackedByteArray, label_text : String):
 			
 		
 	
+	print("ASM68K Labels loaded")
 	
 
 func get_label_offset(label: String):

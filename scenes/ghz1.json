@@ -80,6 +80,14 @@
                 "tile_set": "chunks",
                 "plane": "BG"
             }
-        }
+        },
+        "object_layout": {
+			"formatter": "Sonic 1.Object Layout",
+			"compressor": "Uncompressed",
+			"data": "res://test data/object layout/ghz1.bin",
+			"parameters": {
+				"object_metadata": "res://scenes/object metadata/s1.json"
+			}
+		}
     }
 }

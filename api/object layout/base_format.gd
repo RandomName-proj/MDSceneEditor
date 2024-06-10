@@ -2,7 +2,7 @@ extends BaseFormat
 class_name BaseObjectLayoutFormat
 
 func _init():
-	parameters["object_layer_script"] = null
+	parameters["object_metadata"] = null
 
 func get_format():
 	return "BaseObjectLayoutFormat"

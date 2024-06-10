@@ -1,6 +1,5 @@
 extends BaseEventScript
 
-
 func setup(d: BaseEventFormat, sc : Node2D):
 	data = d
 	mdse_scene = sc
@@ -8,8 +7,6 @@ func setup(d: BaseEventFormat, sc : Node2D):
 	var no_load := false
 	
 	for entry in data.entries:
-		
-		
 		
 		var res := MDResource.new()
 		

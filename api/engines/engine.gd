@@ -57,8 +57,8 @@ func load_scene():
 				tile_layout_node.load_tile_layout(res.data,chunks_node.get_tile_size())
 			"BaseObjectLayoutFormat":
 				var object_layer_node = owner.object_layer_sets.find_object_layer(res.name)
-				if res.data.parameters["object_layer_script"] != null:
-					object_layer_node.load_object_layer_script(res.data.parameters["object_layer_script"])
+				if res.data.parameters["object_metadata"] != null:
+					object_layer_node.load_object_metadata(res.data.parameters["object_metadata"])
 				object_layer_node.load_object_layout(res.data, owner)
 			"BaseEventFormat":
 				var event_node = owner.events.find_event(res.name)

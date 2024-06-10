@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://fpubu0ryvqbg"]
+
+[ext_resource type="Texture2D" uid="uid://bn0kkumb6rgn1" path="res://icon.svg" id="1_ktghu"]
+
+[node name="UnknownObjectSprite" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_ktghu")

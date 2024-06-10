@@ -1,4 +1,5 @@
 extends Node2D
+class_name MDSEScene
 
 @onready var res_pool : MDResourcePool = $Resources
 @onready var vram := $Hardware/VRAM
@@ -25,7 +26,7 @@ func load_scene(path : String):
 	if (SceneLoader.load_scene(path, self)):
 		$Engine.load_scene()
 	
-	res_pool.delete_all_resources() # only for optimisation. if something breaks, you can freely comment it
+	#res_pool.delete_all_resources() # only for optimisation. if something breaks, you can freely comment it
 	
 	emit_signal("loaded_scene")
 	

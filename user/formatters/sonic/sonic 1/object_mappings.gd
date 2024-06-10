@@ -35,14 +35,16 @@ func format(data: PackedByteArray, required : Dictionary, parameters : Dictionar
 		
 		var map_size := 5 # size of each mapping
 		
-		map.maps.resize(map_count) 
 		
 		for i in range(map_ind + 1, map_ind + 1 + map_size * map_count, map_size):
 			
 			var x_pos := data[i + 4]
 			var y_pos := data[i]
 			
-			var width := data[i + 1]
+			x_pos = wrapi(x_pos,-128,128)
+			y_pos = wrapi(y_pos,-128,128)
+			
+			var size := data[i + 1]
 			
 			var tile_offset := (data[i + 2] & 0b00000111 << 8) + data[i + 3]
 			
@@ -50,6 +52,11 @@ func format(data: PackedByteArray, required : Dictionary, parameters : Dictionar
 			
 			var entr := BaseObjectMappingsEntry.Mapping.new(x_pos, y_pos)
 			
+			entr.tile_offset = tile_offset
+			entr.size = size
+			entr.flags = flags
+			
+			map.maps.append(entr)
 			
 		
 		mappings.entries.append(map)

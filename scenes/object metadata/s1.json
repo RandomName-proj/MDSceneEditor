@@ -2,11 +2,12 @@
     "objects": {
         "38": {
             "name": "Monitor",
-            "mappings": "monitor mappings"
+            "mappings": "monitor_mappings",
+            "script": "res://user/object scripts/sonic/sonic 1/monitor.gd"
         }
     },
     "resources": {
-        "monitor mappings": {
+        "monitor_mappings": {
             "formatter": "Sonic 1.Object Mappings",
             "compressor": "Uncompressed",
             "data": "res://test data/object mappings/Monitor(S1).bin"

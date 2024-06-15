@@ -27,10 +27,3 @@ func load_object_layout(data: BaseObjectLayoutFormat, mdse_scene : Node2D):
 				object_node.load_object(obj,object_metadata[str(obj.id)],mdse_scene)
 			else:
 				object_node.load_object(obj,{},mdse_scene)
-			#object_node.position = Vector2(obj.x_pos, obj.y_pos)
-			#object_node.id = obj.id
-			#object_node.flags = obj.flags
-			#object_node.additional = obj.additional
-			#if object_metadata.has(str(obj.id)): # find the object script for the corresponding object id
-			#	object_node.object_script = object_metadata[str(obj.id)]
-			#object_node.mdse_scene = mdse_scene

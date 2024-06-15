@@ -11,3 +11,5 @@ var x_pos : int
 var y_pos : int
 var flags : int
 var additional : Dictionary
+
+enum {x_flip=0,y_flip}

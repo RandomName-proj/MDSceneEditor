@@ -15,6 +15,7 @@ func format(data: PackedByteArray, required : Dictionary, parameters : Dictionar
 		additional["subtype"] = data[ind+5]
 		
 		var obj := BaseObjectLayoutEntry.new(id,x_pos,y_pos)
+		obj.flags = flags
 		obj.additional = additional
 		
 		layout.entries.append(obj)

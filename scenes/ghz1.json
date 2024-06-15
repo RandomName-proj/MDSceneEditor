@@ -31,7 +31,7 @@
 				"script": "res://user/event scripts/sonic/plc.gd"
 			}
 		},
-		"plc_lz": {
+		"plc_ghz": {
 			"formatter": "Sonic.PLC",
 			"compressor": "Uncompressed",
 			"data": "PLC_GHZ:",
@@ -39,7 +39,7 @@
 				"script": "res://user/event scripts/sonic/plc.gd"
 			}
 		},
-		"plc_lz2": {
+		"plc_ghz2": {
 			"formatter": "Sonic.PLC",
 			"compressor": "Uncompressed",
 			"data": "PLC_GHZ2:",

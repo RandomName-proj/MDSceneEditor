@@ -48,7 +48,9 @@ func format(data: PackedByteArray, required : Dictionary, parameters : Dictionar
 			
 			var tile_offset := (data[i + 2] & 0b00000111 << 8) + data[i + 3]
 			
-			var flags := data[i + 2] & 0b11111000
+			var flags := data[i + 2] & 0b10011000
+			
+			var palette := (data[i + 2] >> 5) & 0b11 
 			
 			var entr := BaseObjectMappingsEntry.Mapping.new(x_pos, y_pos)
 			

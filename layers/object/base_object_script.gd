@@ -9,24 +9,27 @@ var data : BaseObjectLayoutEntry
 var mdse_scene : MDSEScene
 var metadata : Dictionary
 
-func setup(d : BaseObjectLayoutEntry, meta: Dictionary, sc : MDSEScene):
+func _base_setup(d : BaseObjectLayoutEntry, meta: Dictionary, sc : MDSEScene):
+	self.data = d
+	self.mdse_scene = sc
+	self.metadata = meta
+	self.position = Vector2(data.x_pos,data.y_pos)
+	setup()
+
+func setup():
 #	Global.console.printerr("The object script is not implemented")
-	
-	data = d
-	mdse_scene = sc
-	metadata = meta
 	
 	unk_obj = unknown_object_sprite.instantiate()
 	
 	add_child(unk_obj)
 	
-	self.position = Vector2(data.x_pos,data.y_pos)
-	
 	
 
 func load_object(d : BaseObjectLayoutEntry, meta: Dictionary, sc : MDSEScene):
 	
-	if not meta.is_empty():
+	if meta.has("script"):
 		self.script = load(meta["script"])
+	elif meta.has("mappings"):
+		self.script = load("res://layers/object/standart_object_script.gd")
 	
-	setup(d, meta, sc)
+	_base_setup(d,meta,sc)

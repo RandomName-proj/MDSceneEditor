@@ -11,6 +11,10 @@ class Mapping:
 	var x_pos : int
 	var y_pos : int
 	var size : int
+	var palette : int
 	var flags : int
 	var tile_offset : int = 0 # vram offset in tiles
 	var additional : Dictionary
+	
+
+enum {x_flip = 0, y_flip}

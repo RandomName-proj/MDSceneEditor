@@ -1,6 +1,6 @@
 extends BaseEventScript
 
-func setup(d: BaseEventFormat, sc : Node2D):
+func setup(d: BaseEventFormat, sc : MDSEScene):
 	data = d
 	mdse_scene = sc
 	
@@ -32,5 +32,7 @@ func setup(d: BaseEventFormat, sc : Node2D):
 		res.load_data(str(entry.data["gfx"])+":")
 		
 		mdse_scene.vram.load_vram(res.data, res.data.parameters["offset"])
+		
+		mdse_scene.res_pool.delete_resource(res)
 		
 	

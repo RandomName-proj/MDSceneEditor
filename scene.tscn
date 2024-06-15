@@ -37,6 +37,7 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
+limit_smoothed = true
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="CanvasLayer/HardwareContainer/HardwareViewport"]
 z_index = 99

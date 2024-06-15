@@ -4,13 +4,47 @@
             "name": "Monitor",
             "mappings": "monitor_mappings",
             "script": "res://user/object scripts/sonic/sonic 1/monitor.gd"
+        },
+        "34":
+        {
+            "name": "Buzz Bomber",
+            "mappings": "buzz_mappings",
+            "vram_offset" : "0x444",
+            "frame" : "0"
+        },
+        "44": {
+            "name": "Jaws",
+            "mappings": "jaws_mappings",
+            "vram_offset": "0x2486",
+            "frame": "2"
+        },
+        "64": {
+            "name": "Motobug",
+            "mappings": "moto_mappings",
+            "vram_offset": "0x4F0",
+            "frame": "0"
         }
     },
     "resources": {
         "monitor_mappings": {
             "formatter": "Sonic 1.Object Mappings",
             "compressor": "Uncompressed",
-            "data": "res://test data/object mappings/Monitor(S1).bin"
+            "data": "Map_Monitor:"
+        },
+        "jaws_mappings": {
+            "formatter": "Sonic 1.Object Mappings",
+            "compressor": "Uncompressed",
+            "data": "Map_Jaws:"
+        },
+        "moto_mappings": {
+            "formatter": "Sonic 1.Object Mappings",
+            "compressor": "Uncompressed",
+            "data": "Map_Moto:"
+        },
+        "buzz_mappings": {
+            "formatter": "Sonic 1.Object Mappings",
+            "compressor": "Uncompressed",
+            "data": "Map_Buzz:"
         }
     }
 }

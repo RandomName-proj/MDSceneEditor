@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 class_name MDSEScene
 
 @onready var res_pool : MDResourcePool = $Resources

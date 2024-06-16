@@ -2,7 +2,7 @@ extends Node2D
 
 @export var object_scene = preload("res://layers/object/object.tscn")
 
-var mdse_scene : Node2D
+var mdse_scene : MDSEScene
 var object_metadata : Dictionary
 
 func load_object_metadata(script : String):
@@ -11,7 +11,7 @@ func load_object_metadata(script : String):
 	object_metadata = JSON.parse_string(FileAccess.get_file_as_string(script))
 	
 
-func load_object_layout(data: BaseObjectLayoutFormat, mdse_scene : Node2D):
+func load_object_layout(data: BaseObjectLayoutFormat, mdse_scene : MDSEScene):
 	self.mdse_scene = mdse_scene
 	
 	# load the resources from the object layer

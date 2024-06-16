@@ -1,7 +1,7 @@
 extends Node
 class_name SceneLoader
 
-static func load_scene(path : String, scene : Node2D) -> bool:
+static func load_scene(path : String, scene : MDSEScene) -> bool:
 	var scene_script = JSON.parse_string(FileAccess.get_file_as_string(path))
 	
 	if scene_script == null:

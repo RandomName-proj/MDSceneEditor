@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://2ron1ylmavue"]
+
+[ext_resource type="Script" path="res://ui/main_screen.gd" id="1_uilsu"]
+[ext_resource type="Script" path="res://ui/scene_button_container.gd" id="2_cb76v"]
+
+[node name="MainScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uilsu")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 1152.0
+offset_bottom = 646.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+drag_to_rearrange_enabled = true
+tab_focus_mode = 0
+
+[node name="SceneButtonContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_cb76v")
+
+[node name="PanelContainer" type="PanelContainer" parent="SceneButtonContainer"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="SceneButtonContainer/PanelContainer"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+text = "Load Scene"
+
+[node name="FileDialog" type="FileDialog" parent="SceneButtonContainer/PanelContainer/Button"]
+title = "Open a File"
+size = Vector2i(500, 350)
+ok_button_text = "Open"
+file_mode = 0
+
+[connection signal="pressed" from="SceneButtonContainer/PanelContainer/Button" to="SceneButtonContainer" method="_on_button_pressed"]
+[connection signal="file_selected" from="SceneButtonContainer/PanelContainer/Button/FileDialog" to="SceneButtonContainer" method="_on_file_dialog_file_selected"]

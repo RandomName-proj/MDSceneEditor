@@ -85,4 +85,3 @@ func get_raw_data() -> PackedByteArray:
 
 func load_filepath(path):
 	filepath = path
-

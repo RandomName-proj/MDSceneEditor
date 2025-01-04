@@ -10,12 +10,12 @@ static func load_scene(path : String, scene : MDSEScene) -> bool:
 	
 	if scene_script.has("rom") and scene_script.has("labels"):
 		
-		var rom_data := FileAccess.get_file_as_bytes(scene_script["rom"])
+		var rom_data := FileAccess.get_file_as_bytes(FileHelper.format_filepath(scene_script["rom"], scene.directory))
 		
 		if rom_data.is_empty():
 			Global.console.printwarn("Failed to open rom file")
 		
-		var label_data := FileAccess.get_file_as_string(scene_script["labels"])
+		var label_data := FileAccess.get_file_as_string(FileHelper.format_filepath(scene_script["labels"], scene.directory))
 		
 		if label_data.is_empty():
 			Global.console.printwarn("Failed to open label file")

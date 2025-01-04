@@ -28,7 +28,7 @@ func setup():
 func load_object(d : BaseObjectLayoutEntry, meta: Dictionary, sc : MDSEScene):
 	
 	if meta.has("script"):
-		self.script = load(meta["script"])
+		self.script = load(FileHelper.format_filepath(meta["script"], sc.directory))
 	elif meta.has("mappings"):
 		self.script = load("res://layers/object/standart_object_script.gd")
 	

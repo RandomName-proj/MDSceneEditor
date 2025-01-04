@@ -1,9 +1,14 @@
 extends Node
 
 var _full_formatter_list : Dictionary
+@onready var directory := "./user/"
 
 func _ready():
-	_full_formatter_list = JSON.parse_string(FileAccess.get_file_as_string("res://user/formats.json"))
+	_full_formatter_list = JSON.parse_string(FileAccess.get_file_as_string(directory+"formats.json"))
+	for game in _full_formatter_list.values():
+		for formatter in game:
+			game[formatter] = FileHelper.format_filepath(game[formatter], directory)
+
 
 func get_formatter(game: String, res_type: String) -> String:
 	return _full_formatter_list[game][res_type]

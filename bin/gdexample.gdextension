@@ -4,5 +4,5 @@ entry_symbol = "example_library_init"
 compatibility_minimum = 4.1
 
 [libraries]
-windows.x86_64="res://bin/godot_mdcomp.dll"
-linux.x86_64 = "res://bin/libgodot_mdcomp.so"
+windows.x86_64="./bin/godot_mdcomp.dll"
+linux.x86_64 = "./bin/libgodot_mdcomp.so"

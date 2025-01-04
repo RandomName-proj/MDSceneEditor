@@ -9,20 +9,27 @@ static func _check_file(file: FileAccess, filepath : String):
 		return true
 
 # translates project's filepath into godot's filepath
-static func format_filepath(filepath : String): # TODO: recall why it is even needed lol
+static func format_filepath(filepath : String, absolute_directory : String): # TODO: recall why is it even needed lol
+	
+	if filepath.begins_with(".."):
+		return (absolute_directory + ".a").get_base_dir() + filepath.trim_prefix("..") # a bit hacky but it works :P
+	if filepath.begins_with("."):
+		return absolute_directory + filepath.trim_prefix(".")
+	
 	return filepath
 
-static func get_data_file(filepath: String, start: int, end: int, step: int, mdse_scene : MDSEScene) -> PackedByteArray:
+static func get_data_file(filepath: String, start: int, end: int, step: int, asm_handler : ASMHandler, absolute_directory := "") -> PackedByteArray:
 	
+	# if it's a label or offset load it from the rom
 	if filepath.ends_with(":"):
 		var asm_path := filepath.erase(filepath.length()-1)
 		
 		if asm_path.is_valid_int():
-			return mdse_scene.asm_handler.get_rom().slice(int(asm_path))
+			return asm_handler.get_rom().slice(int(asm_path))
 		else:
-			return mdse_scene.asm_handler.get_label_data(asm_path)
+			return asm_handler.get_label_data(asm_path)
 	
-	filepath = format_filepath(filepath)
+	filepath = format_filepath(filepath, absolute_directory)
 	if _check_file(FileAccess.open(filepath,FileAccess.READ), filepath):
 		var data := FileAccess.get_file_as_bytes(filepath)
 		if step != 0:
@@ -37,11 +44,12 @@ static func get_data_file(filepath: String, start: int, end: int, step: int, mds
 	else:
 		return PackedByteArray()
 
-static func get_format_file(filepath: String) -> GenericFormatter:
+static func get_format_file(filepath: String, absolute_directory := "") -> GenericFormatter:
 	if not(filepath.contains("/") or filepath.contains("\\")):
 		filepath = get_format_template(filepath)
+	else:
+		filepath = format_filepath(filepath, absolute_directory)
 	
-	filepath = format_filepath(filepath)
 	if _check_file(FileAccess.open(filepath,FileAccess.READ), filepath):
 		var formatter := GenericFormatter.new()
 		formatter.script = load(filepath)
@@ -54,10 +62,11 @@ static func get_format_template(filepath: String) -> String:
 	var res_type := filepath.get_slice(".", 1)
 	return FormatterLists.get_formatter(game, res_type)
 
-static func get_compressor_file(filepath: String) -> GenericCompressor:
+static func get_compressor_file(filepath: String, absolute_directory := "") -> GenericCompressor:
 	if not(filepath.contains("/") or filepath.contains("\\")):
 		filepath = get_compressor_template(filepath)
-	filepath = format_filepath(filepath)
+	else:
+		filepath = format_filepath(filepath, absolute_directory)
 	if _check_file(FileAccess.open(filepath,FileAccess.READ), filepath):
 		var compressor := GenericCompressor.new()
 		compressor.script = load(filepath)

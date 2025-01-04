@@ -1,18 +1,18 @@
 {
-    "rom": "res://test data/s1built.bin",
-	"labels": "res://test data/sonic.lst",
+    "rom": "../test data/s1built.bin",
+	"labels": "../test data/sonic.lst",
     "resources": {
         "palette": {
             "formatter": "General.Palette",
             "compressor": "Uncompressed",
-            "data": ["res://test data/palettes/sonic 1.pal","res://test data/palettes/ghz.pal"]
+            "data": ["../test data/palettes/sonic 1.pal","../test data/palettes/ghz.pal"]
         },
 		"plc_main": {
 			"formatter": "Sonic.PLC",
 			"compressor": "Uncompressed",
 			"data": "PLC_Main:",
 			"required": {
-				"script": "res://user/event scripts/sonic/plc.gd"
+				"script": "../user/event scripts/sonic/plc.gd"
 			}
 		},
 		"plc_main2": {
@@ -20,7 +20,7 @@
 			"compressor": "Uncompressed",
 			"data": "PLC_Main2:",
 			"required": {
-				"script": "res://user/event scripts/sonic/plc.gd"
+				"script": "../user/event scripts/sonic/plc.gd"
 			}
 		},
 		"plc_explode": {
@@ -28,7 +28,7 @@
 			"compressor": "Uncompressed",
 			"data": "PLC_Explode:",
 			"required": {
-				"script": "res://user/event scripts/sonic/plc.gd"
+				"script": "../user/event scripts/sonic/plc.gd"
 			}
 		},
 		"plc_ghz": {
@@ -36,7 +36,7 @@
 			"compressor": "Uncompressed",
 			"data": "PLC_GHZ:",
 			"required": {
-				"script": "res://user/event scripts/sonic/plc.gd"
+				"script": "../user/event scripts/sonic/plc.gd"
 			}
 		},
 		"plc_ghz2": {
@@ -44,13 +44,13 @@
 			"compressor": "Uncompressed",
 			"data": "PLC_GHZ2:",
 			"required": {
-				"script": "res://user/event scripts/sonic/plc.gd"
+				"script": "../user/event scripts/sonic/plc.gd"
 			}
 		},
         "blocks": {
             "formatter": "Sonic 1.Blocks",
             "compressor": "Enigma",
-            "data": "res://test data/blocks/GHZ.bin",
+            "data": "../test data/blocks/GHZ.bin",
             "required": {
                 "art": "vram"
             }
@@ -58,7 +58,7 @@
         "chunks": {
             "formatter": "Sonic 1.Chunks",
             "compressor": "Kosinski",
-            "data": "res://test data/chunks/GHZ.bin",
+            "data": "../test data/chunks/GHZ.bin",
             "required": {
                 "art": "blocks"
             }
@@ -66,7 +66,7 @@
         "fg tile layout": {
             "formatter": "Sonic 1.Tile Layout",
             "compressor": "Uncompressed",
-            "data": "res://test data/tile layout/ghz1.bin",
+            "data": "../test data/tile layout/ghz1.bin",
             "required": {
                 "tile_set": "chunks",
                 "plane": "FG"
@@ -75,7 +75,7 @@
         "bg tile layout": {
             "formatter": "Sonic 1.Tile Layout",
             "compressor": "Uncompressed",
-            "data": "res://test data/tile layout/ghzbg.bin",
+            "data": "../test data/tile layout/ghzbg.bin",
             "required": {
                 "tile_set": "chunks",
                 "plane": "BG"
@@ -84,9 +84,9 @@
         "object_layout": {
 			"formatter": "Sonic 1.Object Layout",
 			"compressor": "Uncompressed",
-			"data": "res://test data/object layout/ghz1.bin",
+			"data": "../test data/object layout/ghz1.bin",
 			"parameters": {
-				"object_metadata": "res://scenes/object metadata/s1.json"
+				"object_metadata": "../scenes/object metadata/s1.json"
 			}
 		}
     }

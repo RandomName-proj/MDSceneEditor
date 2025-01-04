@@ -11,6 +11,7 @@ class_name MDSEScene
 @onready var chunk_sets := $ChunkSets
 @onready var object_layer_sets := $CanvasLayer/HardwareContainer/HardwareViewport/ObjectLayerSets
 @onready var events := $Events
+var directory := ""
 
 var asm_handler := ASMHandler.new()
 
@@ -22,6 +23,8 @@ func _ready():
 	scene_camera.position += get_viewport_rect().size/2
 
 func load_scene(path : String):
+	
+	directory = path.get_base_dir()
 	
 	if (SceneLoader.load_scene(path, self)):
 		$Engine.load_scene()

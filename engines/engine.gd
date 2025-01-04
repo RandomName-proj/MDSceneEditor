@@ -20,7 +20,7 @@ func load_scene():
 			"BaseTileLayoutFormat":
 				owner.get_plane(res.data.required["plane"]).add_tile_layout(res.name)
 			"BaseObjectLayoutFormat":
-				owner.object_layer_sets.add_object_layer(res.name)
+				owner.object_layer_sets.add_object_layer(res.name, owner)
 			"BaseEventFormat":
 				owner.events.add_event(res.name)
 	
@@ -59,7 +59,7 @@ func load_scene():
 				var object_layer_node = owner.object_layer_sets.find_object_layer(res.name)
 				if res.data.parameters["object_metadata"] != null:
 					object_layer_node.load_object_metadata(res.data.parameters["object_metadata"])
-				object_layer_node.load_object_layout(res.data, owner)
+				object_layer_node.load_object_layout(res.data)
 			"BaseEventFormat":
 				var event_node = owner.events.find_event(res.name)
 				event_node.load_event(res.data, res.data.required["script"], owner)

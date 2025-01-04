@@ -8,12 +8,10 @@ var object_metadata : Dictionary
 func load_object_metadata(script : String):
 	
 	# load the script
-	object_metadata = JSON.parse_string(FileAccess.get_file_as_string(script))
+	object_metadata = JSON.parse_string(FileAccess.get_file_as_string(FileHelper.format_filepath(script,mdse_scene.directory)))
 	
 
-func load_object_layout(data: BaseObjectLayoutFormat, mdse_scene : MDSEScene):
-	self.mdse_scene = mdse_scene
-	
+func load_object_layout(data: BaseObjectLayoutFormat):
 	# load the resources from the object layer
 	
 	SceneLoader.load_resources(object_metadata["resources"], mdse_scene.res_pool)

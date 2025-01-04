@@ -25,7 +25,7 @@ func load_data(filepath):
 	for path in filepath_arr:
 		
 		
-		var new_data := FileHelper.get_data_file(path[0], path[1], path[2], path[3], owner)
+		var new_data := FileHelper.get_data_file(path[0], path[1], path[2], path[3], owner.asm_handler, owner.directory)
 		
 		if new_data.is_empty():
 			Global.console.printerr("[MDResource:'{name}']: Failed to get data".format({"name":self.name}))
@@ -51,7 +51,7 @@ func load_data(filepath):
 	
 
 func load_format(filepath: String) -> bool:
-	format = FileHelper.get_format_file(filepath)
+	format = FileHelper.get_format_file(filepath, owner.directory)
 	if format == null:
 		Global.console.printerr("[MDResource:'{name}']: Failed to load formatter at filepath: {filepath}".format({"name":self.name,"filepath":filepath}))
 		return false
@@ -61,7 +61,7 @@ func load_format(filepath: String) -> bool:
 	return true
 
 func load_compression(filepath: String) -> bool:
-	compression = FileHelper.get_compressor_file(filepath)
+	compression = FileHelper.get_compressor_file(filepath, owner.directory)
 	if compression == null:
 		Global.console.printerr("[MDResource:'{name}']: Failed to load compressor at filepath: {filepath}".format({"name":self.name,"filepath":filepath}))
 		return false

@@ -1,21 +1,21 @@
 {
 	"Sonic": {
-		"PLC": "res://user/formatters/sonic/plc.gd"
+		"PLC": "./formatters/sonic/plc.gd"
 	},
 	"Sonic 1": {
-		"Chunks": "res://user/formatters/sonic/sonic 1/chunks.gd",
-		"Blocks": "res://user/formatters/sonic/16x16_blocks.gd",
-		"Tile Layout": "res://user/formatters/sonic/sonic 1/tile_layout.gd",
-		"Object Layout": "res://user/formatters/sonic/sonic 1/object_layout.gd",
-		"Object Mappings": "res://user/formatters/sonic/sonic 1/object_mappings.gd"
+		"Chunks": "./formatters/sonic/sonic 1/chunks.gd",
+		"Blocks": "./formatters/sonic/16x16_blocks.gd",
+		"Tile Layout": "./formatters/sonic/sonic 1/tile_layout.gd",
+		"Object Layout": "./formatters/sonic/sonic 1/object_layout.gd",
+		"Object Mappings": "./formatters/sonic/sonic 1/object_mappings.gd"
 	},
 	"Sonic 2": {
-		"Chunks": "res://user/formatters/sonic/sonic 2/chunks.gd",
-		"Blocks": "res://user/formatters/sonic/16x16_blocks.gd",
-		"Tile Layout": "res://user/formatters/sonic/sonic 2/tile_layout.gd"
+		"Chunks": "./formatters/sonic/sonic 2/chunks.gd",
+		"Blocks": "./formatters/sonic/16x16_blocks.gd",
+		"Tile Layout": "./formatters/sonic/sonic 2/tile_layout.gd"
 	},
 	"General": {
-		"Palette": "res://user/formatters/general/palette.gd",
-		"Art": "res://user/formatters/general/art.gd"
+		"Palette": "./formatters/general/palette.gd",
+		"Art": "./formatters/general/art.gd"
 	}
 }

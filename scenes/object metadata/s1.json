@@ -3,7 +3,7 @@
         "38": {
             "name": "Monitor",
             "mappings": "monitor_mappings",
-            "script": "res://user/object scripts/sonic/sonic 1/monitor.gd"
+            "script": "../user/object scripts/sonic/sonic 1/monitor.gd"
         },
         "34":
         {

@@ -6,6 +6,7 @@ A Level editor for Sega Mega Drive games.
 - Loading most of the data from the levels in Classic Sonic Trilogy\* (Palette, Art, PLCs, Object Layout, Object Mappings, Plane Tiles, Plane Blocks, Plane Chunks, Plane Layout)
 - Modular scene loading system that allows custom loaders for all data types (all script files are stored in: "user/formatters")
 - Loading multiple scenes in one window
+- Loading data from labels/offsets from the rom (currently asm68k only(without linker) but AS support isn't hard to implement)
 
 ## Future plans
 - Revamping the scene json format
@@ -19,7 +20,7 @@ A Level editor for Sega Mega Drive games.
 
 ## Current state of development
 
-Currently the project is on indefinite hiatus. However, I will read issues and pull requests if anyone needs help with figuring out the code or how to use the editor  
+Currently the project is on an indefinite hiatus. However, I will read issues and pull requests if anyone needs help with figuring out the code or how to use the editor  
 
 ## Credits
 
